@@ -1,0 +1,350 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+  font-weight: normal;
+}
+.body123 {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.table123 {
+  background: #1493c9;
+ 
+  
+  padding-left: 10px;
+  padding-right: 0px;
+  
+  height: 100px;
+  flex-direction: column;
+  flex-direction: row;
+}
+.cab-grid {
+  grid-auto-flow: column;
+  display: inline-grid;
+  padding-top: 10px;
+  justify-content: start;
+  align-content: start;
+  min-height: 0vh;
+  grid-template-columns: repeat(4, 110px);
+  grid-template-rows: minmax(40px, auto) repeat(10, 40px);
+}
+
+.cab-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.cab-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.channelType-grid {
+  grid-auto-flow: column;
+  display: inline-grid;
+
+  justify-content: start;
+  align-content: start;
+  min-height: 0vh;
+  grid-template-columns: repeat(2, 80px);
+  grid-template-rows: minmax(40px, auto) repeat(3, 40px);
+}
+
+.channelType-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.channelType-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.iocardnr-grid {
+  grid-auto-flow: column;
+  display: inline-grid;
+
+  justify-content: start;
+  align-content: start;
+  min-height: 200vh;
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: minmax(40px, auto) repeat(9, 40px);
+}
+
+.iocardnr-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.iocardnr-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.channelNr-grid {
+  display: inline-grid;
+
+  justify-content: start;
+  align-content: start;
+  min-height: 200vh;
+  grid-template-columns: repeat(2, 70px);
+  grid-template-rows: minmax(40px, auto) repeat(4, 40px);
+}
+
+.channelNr-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.channelNr-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.ymse-grid {
+  grid-auto-flow: column;
+  display: grid;
+
+  justify-content: start;
+  align-content: start;
+  min-height: 00vh;
+  grid-template-columns: repeat(2, 110px);
+  grid-template-rows: minmax(40px, auto) repeat(10, 40px);
+}
+
+.ymse-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.ymse-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+  grid-column: span 30;
+  height:20px;
+  width:40px;
+}
+.span-two2 {
+  grid-column: 4/span 5;
+}
+.grap2{
+  grid-column: span 10;
+}
+.output {
+  grid-auto-flow: column;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows: minmax(20px, 20px) repeat(1, 40px);
+  width: 170px;
+  
+  background-color: rgba(109, 103, 103, 0.75);
+  padding: 2px;
+  /*justify-content: space-around;
+  flex-direction: column;
+  
+  word-wrap: break-word;
+  word-break: break-all;*/
+}
+.output2 {
+  
+  display:grid;
+  grid-template-columns: repeat(1,500px);
+
+  grid-template-rows: minmax(40px, 40px);
+  margin: 100px;
+  width: 1000px;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+
+
+  background-color: rgba(109, 103, 103, 0.75);
+
+}
+.outputAC {
+  grid-auto-flow: column;
+  display: inline-grid;
+
+  justify-content: right;
+  align-content: right;
+  min-height: 7vh;
+  grid-template-columns: repeat(1, 75px);
+  grid-template-rows: minmax(25px, auto) repeat(1, 40px);
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 1.5rem;
+}
+.output2 .current-operand2 {
+  color: white;
+  font-size: 2.0rem;
+}
+
+.outputValve {
+  grid-auto-flow: column;
+  display: inline-grid;
+  grid-template-columns: repeat(1, 100px);
+  grid-template-rows: minmax(40px, 10px) repeat(1, 40px);
+
+  background-color: rgba(109, 103, 103, 0.75);
+
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.outputValve .previous-operand {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.outputValve .current-operand {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.tableValves,
+th {
+  border-collapse: collapse;
+  display: center;
+  border: 1px solid;
+}
+.tableValves,
+tr {
+  border-collapse: collapse;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  display: center;
+  border: 2px solid;
+}
+.tableValves,
+td {
+  display: center;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 55%;
+  border: 1px solid;
+}
+tr:nth-child(even) {
+  background-color: #817c81;
+}
+
+.inputText1 {
+  position: center;
+  display: center;
+  padding-left: 0%;
+}
+
+.inputText2 {
+  position: left;
+  display: left;
+  padding-left: 0%;
+}
+.player {
+  flex: 50%;
+  padding: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+}
+.name {
+  position: relative;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.score {
+  font-size: 8rem;
+  font-weight: 300;
+  color: #c7365f;
+  margin-bottom: auto;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.player--active .name {
+  font-weight: 700;
+}
+.player--active .score {
+  font-weight: 400;
+}
+.player--active .testStian {
+  opacity: 1;
+}
+.current {
+  opacity: 0.8;
+  border-radius: 9px;
+  color: #fff;
+  width: 65%;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.75s;
+}
+
+.testStian {
+  opacity: 0.6;
+}
+.testStian1 {
+  opacity: 1;
+}
+.current-label {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: #ddd;
+}
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  font-weight: 700;
+  color: #c7365f;
+}
+
+.hidden {
+  display: none;
+}

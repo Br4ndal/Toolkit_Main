@@ -1,0 +1,12 @@
+
+Electron app commands :
+
+npx electronmon .        
+electron-builder
+ npm install -g electron-builder
+ npm install --save-dev @electron-forge/cli
+  npx electron-forge import
+  npm run make
+  npm i electron 
+  npm i toastify-js     
+  npm init

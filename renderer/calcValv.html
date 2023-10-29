@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
+  <link href="../Style/styleheader.css" rel="stylesheet" />
+  <script src="../websitecode/calcWebValve.js" defer></script>
+  <title>Valve Calculator</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home </a></li>
+        <li><a href="calcWeb.html">Address Calcualtor</a></li>
+        <li>
+          <a href="CabinetCalc.html">Cabinet Calcualtor </a>
+        </li>
+        <li><a class="active" href="calcValv.html">Valve Calculator</a></li>
+        <li><a href="wagoModules.html">Wago Modules</a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h1 class="headlineText">Description of the valve calculator</h1>
+    <p1 class="paragrapText">
+      <center>
+        <h2>FOR VALVE PROGRAM XXX <br /><br /></h2>
+        Please input number of valve you want and SFI of valve, press
+        calculate and copy table directly in to citect variable file directly
+        in to citect variable.<br /><br />
+
+        <em class="paragrapText">
+          Extra info : check the citect variable file, for number of valve to
+          be added. check S or I and put next number <br />if its portside</em><br />
+      </center>
+    </p1>
+  </section>
+  <section class="table2">
+    <table class="tableValves">
+      <tr>
+        <th>SFI number</th>
+        <th>Signal type</th>
+        <th>Cabinet</th>
+        <th>Address</th>
+        <th>Raw_zero</th>
+        <th>Raw_full</th>
+        <th>Eng_Zero</th>
+        <th>Eng_Full</th>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR1">Name</td>
+        <td class="signalTypeColum" id="signalTypeR1">DIGITAL</td>
+        <td class="cabNrColum" id="cabNrR1">Unit</td>
+        <td class="addressColum" id="Address1R1">Addr</td>
+        <td id="rawZeroR1"></td>
+        <td id="rawFullR1"></td>
+        <td id="engZeroR1"></td>
+        <td id="engFullR1"></td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR2">Name</td>
+        <td class="signalTypeColum" id="signalTypeR2">INT</td>
+        <td class="cabNrColum" id="cabNrR2">Unit</td>
+        <td class="addressColum" id="Address1R2">Addr</td>
+        <td id="rawZeroR2"></td>
+        <td id="rawFullR2"></td>
+        <td id="engZeroR2"></td>
+        <td id="engFullR2"></td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR3">Name</td>
+        <td class="signalTypeColum" id="signalTypeR3">INT</td>
+        <td class="cabNrColum" id="cabNrR3">Unit</td>
+        <td class="addressColum" id="Address1R3">Addr</td>
+        <td id="rawZeroR3"></td>
+        <td id="rawFullR3"></td>
+        <td id="engZeroR3"></td>
+        <td id="engFullR3"></td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR4">Name</td>
+        <td class="signalTypeColum" id="signalTypeR4">INT</td>
+        <td class="cabNrColum" id="cabNrR4">Unit</td>
+        <td class="addressColum" id="Address1R4">Addr</td>
+        <td id="rawZeroR4">0</td>
+        <td id="rawFullR4">100</td>
+        <td id="engZeroR4">0</td>
+        <td id="engFullR4">100</td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR5">Name</td>
+        <td class="signalTypeColum" id="signalTypeR5">INT</td>
+        <td class="cabNrColum" id="cabNrR5">Unit</td>
+        <td class="addressColum" id="Address1R5">Addr</td>
+        <td id="rawZeroR5">0</td>
+        <td id="rawFullR5">100</td>
+        <td id="engZeroR5">0</td>
+        <td id="engFullR5">100</td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR6">Name</td>
+        <td class="signalTypeColum" id="signalTypeR6">INT</td>
+        <td class="cabNrColum" id="cabNrR6">Unit</td>
+        <td class="addressColum" id="Address1R6">Addr</td>
+        <td id="rawZeroR6"></td>
+        <td id="rawFullR6"></td>
+        <td id="engZeroR6"></td>
+        <td id="engFullR6"></td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR7">Name</td>
+        <td class="signalTypeColum" id="signalTypeR7">STRING</td>
+        <td class="cabNrColum" id="cabNrR7">Unit</td>
+        <td class="addressColum" id="Address1R7">Addr</td>
+        <td id="rawZeroR7"></td>
+        <td id="rawFullR7"></td>
+        <td id="engZeroR7"></td>
+        <td id="engFullR7"></td>
+      </tr>
+      <tr>
+        <td class="sfiValveColum" id="sfiValveR8">Name</td>
+        <td class="signalTypeColum" id="signalTypeR8">INT</td>
+        <td class="cabNrColum" id="cabNrR8">Unit</td>
+        <td class="addressColum" id="Address1R8">Addr</td>
+        <td id="rawZeroR8"></td>
+        <td id="rawFullR8"></td>
+        <td id="engZeroR8"></td>
+        <td id="engFullR8"></td>
+      </tr>
+    </table>
+  </section>
+  <div>
+    <section class="table">
+      <input class="inputText1" id="valveNumberInput-0" placeholder="Enter Valve number" maxlength="20" />
+    </section>
+  </div>
+  <div>
+    <section class="table">
+      <input class="inputText1" id="sfiNumberInput-1" placeholder="Enter SFI for valve" maxlength="20" />
+    </section>
+  </div>
+  <div>
+    <section class="table">
+      <button class="btn1 btn--send">Calculate adress</button>
+    </section>
+  </div>
+
+  <script></script>
+</body>
+
+</html>
