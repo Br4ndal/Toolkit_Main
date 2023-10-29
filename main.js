@@ -7,7 +7,7 @@ const {autoUpdater, AppUpdater} = require("electron-updater")
 autoUpdater.autoDownload = false
 autoUpdater.autoInstallOnAppQuit = true
 */
-process.env.NODE_ENV = "production"
+//process.env.NODE_ENV = "production"
 const isMac =process.platform === "darwin"
 const isDev = process.env.NODE_ENV !== "production"
 

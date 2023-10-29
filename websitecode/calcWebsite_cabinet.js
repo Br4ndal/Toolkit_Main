@@ -151,32 +151,44 @@ const calcInputInt = function(numberInt){
 
 // -------------------------------------------- IO CAB 01 and 02 -----------------------------------------------------------------------------------
   } else if(numberInt >= IoCab01_02  & numberInt < IoCab03_04){
-    let tempVariableRO, tempVariableCI, tempVariableRTD;   
+    let tempVariableRO, tempVariableCI, tempVariableRTD, tempVariableAI,tempVariableAO,tempVariableDI,tempVariableDO;   
     
     if (numberInt <= (IoCab01_02+127)){
       tempVariableRO = currentOperandTextElement6.textContent = `--------------------`;
+      currentOperandTextElement2.textContent = `IO Cab 1/2 Cabinet AI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement3.textContent = `IO Cab 1/2 Cabinet AO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement4.textContent = `IO Cab 1/2 Cabinet DI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement5.textContent = `IO Cab 1/2 Cabinet DO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
     } else{
       tempVariableRO  = currentOperandTextElement6.textContent = `IO Cab 1/2 Cabinet RO${moduleCalcRO(numberInt,IoCab01_02)}:${channelCalcRO(numberInt,IoCab01_02)}`;
+      currentOperandTextElement2.textContent = `IO Cab 1/2 Cabinet AI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement3.textContent = `IO Cab 1/2 Cabinet AO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement4.textContent = `IO Cab 1/2 Cabinet DI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      tempVariableDO = currentOperandTextElement5.textContent = `--------------------`;
+
     }
     
     if ((numberInt <= (IoCab01_02 + 99) )){
       tempVariableCI = currentOperandTextElement7.textContent = `--------------------`;
+      currentOperandTextElement2.textContent = `IO Cab 1/2 Cabinet AI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement3.textContent = `IO Cab 1/2 Cabinet AO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement4.textContent = `IO Cab 1/2 Cabinet DI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement5.textContent = `IO Cab 1/2 Cabinet DO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
     } else{
       tempVariableCI  = currentOperandTextElement7.textContent = `IO Cab 1/2 Cabinet CI${moduleCalcCI(numberInt,IoCab01_02)}:${channelCalcCI(numberInt,IoCab01_02)}`;
+
     }
     
     if ((numberInt <= (IoCab01_02 + 63) )){
       tempVariableRTD = currentOperandTextElement8.textContent = `--------------------`;
+      currentOperandTextElement2.textContent = `IO Cab 1/2 Cabinet AI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement3.textContent = `IO Cab 1/2 Cabinet AO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement4.textContent = `IO Cab 1/2 Cabinet DI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
+      currentOperandTextElement5.textContent = `IO Cab 1/2 Cabinet DO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
     } else{
       tempVariableRTD  = currentOperandTextElement8.textContent = `IO Cab 1/2 Cabinet RTD${moduleCalcRTD(numberInt,IoCab01_02)}:${channelCalcRTD(numberInt,IoCab01_02)}`;
+
     }
-
-    let tempVariableAI = currentOperandTextElement2.textContent = `IO Cab 1/2 Cabinet AI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
-    let tempVariableAO = currentOperandTextElement3.textContent = `IO Cab 1/2 Cabinet AO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
-    let tempVariableDI = currentOperandTextElement4.textContent = `IO Cab 1/2 Cabinet DI${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
-    let tempVariableDO = currentOperandTextElement5.textContent = `IO Cab 1/2 Cabinet DO${moduleCalc(numberInt,IoCab01_02)}:${channelCalc(numberInt,IoCab01_02)}`;
-
-
     return tempVariableAI, tempVariableAO,tempVariableDI,tempVariableDO,tempVariableRO,tempVariableCI, tempVariableRTD;
 // -------------------------------------------- IO CAB 03 and 04 -----------------------------------------------------------------------------------
   } else if(numberInt >= IoCab03_04  & numberInt < IoCab05_06){
