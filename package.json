@@ -9,10 +9,28 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
+  "repository": "https://github.com/Br4ndal/App_release",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "build": {
+    "appId": "com.ias.toolkit",
+    "productName": "IAS Toolkit App",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
   "author": "Stian Brandal",
   "license": "ISC",
   "dependencies": {
+    "electron-build": "^0.0.3",
+    "electron-builder": "^24.6.4",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^6.1.4",
     "toastify-js": "^1.12.0"
   },
   "devDependencies": {

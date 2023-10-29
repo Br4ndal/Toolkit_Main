@@ -1,11 +1,17 @@
 // Modules
 const path = require("path");
 const {app, BrowserWindow,Menu} = require('electron')
+const {autoUpdater, AppUpdater} = require("electron-updater")
 
-//process.env.NODE_ENV = "production"
+/*
+autoUpdater.autoDownload = false
+autoUpdater.autoInstallOnAppQuit = true
+*/
+process.env.NODE_ENV = "production"
 const isMac =process.platform === "darwin"
 const isDev = process.env.NODE_ENV !== "production"
 
+console.log(process.env.NODE_ENV )
 setTimeout(() => {
   console.log("check if app ready:" + app.isReady());
 }, 2000);
@@ -43,8 +49,8 @@ function createMainWindow(){
 
 app.whenReady().then(()=>{
   createMainWindow()
-  const mainMenu = Menu.buildFromTemplet(menu)
-  Menu.setApplicationMenu(mainMenu)
+  /*const mainMenu = Menu.buildFromTemplet(menu)
+  Menu.setApplicationMenu(mainMenu)*/
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -52,6 +58,8 @@ app.whenReady().then(()=>{
      
     }
   })
+//autoUpdater.checkForUpdates()
+
 })
 
 //menu template SJÅ PÅ DETTE SEINARE!!!!
