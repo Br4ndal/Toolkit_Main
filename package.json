@@ -18,7 +18,8 @@
     "appId": "com.ias.toolkit",
     "productName": "IAS Toolkit App",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "images/Vard_Langsten_logo.jpg"
     },
     "directories": {
       "output": "dist"

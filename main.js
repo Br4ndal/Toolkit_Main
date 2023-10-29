@@ -1,6 +1,6 @@
 // Modules
 const path = require("path");
-const {app, BrowserWindow,Menu} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const {autoUpdater, AppUpdater} = require("electron-updater")
 
 /*
@@ -34,7 +34,8 @@ function createMainWindow(){
   const mainWindow = new BrowserWindow({
     width: isDev ? 1250: 1280,
     height: isDev ? 800: 800,
-    title:"IAS Toolkit"
+    title:"IAS Toolkit",
+    icon: path.join(__dirname + '/images/Vard_Langsten_logo.JPG',)
   })
 
   if(isDev){
@@ -44,6 +45,7 @@ function createMainWindow(){
   mainWindow.loadFile(path.join(__dirname,"./renderer/index.html"))
 }
 
+Menu.setApplicationMenu(null)
 //app.on("ready")
 
 
