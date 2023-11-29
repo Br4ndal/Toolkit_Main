@@ -1,8 +1,15 @@
 // Modules
+'use strict';
 const path = require("path");
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, dialog,ipcMain,Tray} = require('electron')
 const {autoUpdater, AppUpdater} = require("electron-updater")
+//Library's 
 
+const XLSX = require("xlsx");
+const fs = require(`fs`);
+const csvToJson = require('csvtojson');
+
+const folderOpen = require("child_process")
 /*
 autoUpdater.autoDownload = false
 autoUpdater.autoInstallOnAppQuit = true
@@ -35,7 +42,12 @@ function createMainWindow(){
     width: isDev ? 1250: 1280,
     height: isDev ? 800: 800,
     title:"IAS Toolkit",
-    icon: path.join(__dirname + '/images/Vard_Langsten_logo.JPG',)
+    icon: path.join(__dirname + '/images/Vard_Langsten_logo.JPG',),
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
+    }
   })
 
   if(isDev){
