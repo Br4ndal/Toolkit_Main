@@ -13,6 +13,14 @@ Installs needed is:    npm i xlsx,  npm install convert-csv-to-json --save
 const filePathCitect = document.getElementById("file-input");
 const filePathIASFiles= document.getElementById("file-input2");
 
+console.log(window.CPU.cpu);
+console.log(window.excel.link.readFile);
+console.log(window.excel.link.utils);
+const workbook1 = excel.link.readFile(`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/Citect/argdig.DBF`); // ${input}
+let worksheet1= workbook1.Sheets["Sheet1"];
+const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
+console.log(dataAI1)
+
 //sending information to DOM
 // const filePathCitect1 = document.querySelector("filename");
 // const filePathIASFiles1 = document.querySelector("filename2");

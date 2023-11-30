@@ -5,11 +5,6 @@ const {app, BrowserWindow, Menu, dialog,ipcMain,Tray} = require('electron')
 const {autoUpdater, AppUpdater} = require("electron-updater")
 //Library's 
 
-const XLSX = require("xlsx");
-const fs = require(`fs`);
-const csvToJson = require('csvtojson');
-
-const folderOpen = require("child_process")
 /*
 autoUpdater.autoDownload = false
 autoUpdater.autoInstallOnAppQuit = true
@@ -45,7 +40,8 @@ function createMainWindow(){
     icon: path.join(__dirname + '/images/Vard_Langsten_logo.JPG',),
     webPreferences: {
       contextIsolation: true,
-      nodeIntegration: true,
+      nodeIntegration: true,  // was true 
+      sandbox: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
