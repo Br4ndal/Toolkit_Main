@@ -16,12 +16,22 @@ const filePathIASFiles= document.getElementById("file-input2");
 console.log(window.CPU.cpu);
 console.log(window.excel.link.readFile);
 console.log(window.excel.link.utils);
-const workbook1 = excel.link.readFile(`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/Citect/argdig.DBF`); // ${input}
-let worksheet1= workbook1.Sheets["Sheet1"];
-const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
-console.log(dataAI1)
+// const workbook1 = excel.link.readFile(`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/Citect/argdig.DBF`); // ${input}
+// let worksheet1= workbook1.Sheets["Sheet1"];
+// const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
+// console.log(dataAI1)
 
-//sending information to DOM
+var data = [
+    {"name":"John", "city": "Seattle"},
+    {"name":"Mike", "city": "Los Angeles"},
+    {"name":"Zach", "city": "New York"}
+];
+let ws = excel.link.utils.sheet_to_json(data);  
+const newWB = excel.link.utils.book_new();
+excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
+//excel.link
+excel.link.write(newWB,`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/AutoGen Files/Citect_Alarm_Link.xlsx`);
+//sending information to DOMs
 // const filePathCitect1 = document.querySelector("filename");
 // const filePathIASFiles1 = document.querySelector("filename2");
 
@@ -76,43 +86,43 @@ function alarmLinker (pathCitect,pathCsvFile){
     console.log("Opening files and gathering inforamtion")
 
     // Read folder to find which files i have her
-    var pathForCSVFile = [];
-    let checkingPathCSVtoJSON = fs.readdirSync(filePathCSVtoJSON)
+    // var pathForCSVFile = [];
+    // let checkingPathCSVtoJSON = fs1.readFile1.readdirSync(filePathCSVtoJSON)
 
-    for (let i = 0; i < checkingPathCSVtoJSON.length; ++i) {
-        pathForCSVFile[i] = filePathCSVtoJSON +"/"+checkingPathCSVtoJSON[i];
-    }
+    // for (let i = 0; i < checkingPathCSVtoJSON.length; ++i) {
+    //     pathForCSVFile[i] = filePathCSVtoJSON +"/"+checkingPathCSVtoJSON[i];
+    // }
 
-    // checking all the files and IF its .CSV i will use fucntion to convert to JSON.
-    for(let i=0; i < pathForCSVFile.length;i++){
-        let checkForCSV = ".CSV"
-        let checkedForCSV = JSON.stringify(pathForCSVFile[i].toUpperCase()).indexOf(checkForCSV);
-        if(checkedForCSV >=1){
-            localCSVtoJSON(pathForCSVFile[i])
-        }
-    }
+    // // checking all the files and IF its .CSV i will use fucntion to convert to JSON.
+    // for(let i=0; i < pathForCSVFile.length;i++){
+    //     let checkForCSV = ".CSV"
+    //     let checkedForCSV = JSON.stringify(pathForCSVFile[i].toUpperCase()).indexOf(checkForCSV);
+    //     if(checkedForCSV >=1){
+    //         localCSVtoJSON(pathForCSVFile[i])
+    //     }
+    // }
 
-    //function that turns CSV files to JSON file so i can easier get the information i need from them. And puting them all in a JSON folder where i can read them later.
-    function localCSVtoJSON (filepath){
-        let splitString = filepath.split("/");
-        const splitStringF = splitString[9].split(".")[0]
-        csvToJson()
-        .fromFile(filepath)
-        .then((json) => {
+    // //function that turns CSV files to JSON file so i can easier get the information i need from them. And puting them all in a JSON folder where i can read them later.
+    // function localCSVtoJSON (filepath){
+    //     let splitString = filepath.split("/");
+    //     const splitStringF = splitString[9].split(".")[0]
+    //     csvToJson()
+    //     .fromFile(filepath)
+    //     .then((json) => {
             
-            fs.writeFileSync("jsonFiles/" + splitStringF + ".json", JSON.stringify(json), "utf-8", (err) => {
-                if (err) console.log(err);
-            });
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+    //         fs1.readFile1.writeFileSync("jsonFiles/" + splitStringF + ".json", JSON.stringify(json), "utf-8", (err) => {
+    //             if (err) console.log(err);
+    //         });
+    //     })
+    //     .catch((err) => {
+    //         console.error(err);
+    //     });
 
-    }
+    // }
 
 
 
-    let content = fs.readFileSync("jsonFiles/PumpSetup.json", 'utf-8');
+    let content = fs1.readFile1.readFileSync("C:/Users/stian/OneDrive/Documents/Projects/IAS Project/New folder/jsonFiles/PumpSetup.json", 'utf-8');
     const data = JSON.parse(content);
 
 
@@ -150,9 +160,9 @@ function alarmLinker (pathCitect,pathCsvFile){
     let TagRefArrayCombined = pumpTagPS.concat(pumpTagSB);
     let combinedArraypumpAlarm = pumpAlarmsPS.concat(pumpAlarmsSB);
 
-    const workbook1 = XLSX.readFile(`${pathCitect}/IAS Project/Citect/argdig.DBF`); // ${input}
+    const workbook1 = excel.link.readFile(`${pathCitect}/Citect/argdig.DBF`); // ${input}
     let worksheet1= workbook1.Sheets["Sheet1"];
-    const dataAI1 = XLSX.utils.sheet_to_json(worksheet1);
+    const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
 
     /* 
     When check for common alarms in this for loop i dont use 792_ SFI because on Ocean infinity there was not 792_common alarms on tank or pumps
@@ -219,7 +229,7 @@ function alarmLinker (pathCitect,pathCsvFile){
     }
 
 
-    const dataAI2 = XLSX.utils.sheet_to_json(worksheet1);
+    const dataAI2 = excel.link.utils.sheet_to_json(worksheet1);
     let tagFilterAway = ["Alarm that has been filtered away "];
     // //getting information from Variables on IAS and putting tag name in new array, her are alarms that are deleted or not gone be checked in my program. meant for manuall jobb to see which alarms are not gone be linked.
     for (const address2 of dataAI2) {
@@ -278,7 +288,7 @@ function alarmLinker (pathCitect,pathCsvFile){
 
     const filepathStart = `${pathCitect}/Citect/_IncludeProjects`
     var markers = [];
-    let checkingPath = fs.readdirSync(filepathStart)
+    let checkingPath = fs1.readFile1.readdirSync(filepathStart)
     for (let i = 0; i < checkingPath.length; ++i) {
         markers[i] = filepathStart +"/"+checkingPath[i] + "/pgdynobj.dbf";
     }
@@ -289,12 +299,13 @@ function alarmLinker (pathCitect,pathCsvFile){
     //her i am extracting all info of where tags and alarms are placed. from the pdgfile 
     // in the function i will take away empty undefined cells also the empty ones.
     function pgdynobjFile1(filepathPgd){
+        console.log("entering for loop with file",filepathPgd );
         let checkingPath0 = [];
         let citectPageFromPgd = []
 
-        const workbook = XLSX.readFile(filepathPgd);
+        const workbook = excel.link.readFile(filepathPgd);
         let worksheet = workbook.Sheets["Sheet1"];
-        const dataAI = XLSX.utils.sheet_to_json(worksheet);
+        const dataAI = excel.link.utils.sheet_to_json(worksheet);
 
         for (const address3 of dataAI){
             const getingColumnInfo = address3[`COL_A`];
@@ -415,7 +426,7 @@ function alarmLinker (pathCitect,pathCsvFile){
     for (let i=0;i <= difference1PumpAlarm.length -1 ;i++){
         combinedArrayPumpAlarm2 = combinedArrayPumpAlarm2.concat(`${difference1PumpAlarm[i]} ${pageCitectPumpAlarm[i]}`);
     }
-    let uniqueCharsPumpAlarm = [...new Set(combinedArrayPumpAlarm2)];
+    let uniqueCharsPumpAlarm = [...new Set(combinedArrayPumpsAlarm2)];
 
 
     //splitting uniqueChars to get alarms and pages from them self
@@ -663,38 +674,37 @@ function alarmLinker (pathCitect,pathCsvFile){
 
 
 
-    let ws = XLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(newFinalArrayAlmNr), {origin: "A1" });  
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPage), {origin: "B1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(alarmSeveralPages), {origin: "D1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pageDifference), {origin: "C1" });
+    let ws = excel.link.utils.aoa_to_sheet(arrayFliperRowtoColumn(newFinalArrayAlmNr), {origin: "A1" });  
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPage), {origin: "B1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(alarmSeveralPages), {origin: "D1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pageDifference), {origin: "C1" });
 
 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsSB), {origin: "J1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrSB), {origin: "K1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsSB), {origin: "L1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsSB), {origin: "J1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrSB), {origin: "K1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsSB), {origin: "L1" });
 
 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsPS), {origin: "N1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrPS), {origin: "O1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsPS), {origin: "P1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsPS), {origin: "N1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrPS), {origin: "O1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsPS), {origin: "P1" });
 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFinalArrayAlmNrPump), {origin: "G1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPagePump), {origin: "H1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(combinedArraypumpAlarm), {origin: "I1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFinalArrayAlmNrPump), {origin: "G1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPagePump), {origin: "H1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(combinedArraypumpAlarm), {origin: "I1" });
 
 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsSB), {origin: "R1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrSB), {origin: "S1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsSB), {origin: "T1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsSB), {origin: "R1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrSB), {origin: "S1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsSB), {origin: "T1" });
 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsPS), {origin: "W1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrPS), {origin: "X1" });
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsPS), {origin: "Y1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsPS), {origin: "W1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrPS), {origin: "X1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsPS), {origin: "Y1" });
 
-    const newWB = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
-    XLSX.writeFile(newWB, `${path}/- File_Auto_Generated/Citect_Alarm_Link.xlsx`);
-
+    const newWB = excel.link.utils.book_new();
+    excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
+    excel.link.writeFile(newWB, `C:/Users/stian/OneDrive/Documents/Projects/IAS Project/AutoGen Files/Citect_Alarm_Link.xlsx`);
 
     console.log(`Completed`);
     console.log("Systems alarms needs to be double checked because of cant be compared correctly....")

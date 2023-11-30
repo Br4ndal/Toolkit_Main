@@ -2,6 +2,7 @@
 
 const os = require("os")
 const path = require("path")
+const fs = require('fs')
 const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
 const {cpus, totalmem} = require("os")
 const { contextBridge } = require('electron')
@@ -12,6 +13,10 @@ contextBridge.exposeInMainWorld('os', {
 
 contextBridge.exposeInMainWorld('path', {
     join: (...args) => path.join(...args),
+})
+
+contextBridge.exposeInMainWorld("fs1",{
+    readFile1 : fs,
 })
 
 contextBridge.exposeInMainWorld('excel', {
