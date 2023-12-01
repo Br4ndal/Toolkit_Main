@@ -27,9 +27,9 @@ var data = [
     {"name":"Zach", "city": "New York"}
 ];
 let ws = excel.link.utils.sheet_to_json(data);  
-const newWB = excel.link.utils.book_new();
+const newWB = excel.link.utils.book_new(); // { SheetNames:[], Sheets:{} }
 excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
-//excel.link
+console.log(excel.link);
 excel.link.write(newWB,`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/AutoGen Files/Citect_Alarm_Link.xlsx`);
 //sending information to DOMs
 // const filePathCitect1 = document.querySelector("filename");
