@@ -29,11 +29,13 @@
   "license": "ISC",
   "dependencies": {
     "convert-csv-to-json": "^2.0.0",
+    "csvtojson": "^2.0.10",
     "electron-build": "^0.0.3",
     "electron-builder": "^24.6.4",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^6.1.4",
     "fs": "^0.0.1-security",
+    "papaparse": "^5.4.1",
     "toastify-js": "^1.12.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },

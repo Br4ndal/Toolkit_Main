@@ -13,9 +13,9 @@ Installs needed is:    npm i xlsx,  npm install convert-csv-to-json --save
 const filePathCitect = document.getElementById("file-input");
 const filePathIASFiles= document.getElementById("file-input2");
 
-console.log(window.CPU.cpu);
-console.log(window.excel.link.readFile);
-console.log(window.excel.link.utils);
+// console.log(window.CPU.cpu);
+// console.log(window.excel.link.readFile);
+// console.log(window.excel.link.utils);
 // const workbook1 = excel.link.readFile(`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/Citect/argdig.DBF`); // ${input}
 // let worksheet1= workbook1.Sheets["Sheet1"];
 // const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
@@ -30,7 +30,7 @@ let ws = excel.link.utils.sheet_to_json(data);
 const newWB = excel.link.utils.book_new(); // { SheetNames:[], Sheets:{} }
 excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
 console.log(excel.link);
-excel.link.write(newWB,`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/AutoGen Files/Citect_Alarm_Link.xlsx`);
+excel.link.write(newWB,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link.xlsx`);
 //sending information to DOMs
 // const filePathCitect1 = document.querySelector("filename");
 // const filePathIASFiles1 = document.querySelector("filename2");
@@ -46,14 +46,14 @@ btnSend.addEventListener("click", function () {
     console.log(newfilePathCitect, newfilePathIASFIles);
   });
   
-  document.addEventListener(`keydown`, function (e) {
-    if (e.key === "Enter") {
-        let newfilePathCitect = filePathCitect.value;
-        let newfilePathIASFIles = filePathIASFiles.value
-        alarmLinker(newfilePathCitect,newfilePathIASFIles)
-        console.log(newfilePathCitect, newfilePathIASFIles);
-    }
-  });
+//   document.addEventListener(`keydown`, function (e) {
+//     if (e.key === "Enter") {
+//         let newfilePathCitect = filePathCitect.value;
+//         let newfilePathIASFIles = filePathIASFiles.value
+//         alarmLinker(newfilePathCitect,newfilePathIASFIles)
+//         console.log(newfilePathCitect, newfilePathIASFIles);
+//     }
+//   });
   
 
 
