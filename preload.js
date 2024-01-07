@@ -3,6 +3,7 @@
 const os = require("os")
 const path = require("path")
 const fs = require('fs')
+const excel4node1 = require("excel4node")
 // const csvToJson = require('csvtojson');
 const papa = require("papaparse")
 const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
@@ -34,6 +35,9 @@ contextBridge.exposeInMainWorld('excel', {
     // pikk3 : XLSX.utils(),   
 })
 
+contextBridge.exposeInMainWorld("ex",{
+    node: excel4node1,
+})
 contextBridge.exposeInMainWorld("CPU", {
     cpu: cpus(),
     getMemory : () => totalmem(),

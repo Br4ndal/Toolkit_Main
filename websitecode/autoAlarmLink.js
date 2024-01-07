@@ -13,27 +13,38 @@ Installs needed is:    npm i xlsx,  npm install convert-csv-to-json --save
 const filePathCitect = document.getElementById("file-input");
 const filePathIASFiles= document.getElementById("file-input2");
 
-// console.log(window.CPU.cpu);
-// console.log(window.excel.link.readFile);
-// console.log(window.excel.link.utils);
-// const workbook1 = excel.link.readFile(`C:/Users/stian/OneDrive/Documents/Projects/IAS Project/Citect/argdig.DBF`); // ${input}
-// let worksheet1= workbook1.Sheets["Sheet1"];
-// const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
-// console.log(dataAI1)
 
-var data = [
+let data = [
     {"name":"John", "city": "Seattle"},
     {"name":"Mike", "city": "Los Angeles"},
     {"name":"Zach", "city": "New York"}
 ];
-let ws = excel.link.utils.sheet_to_json(data);  
-const newWB = excel.link.utils.book_new(); // { SheetNames:[], Sheets:{} }
-excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
-console.log(excel.link);
-excel.link.write(newWB,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link.xlsx`);
-//sending information to DOMs
-// const filePathCitect1 = document.querySelector("filename");
-// const filePathIASFiles1 = document.querySelector("filename2");
+let testXLSX = excel.link
+let  data2 = ["test11111","test2222","test2222"]
+let workshet2 = testXLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(data2) , {origin: "A1" });   //sheet_add_aoa  aoa_to_sheet
+const test123 = testXLSX.utils.book_new(); // { SheetNames:[], Sheets:{} }
+testXLSX.utils.sheet_add_aoa(workshet2,arrayFliperRowtoColumn(data2), {origin: "C1" }); //sheet_add_aoa
+
+testXLSX.utils.book_append_sheet(test123, workshet2, "Sheet1");
+// console.log(test123)
+// console.log(XLSX);
+// fs1.readFile1.writeFile(data2,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link3.xlsx`)
+exportFile(test123)
+testXLSX.writeFile(test123,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link1.xlsx`);
+
+async function exportFile(workbook) {
+    /* show Save As dialog */
+    console.log("hello");
+    const result = await showSaveDialog({
+      title: 'Save file as',
+      filters: [{
+        name: "Spreadsheets",
+        extensions: ["xlsx", "xls", "xlsb", /* ... other formats ... */]
+      }]
+    });
+    /* write file */
+    testXLSX.writeFile(workbook, result.filePath);
+  }
 
 const btnSend = document.querySelector(".btn--send");
 
@@ -45,15 +56,6 @@ btnSend.addEventListener("click", function () {
     alarmLinker(newfilePathCitect,newfilePathIASFIles)
     console.log(newfilePathCitect, newfilePathIASFIles);
   });
-  
-//   document.addEventListener(`keydown`, function (e) {
-//     if (e.key === "Enter") {
-//         let newfilePathCitect = filePathCitect.value;
-//         let newfilePathIASFIles = filePathIASFiles.value
-//         alarmLinker(newfilePathCitect,newfilePathIASFIles)
-//         console.log(newfilePathCitect, newfilePathIASFIles);
-//     }
-//   });
   
 
 
@@ -713,25 +715,27 @@ function alarmLinker (pathCitect,pathCsvFile){
 
 
     //----------------------FUNCTIONs-----------------------------------
-    function arrayFliperRowtoColumn(array, value) {
-        const addressObjecToArray = Object.values(array);
-        const result = Object.keys(addressObjecToArray).map((key) => [
-        addressObjecToArray[key],
-        ]);
 
-        // returns value of hardwired to an object and i convert to column
-        if (value === "1"){
+}
+
+function arrayFliperRowtoColumn(array, value) {
+    const addressObjecToArray = Object.values(array);
+    const result = Object.keys(addressObjecToArray).map((key) => [
+    addressObjecToArray[key],
+    ]);
+
+    // returns value of hardwired to an object and i convert to column
+    if (value === "1"){
+    let worksheet = 
+    result.map(function (v) {
+        return [JSON.stringify(v)];
+    });
+    return worksheet;
+    }else {
         let worksheet = 
         result.map(function (v) {
-            return [JSON.stringify(v)];
-        });
-        return worksheet;
-        }else {
-            let worksheet = 
-            result.map(function (v) {
-            return [v];
-        });
-        return worksheet;
-        }
+        return [v];
+    });
+    return worksheet;
     }
 }

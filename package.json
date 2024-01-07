@@ -34,6 +34,7 @@
     "electron-builder": "^24.6.4",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^6.1.4",
+    "excel4node": "^1.8.2",
     "fs": "^0.0.1-security",
     "papaparse": "^5.4.1",
     "toastify-js": "^1.12.0",
