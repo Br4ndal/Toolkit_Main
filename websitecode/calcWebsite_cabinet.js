@@ -35,11 +35,11 @@ function channelCalc(addressInput,cabinetAddress){
  
   if (finalDecimal == "25") {
     return 2;
-  } else if (finalDecimal == "5") {
+  } else if (finalDecimal == "5" && decimalChannel !== -1) {
     return 3;
   }else if (finalDecimal == "75") {
     return 4;
-  }else {
+  }else if (finalDecimal == "0" || decimalChannel == -1) {
     return 1;
   }
 
@@ -812,6 +812,7 @@ document.addEventListener(`keydown`, function (e) {
 });
 
 allClearButton2.addEventListener("click", (button) => {
+  textinputNumberInt.value = "";
   let blank1 = currentOperandTextElement2.textContent = "Enter new address"
   let blank2 = currentOperandTextElement3.textContent = `--------------------`
   let blank3 = currentOperandTextElement4.textContent = `--------------------`
@@ -823,7 +824,7 @@ allClearButton2.addEventListener("click", (button) => {
   return blank1,blank2, blank3,blank4,blank5,blank6, blank7;
 });
 document.addEventListener(`keydown`, function (e) {
-  if (e.key === "Backspace") {
+  if (e.key === "Backspace" || e.key === "Escape" ) {
     let blank1 = currentOperandTextElement2.textContent = "Enter new address"
     let blank2 = currentOperandTextElement3.textContent = `--------------------`
     let blank3 = currentOperandTextElement4.textContent = `--------------------`
@@ -832,7 +833,11 @@ document.addEventListener(`keydown`, function (e) {
     let blank6 = currentOperandTextElement7.textContent = `--------------------`
     let blank7 = currentOperandTextElement8.textContent = `--------------------`
     //let blank8 = currentOperandTextElement9.textContent = "Cabinet Info"
+    if ( e.key === "Escape") {
+      textinputNumberInt.value = "";
+    }
     return blank1,blank2, blank3,blank4,blank5,blank6, blank7;
   }
+ 
 });
 

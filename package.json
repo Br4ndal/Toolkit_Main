@@ -19,6 +19,10 @@
     "productName": "IAS Toolkit App",
     "win": {
       "target": "nsis",
+      "arch": [
+        "x64",
+        "ia32"
+      ],
       "icon": "images/Vard_Langsten_logo.jpg"
     },
     "directories": {
