@@ -11,3 +11,7 @@ electron-builder
   npm i electron 
   npm i toastify-js     
   npm init
+
+
+lager nytt program for å kjøre exe file.
+  npx electron-packager .
