@@ -1,13 +1,50 @@
-const calcOfvalve = function (valveSFI, calcValveNumber, valveNumber) {
-  let blk = 8800;
-  let cmd = 17300;
-  let fbk = 17300;
-  let pdem = 17000;
-  let pfbk = 17600;
-  let sys = "I";
-  let txt = "S";
-  let typ = 17000;
+const calcOfvalve = function (valveSFI, calcValveNumber, valveNumber,textInputValveP) {
+  let blk 
+  let cmd 
+  let fbk 
+  let pdem;
+  let pfbk;
+  let sys 
+  let txt 
+  let typ 
 
+  if(textInputValveP == "600"){ // valve program 600 ato 604
+    blk = 8800;
+    cmd = 17300;
+    fbk = 17300;
+    pdem = 17000;
+    pfbk = 17600;
+    sys = "I";
+    txt = "S";
+    typ = 17000;
+  } else if(textInputValveP == "500"){ // valve program 500  to 508
+    blk = 8800;
+    cmd = 17200;
+    fbk = 17600;
+    pdem = 17000;
+    pfbk = 17400;
+    sys = "I";
+    txt = "S";
+    typ = 17000;
+  } else if(textInputValveP == "100"){ // valve program 100 to 124
+    blk = 8800;
+    cmd = 17200;
+    fbk = 17600;
+    pdem = 17000;
+    pfbk = 17400;
+    sys = "I";
+    txt = "S";
+    typ = 17000;
+  }else if(textInputValveP == "200"){ // valve program 200 and 201
+    blk = 8800;
+    cmd = 17200;
+    fbk = 17600;
+    pdem = 17000;
+    pfbk = 17400;
+    sys = "I";
+    txt = "S";
+    typ = 17000;
+  }
   const cabSide = valveNumber % 2 == 0 ? "Contr04Stbd" : "Contr03Port"; // her checking if number is even or odd, to print correct cab Side
   const Valve = "Valve";
 
@@ -60,15 +97,15 @@ const calcOfvalve = function (valveSFI, calcValveNumber, valveNumber) {
   addressColum[7].textContent = output_typ;
 };
 
-function valveCalc1(valveSFI, valveNumber) {
+function valveCalc1(valveSFI, valveNumber,textInputValveP) {
   if (valveNumber % 2 == 0) {
     //valve is Even
     let calcValveNumber = (valveNumber - 1) / 2 - 0.5; // forumal to calc even number for valve address
-    calcOfvalve(valveSFI, calcValveNumber, valveNumber);
+    calcOfvalve(valveSFI, calcValveNumber, valveNumber,textInputValveP);
   } else {
     //valve is ODD
     let calcValveNumber = (valveNumber - 1) / 2; // forumal to calc odd number for valve address
-    calcOfvalve(valveSFI, calcValveNumber, valveNumber);
+    calcOfvalve(valveSFI, calcValveNumber, valveNumber,textInputValveP);
   }
 }
 
@@ -76,22 +113,25 @@ function valveCalc1(valveSFI, valveNumber) {
 const valveNumberInput1 = document.getElementById("valveNumberInput-0");
 const sfiNumberInput1 = document.getElementById("sfiNumberInput-1");
 const score0El = document.getElementById("score--0");
-
+const valveProgramNr = document.getElementById("valveProgramNrhtml")
 // variables for the DOM element
 const sfiValveColum = document.querySelectorAll(".sfiValveColum"); //this get all classes for the column  //const sfiValveR1 = document.getElementById("sfiValveR1");  gett ID
 const signalTypeColum = document.querySelectorAll(".signalTypeColum");
 const cabNrColum = document.querySelectorAll(".cabNrColum");
 const addressColum = document.querySelectorAll(".addressColum");
 
+
 const btnSend = document.querySelector(".btn--send");
 
-let textinputSFI, textinputValveNr;
+let textinputSFI, textinputValveNr,textInputValveP;
 
 btnSend.addEventListener("click", function () {
   textinputSFI = sfiNumberInput1.value;
   textinputValveNr = valveNumberInput1.value;
-  valveCalc1(textinputSFI, parseInt(`${textinputValveNr}`)); // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
-  console.log(textinputSFI, textinputValveNr);
+  textInputValveP = valveProgramNr.value;
+
+  valveCalc1(textinputSFI, parseInt(`${textinputValveNr}`),textInputValveP); // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
+  console.log(textinputSFI, textinputValveNr,textInputValveP);
 });
 
 document.addEventListener(`keydown`, function (e) {

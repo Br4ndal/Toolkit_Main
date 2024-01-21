@@ -1,3 +1,197 @@
 C:\Users\stian\OneDrive\Documents\Projects\Toolkit_Main\node_modules
 node_modules
 out
+IAS Toolkit-win32-x64/chrome_100_percent.pak
+IAS Toolkit-win32-x64/chrome_200_percent.pak
+IAS Toolkit-win32-x64/d3dcompiler_47.dll
+IAS Toolkit-win32-x64/ffmpeg.dll
+IAS Toolkit-win32-x64/IAS Toolkit.exe
+IAS Toolkit-win32-x64/icudtl.dat
+IAS Toolkit-win32-x64/libEGL.dll
+IAS Toolkit-win32-x64/libGLESv2.dll
+IAS Toolkit-win32-x64/LICENSE
+IAS Toolkit-win32-x64/LICENSES.chromium.html
+IAS Toolkit-win32-x64/locales/af.pak
+IAS Toolkit-win32-x64/locales/am.pak
+IAS Toolkit-win32-x64/locales/ar.pak
+IAS Toolkit-win32-x64/locales/bg.pak
+IAS Toolkit-win32-x64/locales/bn.pak
+IAS Toolkit-win32-x64/locales/ca.pak
+IAS Toolkit-win32-x64/locales/cs.pak
+IAS Toolkit-win32-x64/locales/da.pak
+IAS Toolkit-win32-x64/locales/de.pak
+IAS Toolkit-win32-x64/locales/el.pak
+IAS Toolkit-win32-x64/locales/en-GB.pak
+IAS Toolkit-win32-x64/locales/en-US.pak
+IAS Toolkit-win32-x64/locales/es-419.pak
+IAS Toolkit-win32-x64/locales/es.pak
+IAS Toolkit-win32-x64/locales/et.pak
+IAS Toolkit-win32-x64/locales/fa.pak
+IAS Toolkit-win32-x64/locales/fi.pak
+IAS Toolkit-win32-x64/locales/fil.pak
+IAS Toolkit-win32-x64/locales/fr.pak
+IAS Toolkit-win32-x64/locales/gu.pak
+IAS Toolkit-win32-x64/locales/he.pak
+IAS Toolkit-win32-x64/locales/hi.pak
+IAS Toolkit-win32-x64/locales/hr.pak
+IAS Toolkit-win32-x64/locales/hu.pak
+IAS Toolkit-win32-x64/locales/id.pak
+IAS Toolkit-win32-x64/locales/it.pak
+IAS Toolkit-win32-x64/locales/ja.pak
+IAS Toolkit-win32-x64/locales/kn.pak
+IAS Toolkit-win32-x64/locales/ko.pak
+IAS Toolkit-win32-x64/locales/lt.pak
+IAS Toolkit-win32-x64/locales/lv.pak
+IAS Toolkit-win32-x64/locales/ml.pak
+IAS Toolkit-win32-x64/locales/mr.pak
+IAS Toolkit-win32-x64/locales/ms.pak
+IAS Toolkit-win32-x64/locales/nb.pak
+IAS Toolkit-win32-x64/locales/nl.pak
+IAS Toolkit-win32-x64/locales/pl.pak
+IAS Toolkit-win32-x64/locales/pt-BR.pak
+IAS Toolkit-win32-x64/locales/pt-PT.pak
+IAS Toolkit-win32-x64/locales/ro.pak
+IAS Toolkit-win32-x64/locales/ru.pak
+IAS Toolkit-win32-x64/locales/sk.pak
+IAS Toolkit-win32-x64/locales/sl.pak
+IAS Toolkit-win32-x64/locales/sr.pak
+IAS Toolkit-win32-x64/locales/sv.pak
+IAS Toolkit-win32-x64/locales/sw.pak
+IAS Toolkit-win32-x64/locales/ta.pak
+IAS Toolkit-win32-x64/locales/te.pak
+IAS Toolkit-win32-x64/locales/th.pak
+IAS Toolkit-win32-x64/locales/tr.pak
+IAS Toolkit-win32-x64/locales/uk.pak
+IAS Toolkit-win32-x64/locales/ur.pak
+IAS Toolkit-win32-x64/locales/vi.pak
+IAS Toolkit-win32-x64/locales/zh-CN.pak
+IAS Toolkit-win32-x64/locales/zh-TW.pak
+IAS Toolkit-win32-x64/resources.pak
+IAS Toolkit-win32-x64/resources/app/.gitattributes
+IAS Toolkit-win32-x64/resources/app/ConvertCSVtoJSON.js
+IAS Toolkit-win32-x64/resources/app/ELECTRON COMMANDS.txt
+IAS Toolkit-win32-x64/resources/app/fileMaker.js
+IAS Toolkit-win32-x64/resources/app/forge.config.js
+IAS Toolkit-win32-x64/resources/app/Images/Home.png
+IAS Toolkit-win32-x64/resources/app/Images/Menu_icon.png
+IAS Toolkit-win32-x64/resources/app/Images/RTDCard.jpg
+IAS Toolkit-win32-x64/resources/app/Images/test.png
+IAS Toolkit-win32-x64/resources/app/Images/test_im.png
+IAS Toolkit-win32-x64/resources/app/Images/UpDownCounter.jpg
+IAS Toolkit-win32-x64/resources/app/Images/Vard_Langsten_logo.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoAICh2.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoAICh4.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoAOCh4.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoDICh4.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoDICh8.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoDOCh4.jpg
+IAS Toolkit-win32-x64/resources/app/Images/WagoROCh2.jpg
+IAS Toolkit-win32-x64/resources/app/main.js
+IAS Toolkit-win32-x64/resources/app/package.json
+IAS Toolkit-win32-x64/resources/app/preload.js
+IAS Toolkit-win32-x64/resources/app/renderer/AlarmLink.html
+IAS Toolkit-win32-x64/resources/app/renderer/CabinetCalc.html
+IAS Toolkit-win32-x64/resources/app/renderer/calcValv.html
+IAS Toolkit-win32-x64/resources/app/renderer/calcWeb.html
+IAS Toolkit-win32-x64/resources/app/renderer/index.html
+IAS Toolkit-win32-x64/resources/app/renderer/wagoModules.html
+IAS Toolkit-win32-x64/resources/app/Style/styleAddressCalc.css
+IAS Toolkit-win32-x64/resources/app/Style/StyleAlarmLink.css
+IAS Toolkit-win32-x64/resources/app/Style/styleheader.css
+IAS Toolkit-win32-x64/resources/app/Style/styleWagoModules.css
+IAS Toolkit-win32-x64/resources/app/websitecode/autoAlarmLink.js
+IAS Toolkit-win32-x64/resources/app/websitecode/autoAlarmLink2.js
+IAS Toolkit-win32-x64/resources/app/websitecode/autoGenTrend.js
+IAS Toolkit-win32-x64/resources/app/websitecode/calcWebsite.js
+IAS Toolkit-win32-x64/resources/app/websitecode/calcWebsite_cabinet.js
+IAS Toolkit-win32-x64/resources/app/websitecode/calcWebValve.js
+IAS Toolkit-win32-x64/resources/app/websitecode/ConvertCSVtoJSON.js
+IAS Toolkit-win32-x64/resources/app/websitecode/fileMaker.js
+IAS Toolkit-win32-x64/resources/app/websitecode/index.js
+IAS Toolkit-win32-x64/resources/app/websitecode/wagoModules.js
+IAS Toolkit-win32-x64/snapshot_blob.bin
+IAS Toolkit-win32-x64/v8_context_snapshot.bin
+IAS Toolkit-win32-x64/version
+IAS Toolkit-win32-x64/vk_swiftshader.dll
+IAS Toolkit-win32-x64/vk_swiftshader_icd.json
+IAS Toolkit-win32-x64/vulkan-1.dll
+dist/.icon-ico/icon.ico
+dist/IAS-Toolkit-App- Setup 1.0.0.exe.blockmap
+dist/IAS-Toolkit-App- Setup 1.0.0.exe
+dist/builder-effective-config.yaml
+dist/builder-debug.yml
+dist/win-unpacked/vulkan-1.dll
+dist/win-unpacked/vk_swiftshader_icd.json
+dist/win-unpacked/vk_swiftshader.dll
+dist/win-unpacked/v8_context_snapshot.bin
+dist/win-unpacked/snapshot_blob.bin
+dist/win-unpacked/resources/elevate.exe
+dist/win-unpacked/resources/app.asar
+dist/win-unpacked/resources/app-update.yml
+dist/win-unpacked/resources.pak
+dist/win-unpacked/locales/zh-TW.pak
+dist/win-unpacked/locales/zh-CN.pak
+dist/win-unpacked/locales/vi.pak
+dist/win-unpacked/locales/ur.pak
+dist/win-unpacked/locales/uk.pak
+dist/win-unpacked/locales/tr.pak
+dist/win-unpacked/locales/th.pak
+dist/win-unpacked/locales/te.pak
+dist/win-unpacked/locales/ta.pak
+dist/win-unpacked/locales/sw.pak
+dist/win-unpacked/locales/sv.pak
+dist/win-unpacked/locales/sr.pak
+dist/win-unpacked/locales/sl.pak
+dist/win-unpacked/locales/sk.pak
+dist/win-unpacked/locales/ru.pak
+dist/win-unpacked/locales/ro.pak
+dist/win-unpacked/locales/pt-PT.pak
+dist/win-unpacked/locales/pt-BR.pak
+dist/win-unpacked/locales/pl.pak
+dist/win-unpacked/locales/nl.pak
+dist/win-unpacked/locales/nb.pak
+dist/win-unpacked/locales/ms.pak
+dist/win-unpacked/locales/mr.pak
+dist/win-unpacked/locales/ml.pak
+dist/win-unpacked/locales/lv.pak
+dist/win-unpacked/locales/lt.pak
+dist/win-unpacked/locales/ko.pak
+dist/win-unpacked/locales/kn.pak
+dist/win-unpacked/locales/ja.pak
+dist/win-unpacked/locales/it.pak
+dist/win-unpacked/locales/id.pak
+dist/win-unpacked/locales/hu.pak
+dist/win-unpacked/locales/hr.pak
+dist/win-unpacked/locales/hi.pak
+dist/win-unpacked/locales/he.pak
+dist/win-unpacked/locales/gu.pak
+dist/win-unpacked/locales/fr.pak
+dist/win-unpacked/locales/fil.pak
+dist/win-unpacked/locales/fi.pak
+dist/win-unpacked/locales/fa.pak
+dist/win-unpacked/locales/et.pak
+dist/win-unpacked/locales/es.pak
+dist/win-unpacked/locales/es-419.pak
+dist/win-unpacked/locales/en-US.pak
+dist/win-unpacked/locales/en-GB.pak
+dist/win-unpacked/locales/el.pak
+dist/win-unpacked/locales/de.pak
+dist/win-unpacked/locales/da.pak
+dist/win-unpacked/locales/cs.pak
+dist/win-unpacked/locales/ca.pak
+dist/win-unpacked/locales/bn.pak
+dist/win-unpacked/locales/bg.pak
+dist/win-unpacked/locales/ar.pak
+dist/win-unpacked/locales/am.pak
+dist/win-unpacked/locales/af.pak
+dist/win-unpacked/LICENSES.chromium.html
+dist/win-unpacked/LICENSE.electron.txt
+dist/win-unpacked/libGLESv2.dll
+dist/win-unpacked/libEGL.dll
+dist/win-unpacked/icudtl.dat
+dist/win-unpacked/IAS-Toolkit-App-.exe
+dist/win-unpacked/ffmpeg.dll
+dist/win-unpacked/d3dcompiler_47.dll
+dist/win-unpacked/chrome_200_percent.pak
+dist/win-unpacked/chrome_100_percent.pak
+dist/latest.yml

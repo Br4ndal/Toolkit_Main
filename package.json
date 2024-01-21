@@ -1,11 +1,11 @@
 {
   "name": "toolkit-main",
-  "productName": "IAS Toolkit",
+  "productName": "IAS-Toolkit",
   "version": "1.0.0",
-  "description": "Electron Project",
+  "description": "Electron-Project",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron .",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "dist": "electron-builder"
@@ -17,13 +17,9 @@
   },
   "build": {
     "appId": "com.ias.toolkit",
-    "productName": "IAS Toolkit App",
+    "productName": "IAS-Toolkit-App-",
     "win": {
       "target": "nsis",
-      "arch": [
-        "x64",
-        "ia32"
-      ],
       "icon": "images/Vard_Langsten_logo.jpg"
     },
     "directories": {
@@ -36,13 +32,14 @@
     "convert-csv-to-json": "^2.0.0",
     "csvtojson": "^2.0.10",
     "electron-build": "^0.0.3",
-    "electron-builder": "^24.6.4",
+    "electron-log": "^5.0.3",
     "electron-squirrel-startup": "^1.0.0",
-    "electron-updater": "^6.1.4",
+    "electron-updater": "^6.1.7",
     "excel4node": "^1.8.2",
     "fs": "^0.0.1-security",
     "papaparse": "^5.4.1",
     "toastify-js": "^1.12.0",
+    "update-electron-app": "^3.0.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
   "devDependencies": {

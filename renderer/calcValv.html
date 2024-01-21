@@ -8,6 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
   <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
   <link href="../Style/styleheader.css" rel="stylesheet" />
+  <link href="../Style/styleCalcValv.css" rel="stylesheet" />
   <script src="../websitecode/calcWebValve.js" defer></script>
   <title>Valve Calculator</title>
 </head>
@@ -33,13 +34,28 @@
 
     <p1 class="paragrapText">
       <center>
-        <h1>FOR VALVE PROGRAM 600 and up <br /><br /></h1>
+        <h1>Valve Address Calculator<br /><br /></h1>
         <em class="paragrapText">Check valvesetup file for which valve your adding and get SFI of valve from IO
           list.<br /><br />
+
+
           Remember to change citect variables layout, so it shows the Raw Zero Scale and Raw full Scale, and take away
           comment.Then its just copy paste from the table below. <br /><br />
       </center>
       </em>
+      <h1>Choose valve program</h1>
+
+      <div class="selectdiv">
+        <label>
+          <select id="valveProgramNrhtml">
+
+            <option value="600" selected>600 to 604 </option>
+            <option value="500">500 to 508 </option>
+            <option value="200">200 to 201 </option>
+            <option value="100">100 to 124</option>
+          </select>
+        </label>
+      </div>
 
     </p1>
   </section>

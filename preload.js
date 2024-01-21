@@ -8,8 +8,13 @@ const excel4node1 = require("excel4node")
 const papa = require("papaparse")
 const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
 const {cpus, totalmem} = require("os")
-const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
+// const {autoUpdater, AppUpdater} = require("electron-updater")
 
+
+// contextBridge.exposeInMainWorld("autoS",{
+//     autoS1: autoUpdater,
+// })
 contextBridge.exposeInMainWorld('os', {
     homedir: () => os.homedir(),
 })
@@ -42,3 +47,10 @@ contextBridge.exposeInMainWorld("CPU", {
     cpu: cpus(),
     getMemory : () => totalmem(),
 })
+
+
+// let bridge = {
+//     UpdateMessage: (callback) => ipcRenderer.on("UpdateMessage", callback),
+// }
+
+// contextBridge.exposeInMainWorld("bridge",bridge)
