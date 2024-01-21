@@ -55,7 +55,8 @@ class Calculator {
     let stationNoSplitt = Number(stationCalc);
     let stationNoValue1;
     let checkForCab = stringNumber[0] + stringNumber[1] + stringNumber[2];
-    let checkForType = stringNumber[5] + stringNumber[6];
+    let checkForType = stringNumber[6] + stringNumber[7];
+    console.log(stringNumber.split(""));
     if (checkForCab === "Cab") {
       for (let i = 0; i < stationNoSplitt * 100; i += 200) {
         let j = i + 200;
@@ -70,15 +71,15 @@ class Calculator {
 
     if (checkForType !== "Cab") {
       number1.split("");
-      let iocardType = number1[5] + number1[6];
-      let addArr1 = number1[7] + number1[8];
+      let iocardType = number1[6] + number1[7];
+      let addArr1 = number1[8] + number1[9];
       let iocardNo = Number(addArr1);
 
-      let addArr2 = number1[8] + number1[9];
+      let addArr2 = number1[9] + number1[10];
       let iocardRTD = Number(addArr2);
 
-      let channel = number1[9] + number1[10];
-      let channelRTD = number1[10] + number1[11];
+      let channel = number1[11] + number1[12];
+      let channelRTD = number1[12] + number1[13];
       //sorting array from lowest to highest number
 
       if (
@@ -155,6 +156,7 @@ const ioCardNrGrid = document.querySelector(`.iocardnr-grid`);
 const channelNrGrid = document.querySelector(`.channelNr-grid`);
 const buttonChannelType = document.querySelectorAll(`.buttonChannel-Type`);
 
+
 const previousOperandTextElement = document.querySelector(
   "[data-previous-operend]"
 );
@@ -169,31 +171,35 @@ const calculator = new Calculator(
 
 numberButton.forEach((button) => {
   button.addEventListener("click", () => {
-    calculator.appendNumber(button.innerText);
+    calculator.appendNumber(`${button.innerText}-`);
     calculator.updateDisplay();
     console.log(numberButton);
     cabGrid.classList.add(`testStian`);
     channelTypeGrid.classList.remove(`testStian`);
+    previousOperandTextElement.textContent = "Addr."
     console.log(currentOperandTextElement.textContent);
   });
 });
 
 channelType.forEach((button) => {
   button.addEventListener("click", () => {
-    calculator.appendNumber(button.innerText);
+    calculator.appendNumber(`${button.innerText}`);
     calculator.updateDisplay();
     console.log(channelType);
     hiddenClass();
     channelTypeGrid.classList.add(`testStian`);
     ioCardNrGrid.classList.remove(`testStian`);
+    previousOperandTextElement.textContent = "Addr."
   });
 });
 iocardnr.forEach((button) => {
   button.addEventListener("click", () => {
-    calculator.appendNumber(button.innerText);
+    calculator.appendNumber(`${button.innerText}-`);
     calculator.updateDisplay();
     ioCardNrGrid.classList.add(`testStian`);
     channelNrGrid.classList.remove(`testStian`);
+   
+    previousOperandTextElement.textContent = "Addr."
   });
 });
 
@@ -211,15 +217,22 @@ allClearButton.addEventListener("click", (button) => {
   calculator.clear();
   calculator.updateDisplay();
   cabGrid.classList.remove(`testStian`);
+  currentOperandTextElement.textContent = "Cabinet Address"
+  previousOperandTextElement.textContent = "Addr."
   init();
 });
 
-/* DONT NEED EQUAL button. will calculate after  the channel number is press.
-equalsButton.addEventListener("click", (button) => {
-  calculator.compute();
-  calculator.updateDisplay();
+document.addEventListener(`keydown`, function (e) {
+  if (e.key === "Backspace" || e.key === "Escape" ) {
+    calculator.clear();
+    calculator.updateDisplay();
+    cabGrid.classList.remove(`testStian`);
+    currentOperandTextElement.textContent = "Cabinet Address"
+    previousOperandTextElement.textContent = "Addr."
+    init();
+  }
 });
-*/
+
 const init = function () {
   channelTypeGrid.classList.add(`testStian`);
   ioCardNrGrid.classList.add(`testStian`);

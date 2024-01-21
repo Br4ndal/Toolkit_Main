@@ -138,6 +138,8 @@ document.addEventListener(`keydown`, function (e) {
   if (e.key === "Enter") {
     textinputSFI = sfiNumberInput1.value;
     textinputValveNr = valveNumberInput1.value;
-    valveCalc1(textinputSFI, parseInt(`${textinputValveNr}`));
+    textInputValveP = valveProgramNr.value;
+    valveCalc1(textinputSFI, parseInt(`${textinputValveNr}`),textInputValveP);
+    
   }
 });

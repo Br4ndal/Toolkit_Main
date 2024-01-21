@@ -43,26 +43,29 @@
           comment.Then its just copy paste from the table below. <br /><br />
       </center>
       </em>
-      <h1>Choose valve program</h1>
 
-      <div class="selectdiv">
-        <label>
-          <select id="valveProgramNrhtml">
-
-            <option value="600" selected>600 to 604 </option>
-            <option value="500">500 to 508 </option>
-            <option value="200">200 to 201 </option>
-            <option value="100">100 to 124</option>
-          </select>
-        </label>
-      </div>
 
     </p1>
   </section>
-  <section class="table2">
+  <section>
+    <div class="selectdiv">
+      <p1>Choose valve program : </p1>
+      <label>
+        <select id="valveProgramNrhtml">
+
+          <option value="600" selected>600 to 604 </option>
+          <option value="500">500 to 508 </option>
+          <option value="200">200 to 201 </option>
+          <option value="100">100 to 124</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="table3">
     <table class="tableValves">
       <tr>
-        <th>SFI number</th>
+        <th>SFI_number</th>
         <th>Cluster Name</th>
         <th>Cabinet</th>
         <th>Signal type</th>
@@ -73,9 +76,9 @@
         <th>Eng_Full</th>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR1">Name</td>
+        <td class="sfiValveColum" id="sfiValveR1">SFI_Numb_BLK</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR1">Unit</td>
+        <td class="cabNrColum" id="cabNrR1">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR1">DIGITAL</td>
 
         <td class="addressColum" id="Address1R1">Addr</td>
@@ -85,9 +88,9 @@
         <td id="engFullR1"></td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR2">Name</td>
+        <td class="sfiValveColum" id="sfiValveR2">SFI_Numb_CMD</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR2">Unit</td>
+        <td class="cabNrColum" id="cabNrR2">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR2">INT</td>
 
         <td class="addressColum" id="Address1R2">Addr</td>
@@ -97,9 +100,9 @@
         <td id="engFullR2"></td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR3">Name</td>
+        <td class="sfiValveColum" id="sfiValveR3">SFI_Numb_FBK</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR3">Unit</td>
+        <td class="cabNrColum" id="cabNrR3">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR3">INT</td>
 
         <td class="addressColum" id="Address1R3">Addr</td>
@@ -109,9 +112,9 @@
         <td id="engFullR3"></td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR4">Name</td>
+        <td class="sfiValveColum" id="sfiValveR4">SFI_Numb_PDEM</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR4">Unit</td>
+        <td class="cabNrColum" id="cabNrR4">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR4">INT</td>
 
         <td class="addressColum" id="Address1R4">Addr</td>
@@ -121,9 +124,9 @@
         <td id="engFullR4">100</td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR5">Name</td>
+        <td class="sfiValveColum" id="sfiValveR5">SFI_Numb_PFBK</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR5">Unit</td>
+        <td class="cabNrColum" id="cabNrR5">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR5">INT</td>
 
         <td class="addressColum" id="Address1R5">Addr</td>
@@ -133,9 +136,9 @@
         <td id="engFullR5">100</td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR6">Name</td>
+        <td class="sfiValveColum" id="sfiValveR6">SFI_Numb_SYS</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR6">Unit</td>
+        <td class="cabNrColum" id="cabNrR6">Valve</td>
         <td class="signalTypeColum" id="signalTypeR6">INT</td>
 
         <td class="addressColum" id="Address1R6">Addr</td>
@@ -145,9 +148,9 @@
         <td id="engFullR6"></td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR7">Name</td>
+        <td class="sfiValveColum" id="sfiValveR7">SFI_Numb_TXT</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR7">Unit</td>
+        <td class="cabNrColum" id="cabNrR7">Valve</td>
         <td class="signalTypeColum" id="signalTypeR7">STRING</td>
 
         <td class="addressColum" id="Address1R7">Addr</td>
@@ -157,9 +160,9 @@
         <td id="engFullR7"></td>
       </tr>
       <tr>
-        <td class="sfiValveColum" id="sfiValveR8">Name</td>
+        <td class="sfiValveColum" id="sfiValveR8">SFI_Numb_TYP</td>
         <td></td>
-        <td class="cabNrColum" id="cabNrR8">Unit</td>
+        <td class="cabNrColum" id="cabNrR8">ContrXXxxxx</td>
         <td class="signalTypeColum" id="signalTypeR8">INT</td>
 
         <td class="addressColum" id="Address1R8">Addr</td>

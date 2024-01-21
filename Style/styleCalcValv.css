@@ -2,12 +2,14 @@
   
   .selectdiv {
     position: relative;
+    grid-auto-flow: column;
+    align-items: center;
+    display: inline-grid;
     /*Don't really need this just for demo styling*/
-    
-    float: left;
+   
+    right: -340px;
 
-    min-width: 163px;
-    margin: 10px 33%;
+
   }
   
   /* IE11 hide native button (thanks Matt!) */
@@ -23,12 +25,13 @@
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-    right: 0px;
+    right: 3px;
+    
     /*Adjust for position however you want*/
     
-    top: 18px;
-    padding:  0 0 0px;
-    border-bottom: 2px solid #999;
+    top: 2px;
+    padding:  0 0 1px;
+    border-bottom: 1px solid #999;
     /*left line */
     
     position: absolute;
@@ -41,14 +44,15 @@
     appearance: none;
     /* Add some styling */
     
+    
     display: block;
-    width: 100%;
+    width: 100px;
     max-width: 150px;
-    height: 50px;
+    height: 25px;
     float: right;
-    margin: 5px 0px;
-    padding: 0px 24px;
-    font-size: 20px;
+    margin: 0px 4px;
+    padding: 0px 3px;
+    font-size: 16px;
     line-height: 1.75;
     color: #ffffff;
     background-color: #696969;
@@ -56,4 +60,15 @@
     border: 1px solid #cccccc;
     -ms-word-break: normal;
     word-break: normal;
+  }
+
+  .table3 {
+    background: #272e31;
+    color: rgb(255, 255, 255);
+    padding-left: 200px;
+    
+    padding-top: 2px;
+  
+    display: flex;
+    flex-direction: row;
   }
