@@ -17,7 +17,7 @@
   },
   "build": {
     "appId": "com.ias.toolkit",
-    "productName": "IAS-Toolkit-App-",
+    "productName": "IAS-Toolkit-App",
     "win": {
       "target": "nsis",
       "icon": "images/Vard_Langsten_logo.jpg"
@@ -43,6 +43,7 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
   "devDependencies": {
+    "electron-builder": "^24.9.1",
     "@electron-forge/cli": "^6.4.2",
     "@electron-forge/maker-deb": "^6.4.2",
     "@electron-forge/maker-rpm": "^6.4.2",
