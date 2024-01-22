@@ -20,3 +20,7 @@ lager nytt program for å kjøre exe file.
 
   to make dist file to put on github
     npm run dist
+
+
+to make autoupdate file for windows 32 bit 
+  npm run dist --ia32 
