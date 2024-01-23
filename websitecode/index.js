@@ -14,8 +14,5 @@
 
 
 
-setInterval(() => {
-    console.log("checking for updates in index.js..... V0");
-    
-  }, 10000)
+
 // console.log(autoS.autoS1.currentVersion);

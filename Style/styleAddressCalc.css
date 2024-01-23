@@ -191,7 +191,18 @@
 
 }
 .output2 {
-  
+  border: 2px solid;
+  position: absolute;
+  top: 200px;
+  left: 350px;
+  width: 500px;
+  height: 320px;
+  padding: 50px;
+
+  background-color: rgba(109, 103, 103, 0.75);
+
+}
+.outputAlarmLink{
   display:grid;
   grid-template-columns: repeat(1,500px);
 
@@ -204,8 +215,18 @@
 
 
   background-color: rgba(109, 103, 103, 0.75);
-
 }
+.outputAC2 {
+  grid-auto-flow: column;
+  
+
+  justify-content: right;
+  align-content: right;
+  min-height: 7vh;
+  grid-template-columns: repeat(1, 100px);
+  grid-template-rows: minmax(25px, auto) repeat(1, 400px);
+}
+
 .outputAC {
   grid-auto-flow: column;
   
@@ -231,12 +252,12 @@
   color: white;
   font-size: 1.5rem;
 }
-
+*/
 .output2 .current-operand2 {
   color: white;
   font-size: 1.5rem;
 }
-*/
+
 .current-operand{
   color: white;
   font-size: 8.5rem;

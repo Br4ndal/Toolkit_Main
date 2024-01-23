@@ -11,7 +11,7 @@ const updater= require("./updater")
 
 //process.env.NODE_ENV = "production"
 const isMac =process.platform === "darwin"
-const isDev = process.env.NODE_ENV  !== "production"  // this is to add console to the runable file
+const isDev = process.env.NODE_ENV  //!== "production"  // this is to add console to the runable file
 
 console.log(process.env.NODE_ENV )
 setTimeout(() => {
@@ -39,7 +39,7 @@ function createMainWindow(){
     width: isDev ? 1250: 1280,
     height: isDev ? 800: 800,
     title:"IAS Toolkit",
-    icon: path.join(__dirname + '/images/Vard_Langsten_logo.JPG',),
+    icon: path.join(__dirname + '/images/Logo.JPG',),
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,  // was true 
