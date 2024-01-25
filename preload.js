@@ -8,13 +8,17 @@ const excel4node1 = require("excel4node")
 const papa = require("papaparse")
 const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
 const {cpus, totalmem} = require("os")
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer,dialog } = require('electron')
 // const {autoUpdater, AppUpdater} = require("electron-updater")
 
 
 // contextBridge.exposeInMainWorld("autoS",{
 //     autoS1: autoUpdater,
 // })
+
+contextBridge.exposeInMainWorld("dialog1",{
+    showOpenDialog1 : (method, config) => ipcRenderer.invoke('dialog', method, config),
+})
 contextBridge.exposeInMainWorld('os', {
     homedir: () => os.homedir(),
 })

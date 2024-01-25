@@ -7,11 +7,11 @@ const updater= require("./updater")
 //Library's 
 
 
-
+console.log(dialog.showOpenDialog);
 
 //process.env.NODE_ENV = "production"
 const isMac =process.platform === "darwin"
-const isDev = process.env.NODE_ENV  //!== "production"  // this is to add console to the runable file
+const isDev = process.env.NODE_ENV  !== "production"  // this is to add console to the runable file
 
 console.log(process.env.NODE_ENV )
 setTimeout(() => {

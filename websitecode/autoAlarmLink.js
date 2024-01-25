@@ -1,70 +1,25 @@
 'use strict';
-// const XLSX = require("xlsx");
-// const fs = require(`fs`);
-// const csvToJson = require('csvtojson');
-// const path = require("path")
 /*
 Installs needed is:    npm i xlsx,  npm install convert-csv-to-json --save
 
 
 */
 /* Librarys for program that needed  */
-// GETTING information from DOM
-const filePathCitect = document.getElementById("file-input");
-const filePathIASFiles= document.getElementById("file-input2");
 
-
-let data = [
-    {"name":"John", "city": "Seattle"},
-    {"name":"Mike", "city": "Los Angeles"},
-    {"name":"Zach", "city": "New York"}
-];
-let testXLSX = excel.link
-let  data2 = ["test11111","test2222","test2222"]
-let workshet2 = testXLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(data2) , {origin: "A1" });   //sheet_add_aoa  aoa_to_sheet
-const test123 = testXLSX.utils.book_new(); // { SheetNames:[], Sheets:{} }
-testXLSX.utils.sheet_add_aoa(workshet2,arrayFliperRowtoColumn(data2), {origin: "C1" }); //sheet_add_aoa
-
-testXLSX.utils.book_append_sheet(test123, workshet2, "Sheet1");
-// console.log(test123)
-// console.log(XLSX);
-// fs1.readFile1.writeFile(data2,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link3.xlsx`)
-exportFile(test123)
-testXLSX.writeFile(test123,`C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link1.xlsx`);
-
-async function exportFile(workbook) {
-    /* show Save As dialog */
-    console.log("hello");
-    const result = await showSaveDialog({
-      title: 'Save file as',
-      filters: [{
-        name: "Spreadsheets",
-        extensions: ["xlsx", "xls", "xlsb", /* ... other formats ... */]
-      }]
-    });
-    /* write file */
-    testXLSX.writeFile(workbook, result.filePath);
-  }
-
-const btnSend = document.querySelector(".btn--send");
-
-btnSend.addEventListener("click", function () {
-    let newfilePathCitect = filePathCitect.value;
-    let newfilePathIASFIles = filePathIASFiles.value
-    filename.textContent = filePathCitect.value; // sending Path back to dom again
-    filename2.textContent = filePathIASFiles.value;
-    alarmLinker(newfilePathCitect,newfilePathIASFIles)
-    console.log(newfilePathCitect, newfilePathIASFIles);
+const btnAlarmLinker = document.querySelector(".btn--autoAlarmLinkFunction");
+btnAlarmLinker.addEventListener("click", function () {
+    autoAlarmLinkFunction()
   });
-  
 
-
-function alarmLinker (pathCitect,pathCsvFile){
+function autoAlarmLinkFunction() { 
     /*------------------- VARIABLES USED IN PROGRAM TO STORE------------------*/
-
+    //const fs = require(`fs`);
+    //const XLSX = require("xlsx");
+    
     let tagsInToBeChecked =[];
     let signalDescriptionFromAlarmsNotfound = [];
-
+    document.getElementById("programstarted").innerHTML = "Hii";
+    
     let pumpSystemAlarmsPS = [];
     let pumpSystemAlarmNrPS = [];
     let tankSystemAlarmsPS = [];
@@ -81,50 +36,14 @@ function alarmLinker (pathCitect,pathCsvFile){
 
     //-------------------------- Program---------------------------------------
 
-    // getting files from folder
-    const filePathCSVtoJSON = pathCsvFile
-
-    console.log("Prosses started.......")
-    console.log("Opening files and gathering inforamtion")
-
-    // Read folder to find which files i have her
-    // var pathForCSVFile = [];
-    // let checkingPathCSVtoJSON = fs1.readFile1.readdirSync(filePathCSVtoJSON)
-
-    // for (let i = 0; i < checkingPathCSVtoJSON.length; ++i) {
-    //     pathForCSVFile[i] = filePathCSVtoJSON +"/"+checkingPathCSVtoJSON[i];
-    // }
-
-    // // checking all the files and IF its .CSV i will use fucntion to convert to JSON.
-    // for(let i=0; i < pathForCSVFile.length;i++){
-    //     let checkForCSV = ".CSV"
-    //     let checkedForCSV = JSON.stringify(pathForCSVFile[i].toUpperCase()).indexOf(checkForCSV);
-    //     if(checkedForCSV >=1){
-    //         localCSVtoJSON(pathForCSVFile[i])
-    //     }
-    // }
-
-    // //function that turns CSV files to JSON file so i can easier get the information i need from them. And puting them all in a JSON folder where i can read them later.
-    // function localCSVtoJSON (filepath){
-    //     let splitString = filepath.split("/");
-    //     const splitStringF = splitString[9].split(".")[0]
-    //     csvToJson()
-    //     .fromFile(filepath)
-    //     .then((json) => {
-            
-    //         fs1.readFile1.writeFileSync("jsonFiles/" + splitStringF + ".json", JSON.stringify(json), "utf-8", (err) => {
-    //             if (err) console.log(err);
-    //         });
-    //     })
-    //     .catch((err) => {
-    //         console.error(err);
-    //     });
-
-    // }
 
 
-
-    let content = fs1.readFile1.readFileSync("C:/Users/stian/OneDrive/Documents/Projects/IAS Project/New folder/jsonFiles/PumpSetup.json", 'utf-8');
+    //Calling another Javascript to convert all the CSV files to JSON files. this program will be run for all the programs i will need CSV files.
+    // const csvtoJson = require("./ConvertCSVtoJSON.js")
+    // console.log("All CSV files has been converted to JSON files.")
+    // csvtoJson.csvtoJSONFile()
+    console.log(fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/PumpSetup.json", 'utf-8')); 
+    let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/PumpSetup.json", 'utf-8');
     const data = JSON.parse(content);
 
 
@@ -135,72 +54,89 @@ function alarmLinker (pathCitect,pathCsvFile){
     let pumpAlarmsSB = [];
 
     for (let i = 0; i < data.length; i++) {
-        if (data[i].PumpNr % 2 === 0) {
-            pumpTagSB.push(data[i].TagRef);
 
-            if(i >=10){
-                pumpAlarmsSB.push("Pump0"+data[i].PumpNr)
+        if (data[i].PumpNr % 2 === 0) {
+        
+
+            if(i >=9){
+                pumpAlarmsSB.push("PUMP0"+data[i].PumpNr)
+                pumpTagSB.push(`${data[i].TagRef}_XA`);
             } else if (i >= 100){
-                pumpAlarmsSB.push("Pump"+data[i].PumpNr)
+                pumpAlarmsSB.push("PUMP"+data[i].PumpNr)
+                pumpTagSB.push(`${data[i].TagRef}_XA`);
             } else {
-                pumpAlarmsSB.push("Pump00"+data[i].PumpNr)
+                pumpAlarmsSB.push("PUMP00"+data[i].PumpNr)
+                pumpTagSB.push(`${data[i].TagRef}_XA`);
             }
 
         } else{
-            pumpTagPS.push(data[i].TagRef);
+            //pumpTagPS.push(data[i].TagRef);
             if(i >=10){
-                pumpAlarmsPS.push("Pump0"+data[i].PumpNr)
+                pumpAlarmsPS.push("PUMP0"+data[i].PumpNr)
+                pumpTagPS.push(`${data[i].TagRef}_XA`);
             } else if (i >= 100){
-                pumpAlarmsPS.push("Pump"+data[i].PumpNr)
+                pumpAlarmsPS.push("PUMP"+data[i].PumpNr)
+                pumpTagPS.push(`${data[i].TagRef}_XA`);
             } else {
-                pumpAlarmsPS.push("Pump00"+data[i].PumpNr)
+                pumpAlarmsPS.push("PUMP00"+data[i].PumpNr)
+                pumpTagPS.push(`${data[i].TagRef}_XA`);
             }
         }
     }
 
 
-    let TagRefArrayCombined = pumpTagPS.concat(pumpTagSB);
-    let combinedArraypumpAlarm = pumpAlarmsPS.concat(pumpAlarmsSB);
 
-    const workbook1 = excel.link.readFile(`${pathCitect}/Citect/argdig.DBF`); // ${input}
+
+
+    let TagRefArrayCombined =pumpTagPS.concat(pumpTagSB);
+    let combinedArraypumpAlarm = pumpAlarmsPS.concat(pumpAlarmsSB);
+    console.log(TagRefArrayCombined)
+    const workbook1 = excel.link.readFile(`C:/Work/- AutoScript/IASProject/Citect_Project/argdig.DBF`); // ${input}
     let worksheet1= workbook1.Sheets["Sheet1"];
     const dataAI1 = excel.link.utils.sheet_to_json(worksheet1);
 
     /* 
     When check for common alarms in this for loop i dont use 792_ SFI because on Ocean infinity there was not 792_common alarms on tank or pumps
     */
-    for (const address1 of dataAI1) {
-        const tagsToBeChecked =  address1[`CUSTOM7`];
-        const alarmTagCitect = address1[`TAG`];
+
+
+    for(let i=0; i <dataAI1.length; i++){
+
+        const tagsToBeChecked =  dataAI1[i][`CUSTOM7`];
+        const alarmTagCitect = dataAI1[i][`TAG`];
         
-        const nameOfAlarmCitect = address1[`CUSTOM8`];
-        const categoryCitect = address1[`CATEGORY`];
+        const nameOfAlarmCitect = dataAI1[i][`CUSTOM8`];
+        const categoryCitect = dataAI1[i][`CATEGORY`];
+
 
         let strinifyAlarmTagCitext = tagsToBeChecked;
         let testThisForAlm = "_NAME";
         let testForSubStrAlm = strinifyAlarmTagCitext.indexOf(testThisForAlm);
 
-        let tagForPump = "Pump";
-        let stringifyPump = nameOfAlarmCitect;
+        let tagForPump = "PUMP";
+        let stringifyPump = nameOfAlarmCitect.toUpperCase();
         
         let checkForPump = stringifyPump.indexOf(tagForPump);
 
-        let tagForFan = "Fan";
-        let stringifyFan = nameOfAlarmCitect;
+        let tagForFan = "FAN";
+        let stringifyFan = nameOfAlarmCitect.toUpperCase();
         let checkForFan = stringifyFan.indexOf(tagForFan);
 
         let commonAlarm = "COMMON";
         let stringifyCommonAlarm = nameOfAlarmCitect.toUpperCase();
         let checkForCommonAlarm = stringifyCommonAlarm.indexOf(commonAlarm);
 
-        let alarmAlarm = "Alarm";
-        let stringifyalarmAlarm = nameOfAlarmCitect;
+        let alarmAlarm = "ALARM";
+        let stringifyalarmAlarm = nameOfAlarmCitect.toUpperCase();
         let checkForAlarmAlarm = stringifyalarmAlarm.indexOf(alarmAlarm);
 
         // sorting out tank in sfi 792.
         let tagForTank = "TANK";
+        let tagForTank1 = "TK";
         let stringifytank = nameOfAlarmCitect.toUpperCase();
         let checkForTank = stringifytank.indexOf(tagForTank);
+        let checkForTank1 = stringifytank.indexOf(tagForTank1);
+
 
         let tagFor792 = "792_";
         let stringify792 = tagsToBeChecked.toUpperCase();
@@ -209,26 +145,28 @@ function alarmLinker (pathCitect,pathCsvFile){
         let tagForDeleted = "DELE";
         let stringifyDeleted = nameOfAlarmCitect.toUpperCase();
         let checkForDeleted = stringifyDeleted.indexOf(tagForDeleted);
-        
-        //allAlarms = allAlarms.concat(alarmTagCitect);
-        // if (categoryCitect < 4000  ) console.log(nameOfAlarmCitect)
-    
-
-        if (checkForTank >= 1 && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect < 4000  ){ // checkFor792 >= 0 && 
+        //console.log(stringify792)
+        if ((checkForTank >= 0 ||checkForTank1 >= 1) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect < 4000  ){ // checkFor792 >= 0 && 
             tankSystemAlarmsPS.push(nameOfAlarmCitect);
             tankSystemAlarmNrPS.push(alarmTagCitect);
-        } else if(checkForTank >= 1 && checkForCommonAlarm >= 1 && checkForDeleted === -1 && categoryCitect >= 4000  ){// && checkFor792 >= 1 && 
+            //console.log(nameOfAlarmCitect)
+        } else if(checkForTank >= 0 && checkForCommonAlarm >= 1 && checkForDeleted === -1 && categoryCitect >= 4000  ){// && checkFor792 >= 1 && 
             tankSystemAlarmsSB.push(nameOfAlarmCitect);
             tankSystemAlarmNrSB.push(alarmTagCitect);
-        } else if ((checkForPump >= 1 || checkForFan >=1 ) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect < 4000  ){ //checkFor792 >= 1 && 
+        } else if (checkFor792 >= 0 && (checkForPump >= 0 || checkForFan >=0 ) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect < 4000  ){ //checkFor792 >= 1 && 
             pumpSystemAlarmsPS.push(nameOfAlarmCitect);
             pumpSystemAlarmNrPS.push(alarmTagCitect);
-        } else if ((checkForPump >= 1 || checkForFan >=1 ) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect > 4000  ){ //checkFor792 >= 1 && 
+            //console.log(nameOfAlarmCitect)
+        } else if (checkFor792 >= 0 && (checkForPump >= 0 || checkForFan >=0 ) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect > 4000  ){ //checkFor792 >= 1 && 
             pumpSystemAlarmsSB.push(nameOfAlarmCitect);
             pumpSystemAlarmNrSB.push(alarmTagCitect);
+            //console.log(nameOfAlarmCitect)
         }
 
+
     }
+
+
 
 
     const dataAI2 = excel.link.utils.sheet_to_json(worksheet1);
@@ -267,10 +205,8 @@ function alarmLinker (pathCitect,pathCsvFile){
         let checkForDeleted = stringify792.indexOf(tagForDeleted.toUpperCase());
 
         allAlarms = allAlarms.concat(alarmTagCitect);
-        //console.log(testForSubStrAlm, tagsToBeChecked);
+
         
-
-
         if ( (checkForTank >= 1 && checkFor792 >= 1) || checkForDeleted >=1 ){ //
             tagFilterAway = tagFilterAway.concat((nameOfAlarmCitect));
         } else if ((testForSubStrAlm == -1 ) ){ // tok away pymp her!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -282,26 +218,26 @@ function alarmLinker (pathCitect,pathCsvFile){
     }
 
     //her is the link for the main project.
-    let pdgFile1 = pgdynobjFile1(`${pathCitect}/Citect/pgdynobj.dbf`)
-
+    let pdgFile1 = pgdynobjFile1("C:/Work/- AutoScript/IASProject/Citect_Project/pgdynobj.dbf",)
+    console.log("Gathering files.... Please wait")
 
 
     // her i check the include folders for which files are there any file the path for the pgdynobj file. This for loop is for all under projects like PMS, Tank , valves etc.
 
-    const filepathStart = `${pathCitect}/Citect/_IncludeProjects`
+    const filepathStart = "C:/Work/- AutoScript/IASProject/Citect_Project/_IncludeProjects"
     var markers = [];
     let checkingPath = fs1.readFile1.readdirSync(filepathStart)
     for (let i = 0; i < checkingPath.length; ++i) {
         markers[i] = filepathStart +"/"+checkingPath[i] + "/pgdynobj.dbf";
+        console.log(markers[i])
     }
-
+    console.log("Working.....")
 
 
 
     //her i am extracting all info of where tags and alarms are placed. from the pdgfile 
     // in the function i will take away empty undefined cells also the empty ones.
     function pgdynobjFile1(filepathPgd){
-        console.log("entering for loop with file",filepathPgd );
         let checkingPath0 = [];
         let citectPageFromPgd = []
 
@@ -375,10 +311,11 @@ function alarmLinker (pathCitect,pathCsvFile){
 
     // CHECK THHE PRINT OUT AT THE END; ADDED MORE VARIABLES THEN NEEDED.-----------------------------------------------------------------------------------------
     // Combining all the pgdynogj files to one big array.
-    const pgdynobjComplettCombined = pgdynobjComplett[0].concat(pgdynobjComplett[1],pgdynobjComplett[2],pgdynobjComplett[3],pgdynobjComplett[4],pgdynobjComplett[5],pgdynobjComplett[6],pgdynobjComplett[7]) 
-    const pgdynobjComplettPageCombied = pgdynobjComplettPage[0].concat(pgdynobjComplettPage[1],pgdynobjComplettPage[2],pgdynobjComplettPage[3],pgdynobjComplettPage[4],pgdynobjComplettPage[5],pgdynobjComplettPage[6],pgdynobjComplettPage[7]) 
+    const pgdynobjComplettCombined = pgdynobjComplett[0].concat(pgdynobjComplett[1],pgdynobjComplett[2],pgdynobjComplett[3],pgdynobjComplett[4],pgdynobjComplett[5],pgdynobjComplett[6],pgdynobjComplett[7],pgdynobjComplett[8],pgdynobjComplett[9],pgdynobjComplett[10],pgdynobjComplett[11],pgdynobjComplett[12],pgdynobjComplett[13]) 
+    const pgdynobjComplettPageCombied = pgdynobjComplettPage[0].concat(pgdynobjComplettPage[1],pgdynobjComplettPage[2],pgdynobjComplettPage[3],pgdynobjComplettPage[4],pgdynobjComplettPage[5],pgdynobjComplettPage[6],pgdynobjComplettPage[7],pgdynobjComplettPage[8],pgdynobjComplettPage[9],pgdynobjComplettPage[10],pgdynobjComplettPage[11],pgdynobjComplettPage[12],pgdynobjComplettPage[13]) 
 
     console.log("Comparing " +pgdynobjComplettCombined.length +" off excel cells"  )
+    document.getElementById("variablesToBeCheck").innerHTML = pgdynobjComplettCombined.length;
     //--------------------------------Pump COMMON ALARMS------------------------------
     let arrayObj1Pump = [];
     let arrayObj2Pump = [];
@@ -428,7 +365,7 @@ function alarmLinker (pathCitect,pathCsvFile){
     for (let i=0;i <= difference1PumpAlarm.length -1 ;i++){
         combinedArrayPumpAlarm2 = combinedArrayPumpAlarm2.concat(`${difference1PumpAlarm[i]} ${pageCitectPumpAlarm[i]}`);
     }
-    let uniqueCharsPumpAlarm = [...new Set(combinedArrayPumpsAlarm2)];
+    let uniqueCharsPumpAlarm = [...new Set(combinedArrayPumpAlarm2)];
 
 
     //splitting uniqueChars to get alarms and pages from them self
@@ -446,26 +383,28 @@ function alarmLinker (pathCitect,pathCsvFile){
     }
 
     //---------------------------------Pump System Internal Alarms ------------------------------------------------
-    let newPumpSystemAlarmsPS = [];
-    for (let i =0; i <= pumpSystemAlarmsPS.length -1; i++){
-        if(i<=4) {
-            newPumpSystemAlarmsPS.push(`PUMP00${(i*2)+1}`)
-        } else {
-            newPumpSystemAlarmsPS.push(`PUMP0${(i*2)+1}`)
-        }
-    }    
-    let newPumpSystemAlarmsSB = [];
-    for (let i =0; i <= pumpSystemAlarmsSB.length -1; i++){
-        if(i === 1){
-            newPumpSystemAlarmsSB.push(`PUMP004`)
-        }
-        else if (i<=3){
-            newPumpSystemAlarmsSB.push(`PUMP00${(i*2)+2}`)
-        } else{
-            newPumpSystemAlarmsSB.push(`PUMP0${(i*2)+2}`) 
-        }     
-    }
+    let newPumpSystemAlarmsPS = pumpAlarmsPS//[];
+    // for (let i =0; i <= pumpSystemAlarmsPS.length -1; i++){
+    //     if(i<=4) {
+    //         newPumpSystemAlarmsPS.push(`PUMP00${(i*2)+1}`)
+    //     } else {
+    //         newPumpSystemAlarmsPS.push(`PUMP0${(i*2)+1}`)
+    //     }
+    // }    
+    let newPumpSystemAlarmsSB = pumpAlarmsSB//[];
+    // for (let i =0; i <= pumpSystemAlarmsSB.length -1; i++){
+    //     if(i === 1){
+    //         newPumpSystemAlarmsSB.push(`PUMP004`)
+    //     }
+    //     else if (i<=3){
+    //         newPumpSystemAlarmsSB.push(`PUMP00${(i*2)+2}`)
+    //     } else{
+    //         newPumpSystemAlarmsSB.push(`PUMP0${(i*2)+2}`) 
+    //     }     
+    // }
 
+    // console.log(newPumpSystemAlarmsSB)
+    //------------------------------------------------------------------------------------------------------
     const combinedPumpAlarmNr = pumpSystemAlarmNrPS.concat(pumpSystemAlarmNrSB)
     const combinedPumpAlarms = newPumpSystemAlarmsPS.concat(newPumpSystemAlarmsSB);
 
@@ -704,38 +643,40 @@ function alarmLinker (pathCitect,pathCsvFile){
     excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrPS), {origin: "X1" });
     excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsPS), {origin: "Y1" });
 
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsSB), {origin: "AC1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrSB), {origin: "AD1" });
+    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsSB), {origin: "AE1" });
+
     const newWB = excel.link.utils.book_new();
     excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
-    excel.link.writeFile(newWB, `C:/Users/stian/OneDrive/Documents/Projects/IAS Project/AutoGen Files/Citect_Alarm_Link.xlsx`);
+    excel.link.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link.xlsx");
+
 
     console.log(`Completed`);
     console.log("Systems alarms needs to be double checked because of cant be compared correctly....")
-
-
-
-
-    //----------------------FUNCTIONs-----------------------------------
-
 }
 
+
+
+//----------------------FUNCTIONs-----------------------------------
 function arrayFliperRowtoColumn(array, value) {
     const addressObjecToArray = Object.values(array);
     const result = Object.keys(addressObjecToArray).map((key) => [
-    addressObjecToArray[key],
+      addressObjecToArray[key],
     ]);
 
     // returns value of hardwired to an object and i convert to column
     if (value === "1"){
     let worksheet = 
-    result.map(function (v) {
+      result.map(function (v) {
         return [JSON.stringify(v)];
     });
     return worksheet;
     }else {
         let worksheet = 
         result.map(function (v) {
-        return [v];
-    });
-    return worksheet;
+          return [v];
+      });
+      return worksheet;
     }
 }
