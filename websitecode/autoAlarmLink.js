@@ -649,6 +649,8 @@ function autoAlarmLinkFunction() {
 
     const newWB = excel.link.utils.book_new();
     excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
+
+    
     excel.link.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link.xlsx");
 
 

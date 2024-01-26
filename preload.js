@@ -9,15 +9,20 @@ const papa = require("papaparse")
 const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
 const {cpus, totalmem} = require("os")
 const { contextBridge, ipcRenderer,dialog } = require('electron')
+const cp = require("child_process")
 // const {autoUpdater, AppUpdater} = require("electron-updater")
 
 
 // contextBridge.exposeInMainWorld("autoS",{
 //     autoS1: autoUpdater,
 // })
+contextBridge.exposeInMainWorld("chi",{
+    pro: cp,
+})
 
-contextBridge.exposeInMainWorld("dialog1",{
-    showOpenDialog1 : (method, config) => ipcRenderer.invoke('dialog', method, config),
+
+contextBridge.exposeInMainWorld("dial",{
+    sod : dialog,//(method, config) => ipcRenderer.invoke('dialog', method, config)
 })
 contextBridge.exposeInMainWorld('os', {
     homedir: () => os.homedir(),

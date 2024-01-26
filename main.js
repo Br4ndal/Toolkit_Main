@@ -41,6 +41,7 @@ function createMainWindow(){
     title:"IAS Toolkit",
     icon: path.join(__dirname + '/images/Logo.JPG',),
     webPreferences: {
+      enableRemoteModule: true,
       contextIsolation: true,
       nodeIntegration: true,  // was true 
       sandbox: false,

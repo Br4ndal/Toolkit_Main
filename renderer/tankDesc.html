@@ -9,11 +9,10 @@
     <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
     <link href="../Style/styleheader.css" rel="stylesheet" />
     <link href="../Style/StyleAlarmLink.css" rel="stylesheet" />
-    <script src="../websitecode/autoAlarmLink.js" defer></script>
-    <script src="../websitecode/fileMaker.js" defer></script>
-    <script src="../websitecode/ConvertCSVtoJSON.js" defer></script>
+    <script src="../websitecode/tankDesc.js" defer></script>
 
-    <title>Auto Alarm Link</title>
+
+    <title>Tank Description</title>
 </head>
 
 <body>
@@ -27,9 +26,8 @@
                 </li>
                 <li><a href="calcValv.html">Valve Calculator</a></li>
                 <li><a href="wagoModules.html">Wago Modules</a></li>
-                <li><a class="active" href="AlarmLink.html">Auto Alarm Link</a></li>
-                <li><a href="tankDesc.html">Tank Description</a></li>
-
+                <li><a href="AlarmLink.html">Auto Alarm Link</a></li>
+                <li><a class="active" href="tankDesc.html">Tank Description</a></li>
             </ul>
         </nav>
     </header>
@@ -46,21 +44,11 @@
         <p1>Click her to auto make the file path for the auto alarm link program, path will be made in <bold>C:/Work/ -
                 Autoscript
             </bold>
-        </p1>
-        <br>
-        <p1> Path made : <span id="firstFileWork"> 0 </span></p1>
-        <p1> Path made : <span id="secondFileWork"> 0 </span></p1>
-        <p1> Path made : <span id="thridFileWork"> 0 </span></p1>
-        </br>
-        <button class="btn--fileMaker">Press to make correct pathway in C:/Work </button>
-        </br>
-        <p1>Make sure you have all the files from IASconfigurator -> ctrlcommon files in this folder<strong></strong>
-            C:\Work\-AutoScript\IAS_proj\IAS_CTRL_Common_Files
-        </p1>
-        <p>Amount of files converted from .CSV to JSON: <span id="valueOfJSonFile"> 0 </span> </p>
 
-        <button class="btn--converCsvToJson">Press to make JSON files</button>
-        </br>
+            <p>Making tank program button bellow test <span id="valueOfJSonFile"> 0 </span> </p>
+
+            <button class="btn--tankDescMaking">Press button to make tank desctrption file</button>
+            </br>
 
     </div>
 
@@ -72,16 +60,7 @@
         <button class="btn--autoAlarmLinkFunction">Generate File for Alarm Link</button>
     </div>
 
-    <div class="outputAlarmLink">
-        <p1 class="paragrapText">
-            <center>
-                <strong>Output</strong>
-            </center>
-        </p1>
-        </br>
-        <p1><strong>Output file: </strong><span id="filename3"></span></p1>
-        </br>
-    </div>
+
 </body>
 
 </html>
