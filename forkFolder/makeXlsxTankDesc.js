@@ -16,7 +16,7 @@ XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(data[9].split(",")), {origin:
 
 XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(data[10].split(",")), {origin: "E1" });
 XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(data[11].split(",")), {origin: "E202" });
-XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(data[12].split(",")), {origin: "F1" }); 
+//XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(data[12].split(",")), {origin: "F1" }); 
 
 
 const newWB = XLSX.utils.book_new();

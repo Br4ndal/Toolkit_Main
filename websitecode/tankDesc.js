@@ -12,10 +12,19 @@ Files needed:
 
 
 */
+// const fs = require("fs")
+// let csvToJson = require('convert-csv-to-json');
+const completionTankDesc1= document.getElementById("completionTankDesc")
+
+//setTimeout("test1",0)
+
+
 
 
 const btnTankDesc = document.querySelector(".btn--tankDescMaking");
 btnTankDesc.addEventListener("click", function () {
+    setTimeout(completionTankDesc1.value = "Starrting",0)
+    
     tankdescMaking()
   });
 
@@ -29,6 +38,9 @@ function tankdescMaking(){
     let tankSideSB = [];
     let tankNrPS = ["TankNr"];
     let tankNrSB = [];
+
+
+    console.log("2.5")
     for(let i = 1; i <=100;i++){
         tankNrPS.push(i);
         tankNrSB.push(i);
@@ -44,27 +56,24 @@ function tankdescMaking(){
         tankGrpnr.push(j);
 
     }
-
-
-    let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json", 'utf-8');
-    let data = JSON.parse(content);
-    let test1 = [1,2,3,4,5]
     
-    console.log(data.length);
+    setTimeout(completionTankDesc1.value = "Gathering info on TankSetupPS and TankSetupSB",0)
+    let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json", 'utf-8'); 
+    let data = JSON.parse(content);
     let shipTankNrArraySB = [];
-    for (let addres1 of data ){
+
+    for (const addres1 of data){
         let shipTankNr = addres1["ShipTankNr"];
         let tagRef = addres1["TagRef"];
         if (tagRef !== undefined && shipTankNr < 1000) shipTankNrArraySB.push(shipTankNr);
     }
-
-
+ 
 
     let content2 = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupP.json", 'utf-8');
     const data2 = JSON.parse(content2);
     let shipTankNrArrayPS = ["ShipTankNr",];
 
-    for (const addres1 of test1 ){
+    for (const addres1 of data2 ){
         let shipTankNr = addres1["ShipTankNr"];
         let tagRef = addres1["TagRef"];
         if (tagRef !== undefined && shipTankNr < 1000 && shipTankNr !== 0 ) shipTankNrArrayPS.push(shipTankNr);
@@ -78,6 +87,7 @@ function tankdescMaking(){
         shipTankNrArraySB.push(0)
     }
 
+    
     const workbook3 = excel.link.readFile(`C:/Work/- AutoScript/IASProject/IAS_CTRL_Common_Files/IO Liste.xlsx`);
     let worksheet3 = workbook3.Sheets[`IO List`];
     const dataAI3 =excel.link.utils.sheet_to_json(worksheet3);
@@ -107,10 +117,11 @@ function tankdescMaking(){
         }
     }
 
-    console.log(tankIoListPS,tankIoListSB);
+    
+    setTimeout(completionTankDesc1.value = "Making file",0)
+    chi.pro.fork("makeXlsxTankDesc.js", [tankSidePS,tankSideSB,tankGrp,tankNrPS,tankNrSB,tankGrpnr,shipTankNrArrayPS,shipTankNrArraySB,tankIoListPS,tankIoListSB,tankgrpName,tankGrpSystems], {cwd: "forkFolder/"})
 
-    let childPros1 = chi.pro.fork("makeXlsxTankDesc.js", [tankSidePS,tankSideSB,tankGrp,tankNrPS,tankNrSB,tankGrpnr,shipTankNrArrayPS,shipTankNrArraySB,tankIoListPS,tankIoListSB,tankgrpName,tankGrpSystems,], {cwd: "forkFolder/"})
-
+    alert("TankDesc.csv file completed.")
 
 }
 

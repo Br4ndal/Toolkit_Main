@@ -11,11 +11,15 @@ const {cpus, totalmem} = require("os")
 const { contextBridge, ipcRenderer,dialog } = require('electron')
 const cp = require("child_process")
 // const {autoUpdater, AppUpdater} = require("electron-updater")
-
+let csvToJson = require('convert-csv-to-json');
 
 // contextBridge.exposeInMainWorld("autoS",{
 //     autoS1: autoUpdater,
 // })
+
+contextBridge.exposeInMainWorld("Conv",{
+    ctj :csvToJson,
+})
 contextBridge.exposeInMainWorld("chi",{
     pro: cp,
 })
