@@ -12,11 +12,15 @@ const { contextBridge, ipcRenderer,dialog } = require('electron')
 const cp = require("child_process")
 // const {autoUpdater, AppUpdater} = require("electron-updater")
 let csvToJson = require('convert-csv-to-json');
-
+const process =require("process")
 // contextBridge.exposeInMainWorld("autoS",{
 //     autoS1: autoUpdater,
 // })
 
+contextBridge.exposeInMainWorld("process",{
+    argv: process.argv,
+    execPath : process.execPath,
+})
 contextBridge.exposeInMainWorld("Conv",{
     ctj :csvToJson,
 })

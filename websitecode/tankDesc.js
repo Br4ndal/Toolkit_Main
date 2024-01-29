@@ -12,19 +12,45 @@ Files needed:
 
 
 */
-// const fs = require("fs")
-// let csvToJson = require('convert-csv-to-json');
-const completionTankDesc1= document.getElementById("completionTankDesc")
+let startTime = new Date().getTime();
+const completionTankDesc1 = document.getElementById("completionTankDesc");
+console.log(startTime);
 
-//setTimeout("test1",0)
+function writeToDom(text, domVariable) {
+  console.log(startTime);
+  domVariable.innerHTML = text;
+}
+
+let currentStatus = 'Initializing...';
+
+function updateStatus(newStatus) {
+  currentStatus = newStatus;
+  writeToDom(currentStatus, completionTankDesc1);
+}
+
+// document.querySelector('.btn--updateStatus').addEventListener('click', function() {
+//   updateStatus('Button clicked!');
+// });
+
+setInterval(function() {
+  updateStatus(`Status updated at ${new Date().toLocaleTimeString()}`);
+}, 5000);
 
 
 
+
+
+
+// let startTime = new Date().getTime()
+// const completionTankDesc1= document.getElementById("completionTankDesc")
+
+
+completionTankDesc1.innerHTML = "test"
 
 const btnTankDesc = document.querySelector(".btn--tankDescMaking");
 btnTankDesc.addEventListener("click", function () {
-    setTimeout(completionTankDesc1.value = "Starrting",0)
-    
+    updateStatus("Starting process")
+    //writeToDom("Started to gather information",completionTankDesc1)
     tankdescMaking()
   });
 
@@ -57,7 +83,7 @@ function tankdescMaking(){
 
     }
     
-    setTimeout(completionTankDesc1.value = "Gathering info on TankSetupPS and TankSetupSB",0)
+    updateStatus("Gathering info on TankSetupPS and TankSetupSB")
     let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json", 'utf-8'); 
     let data = JSON.parse(content);
     let shipTankNrArraySB = [];
@@ -87,7 +113,7 @@ function tankdescMaking(){
         shipTankNrArraySB.push(0)
     }
 
-    
+    writeToDom("Checking IO List",completionTankDesc1)
     const workbook3 = excel.link.readFile(`C:/Work/- AutoScript/IASProject/IAS_CTRL_Common_Files/IO Liste.xlsx`);
     let worksheet3 = workbook3.Sheets[`IO List`];
     const dataAI3 =excel.link.utils.sheet_to_json(worksheet3);
@@ -118,34 +144,10 @@ function tankdescMaking(){
     }
 
     
-    setTimeout(completionTankDesc1.value = "Making file",0)
+    writeToDom("Making file",completionTankDesc1)
     chi.pro.fork("makeXlsxTankDesc.js", [tankSidePS,tankSideSB,tankGrp,tankNrPS,tankNrSB,tankGrpnr,shipTankNrArrayPS,shipTankNrArraySB,tankIoListPS,tankIoListSB,tankgrpName,tankGrpSystems], {cwd: "forkFolder/"})
 
     alert("TankDesc.csv file completed.")
 
 }
 
-
-//-------- FUNCTION----------------------------
-
-function arrayFliperRowtoColumn(array, value) {
-    const addressObjecToArray = Object.values(array);
-    const result = Object.keys(addressObjecToArray).map((key) => [
-      addressObjecToArray[key],
-    ]);
-    
-    // returns value of hardwired to an object and i convert to column
-    if (value === "1"){
-    let worksheet = 
-      result.map(function (v) {
-        return [JSON.stringify(v)];
-    });
-    return worksheet;
-    }else {
-        let worksheet = 
-        result.map(function (v) {
-          return [v];
-      });
-      return worksheet;
-    }
-}
