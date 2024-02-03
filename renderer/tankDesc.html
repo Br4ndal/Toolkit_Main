@@ -11,6 +11,7 @@
     <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
     <link href="../Style/styleheader.css" rel="stylesheet" />
     <link href="../Style/StyleAlarmLink.css" rel="stylesheet" />
+    <link href="../Style/styleTankDesc.css" rel="stylesheet" />
     <script src="../websitecode/tankDesc.js" defer></script>
 
 
@@ -30,37 +31,29 @@
                 <li><a href="wagoModules.html">Wago Modules</a></li>
                 <li><a href="AlarmLink.html">Auto Alarm Link</a></li>
                 <li><a class="active" href="tankDesc.html">Tank Description</a></li>
+
             </ul>
         </nav>
     </header>
+
+    <h1 class="headlineText">Toolkit for Vard IAS</h1>
     <section>
-        <h1 class="headlineText">Toolkit for Vard IAS</h1>
-        <p1 class="paragrapText">
-            <center>
-                <strong>README: </strong>UNDER CONSTRUCTION
-            </center>
-        </p1>
+        <div class="textUnderHeader">
+            <div class="textInsideDiv">READ ME: <br>
+                Files needed for this operation is the tankSetupP and tankSetupS and IO list
+                place these files in <br>
+                C:\Work\- AutoScript\IASProject\IAS_CTRL_Common_Files
+            </div>
+            <div class="tankMakeButton2">
+                <button class="btn--tankDescMaking">Press to make tankDesc.csv </button>
+            </div>
+            TankDesc status : <br><span id="completionTankDesc"> --- </span> </p>
+        </div>
+
+        <div class="outputTankMake">
+            Have you made JSON files??
+        </div>
     </section>
-
-    <div class="outputAlarmLink">
-        <p1>Click her to auto make the file path for the auto alarm link program, path will be made in <bold>C:/Work/ -
-                Autoscript
-            </bold>
-
-            <p onclick="completionTankDesc.innerHTML = 'Started gathering information'">TankDesc status : <span
-                    id="completionTankDesc"> --- </span> </p>
-            <button class="btn--tankDescMaking">Press button to make tank desctrption file</button>
-            </br>
-
-    </div>
-
-    <div class="outputAlarmLink">
-        </br>
-        <p1><span id="programstarted"> XXXX </span></p1>
-        <p1>Variables to check <span id="variablesToBeCheck"> XXXX </span> so please wait</p1>
-        </br>
-        <button class="btn--autoAlarmLinkFunction">Generate File for Alarm Link</button>
-    </div>
 
 
 </body>

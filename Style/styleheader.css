@@ -89,7 +89,18 @@ li .toptext {
 }
 .paragrapText {
   text-align: center;
+  display: block;
+  
 }
+
 .headlineText {
   text-align: center;
+  height: 20px;
+  
+  
+}
+
+.textUnderHeadLine {
+  text-align: center;
+
 }

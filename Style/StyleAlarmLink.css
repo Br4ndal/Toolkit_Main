@@ -6,34 +6,67 @@
 
 }
 
-.test111 {
-    grid-auto-flow: column;
-    display: inline-grid;
-    grid-template-columns: repeat(2, 100px);
-    grid-template-rows: minmax(20px, 20px) repeat(1, 40px);
-    width: 170px;
-    
-    background-color: rgba(109, 103, 103, 0.75);
-    padding: 2px;
-    /*justify-content: space-around;
-    flex-direction: column;
-    
-    word-wrap: break-word;
-    word-break: break-all;*/
-  }
-  .test44 {
-    
-    display:grid;
-    grid-template-columns: repeat(1,500px);
+.tankMakeButton2 {
+  grid-auto-flow: column;
   
-    grid-template-rows: minmax(40px, 40px);
-    margin: 100px;
-    width: 1000px;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 10px;
+
+  justify-content: right;
+  align-content: right;
+  min-height: 0px;
+  grid-template-columns: repeat(1, 10px);
+  grid-template-rows: minmax(25px, auto) repeat(1, 40px);
+}
+
+
+.tankMakeButton2> button {
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(250, 250, 250, 0.301);
+}
+
+.tankMakeButton2> button:hover {
+  background-color: rgba(255, 255, 255, 0.445);
+}
+
+
+.outputTankMake{
+  display:grid;
   
+  grid-template-rows: minmax(4px, 40px);
+  margin: 100px;
+  width: 1000px;
+  height: 150px;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgba(109, 103, 103, 0.75);
+  font-size: 25px;
+  border: 2px solid;
+  position: absolute;
   
-    background-color: rgba(109, 103, 103, 0.75);
+  margin-top:auto ;
   
-  }
+}
+
+.textUnderHeader{
+  text-align: center;
+  font-size: 25px;
+  background-color: rgba(109, 103, 103, 0.75);
+  justify-content: space-around;
+  margin: 100px;
+  width: 1000px;
+  height: 400px;
+  margin-top: auto;
+  border: 2px solid;
+  flex-direction: column;
+  padding: 10px;
+  display:grid;
+}
+
+.textInsideDiv{
+  font-size: 23px;
+  font-style: italic;
+  color: black;
+}

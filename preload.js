@@ -20,12 +20,14 @@ const process =require("process")
 contextBridge.exposeInMainWorld("process",{
     argv: process.argv,
     execPath : process.execPath,
+
 })
 contextBridge.exposeInMainWorld("Conv",{
     ctj :csvToJson,
 })
 contextBridge.exposeInMainWorld("chi",{
     pro: cp,
+    test1 : cp.on,
 })
 
 

@@ -12,46 +12,23 @@ Files needed:
 
 
 */
-let startTime = new Date().getTime();
+
+
 const completionTankDesc1 = document.getElementById("completionTankDesc");
-console.log(startTime);
-
-function writeToDom(text, domVariable) {
-  console.log(startTime);
-  domVariable.innerHTML = text;
+async function writeToDom(text, domVariable) {
+    requestAnimationFrame( () => {
+        domVariable.innerHTML = text
+    })//return Promise.resolve(domVariable.innerHTML = text)
 }
-
-let currentStatus = 'Initializing...';
-
-function updateStatus(newStatus) {
-  currentStatus = newStatus;
-  writeToDom(currentStatus, completionTankDesc1);
+function startTankProgram (){
+    setTimeout( () => { tankdescMaking()},1000)
 }
-
-// document.querySelector('.btn--updateStatus').addEventListener('click', function() {
-//   updateStatus('Button clicked!');
-// });
-
-setInterval(function() {
-  updateStatus(`Status updated at ${new Date().toLocaleTimeString()}`);
-}, 5000);
-
-
-
-
-
-
-// let startTime = new Date().getTime()
-// const completionTankDesc1= document.getElementById("completionTankDesc")
-
-
-completionTankDesc1.innerHTML = "test"
 
 const btnTankDesc = document.querySelector(".btn--tankDescMaking");
 btnTankDesc.addEventListener("click", function () {
-    updateStatus("Starting process")
-    //writeToDom("Started to gather information",completionTankDesc1)
-    tankdescMaking()
+    writeToDom("Started to gather information, this process will take about 3 minuttes",completionTankDesc1)
+    startTankProgram()
+    
   });
 
 
@@ -82,9 +59,7 @@ function tankdescMaking(){
         tankGrpnr.push(j);
 
     }
-    
-    updateStatus("Gathering info on TankSetupPS and TankSetupSB")
-    let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json", 'utf-8'); 
+    let content= readingFile("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json")
     let data = JSON.parse(content);
     let shipTankNrArraySB = [];
 
@@ -94,8 +69,7 @@ function tankdescMaking(){
         if (tagRef !== undefined && shipTankNr < 1000) shipTankNrArraySB.push(shipTankNr);
     }
  
-
-    let content2 = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupP.json", 'utf-8');
+    let content2 = readingFile("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupP.json")
     const data2 = JSON.parse(content2);
     let shipTankNrArrayPS = ["ShipTankNr",];
 
@@ -113,8 +87,16 @@ function tankdescMaking(){
         shipTankNrArraySB.push(0)
     }
 
-    writeToDom("Checking IO List",completionTankDesc1)
-    const workbook3 = excel.link.readFile(`C:/Work/- AutoScript/IASProject/IAS_CTRL_Common_Files/IO Liste.xlsx`);
+    
+
+
+    let workbook3; 
+    try {
+        workbook3 = excel.link.readFile(`C:/Work/- AutoScript/IASProject/IAS_CTRL_Common_Files/IO Liste.xlsx`);
+    }catch(err) {
+        writeToDom(`${err}`,completionTankDesc1) 
+    }
+
     let worksheet3 = workbook3.Sheets[`IO List`];
     const dataAI3 =excel.link.utils.sheet_to_json(worksheet3);
     console.log(typeof(dataAI3));
@@ -144,10 +126,19 @@ function tankdescMaking(){
     }
 
     
-    writeToDom("Making file",completionTankDesc1)
+    writeToDom("File can be found in this folder :  C:/Work/- AutoScript/- Files AutoGen",completionTankDesc1)
     chi.pro.fork("makeXlsxTankDesc.js", [tankSidePS,tankSideSB,tankGrp,tankNrPS,tankNrSB,tankGrpnr,shipTankNrArrayPS,shipTankNrArraySB,tankIoListPS,tankIoListSB,tankgrpName,tankGrpSystems], {cwd: "forkFolder/"})
-
-    alert("TankDesc.csv file completed.")
+    //alert("TankDesc.csv has been made.")
 
 }
 
+
+function readingFile(filePath){
+    try {
+        return fs1.readFile1.readFileSync(filePath, 'utf-8');
+        
+    }catch(err) {
+        return writeToDom(`${err}`,completionTankDesc1)
+        
+    }
+}

@@ -24,6 +24,7 @@ for(let i=0; i < pathForCSVFile.length;i++){
         localCSVtoJSON(pathForCSVFile[i])
     }
 }
+
 //function that turns CSV files to JSON file so i can easier get the information i need from them. And puting them all in a JSON folder where i can read them later.
 function localCSVtoJSON (filepath){
     let splitString = filepath.split("/");

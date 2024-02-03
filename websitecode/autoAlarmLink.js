@@ -4,11 +4,26 @@ Installs needed is:    npm i xlsx,  npm install convert-csv-to-json --save
 
 
 */
-/* Librarys for program that needed  */
 
+function writeToDom(text, domVariable) {
+    requestAnimationFrame( () => {
+        domVariable.innerHTML = text
+    })//return Promise.resolve(domVariable.innerHTML = text)
+}
+function startTankProgram (){
+    setTimeout( () => { autoAlarmLinkFunction()},1000)
+}
+
+
+
+
+let programStart =document.getElementById("programstarted");
 const btnAlarmLinker = document.querySelector(".btn--autoAlarmLinkFunction");
 btnAlarmLinker.addEventListener("click", function () {
+    //writeToDom("Starting program please this will take 5 minuttes.",programStart)
+    //startTankProgram ()
     autoAlarmLinkFunction()
+
   });
 
 function autoAlarmLinkFunction() { 
@@ -18,8 +33,8 @@ function autoAlarmLinkFunction() {
     
     let tagsInToBeChecked =[];
     let signalDescriptionFromAlarmsNotfound = [];
-    document.getElementById("programstarted").innerHTML = "Hii";
     
+    document.getElementById("variablesToBeCheck").innerHTML = "test";
     let pumpSystemAlarmsPS = [];
     let pumpSystemAlarmNrPS = [];
     let tankSystemAlarmsPS = [];
@@ -36,13 +51,6 @@ function autoAlarmLinkFunction() {
 
     //-------------------------- Program---------------------------------------
 
-
-
-    //Calling another Javascript to convert all the CSV files to JSON files. this program will be run for all the programs i will need CSV files.
-    // const csvtoJson = require("./ConvertCSVtoJSON.js")
-    // console.log("All CSV files has been converted to JSON files.")
-    // csvtoJson.csvtoJSONFile()
-    console.log(fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/PumpSetup.json", 'utf-8')); 
     let content = fs1.readFile1.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/PumpSetup.json", 'utf-8');
     const data = JSON.parse(content);
 
@@ -83,9 +91,13 @@ function autoAlarmLinkFunction() {
             }
         }
     }
+    let testArray = []
+    for  (var j=0 ;j<5000;j++){
+        testArray.push(`Alm${j}`)
+    }
 
-
-
+    // chi.pro.fork("makeXlsxAL.js", [testArray], {cwd: "forkFolder/"})
+    // return console.log("completed");
 
 
     let TagRefArrayCombined =pumpTagPS.concat(pumpTagSB);
@@ -610,75 +622,33 @@ function autoAlarmLinkFunction() {
             pageDifference.push(newFinalArrayAlmNr[i] +" " + newFianlArrayPage[i])
         }
     }
+// console.log(newFinalArrayAlmNr);
+console.log("PAGE DIFF: ",pageDifference);
 
-
-
-
-
-    let ws = excel.link.utils.aoa_to_sheet(arrayFliperRowtoColumn(newFinalArrayAlmNr), {origin: "A1" });  
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPage), {origin: "B1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(alarmSeveralPages), {origin: "D1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pageDifference), {origin: "C1" });
-
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsSB), {origin: "J1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrSB), {origin: "K1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsSB), {origin: "L1" });
-
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newPumpSystemAlarmsPS), {origin: "N1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmNrPS), {origin: "O1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(pumpSystemAlarmsPS), {origin: "P1" });
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFinalArrayAlmNrPump), {origin: "G1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newFianlArrayPagePump), {origin: "H1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(combinedArraypumpAlarm), {origin: "I1" });
-
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsSB), {origin: "R1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrSB), {origin: "S1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsSB), {origin: "T1" });
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsPS), {origin: "W1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrPS), {origin: "X1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsPS), {origin: "Y1" });
-
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(newtankSystemAlarmsSB), {origin: "AC1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmNrSB), {origin: "AD1" });
-    excel.link.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(tankSystemAlarmsSB), {origin: "AE1" });
-
-    const newWB = excel.link.utils.book_new();
-    excel.link.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
-
-    
-    excel.link.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Citect_Alarm_Link.xlsx");
-
-
+    chi.pro.fork("makeXlsxAL.js", [
+        newFianlArrayPage,
+        alarmSeveralPages,
+        pageDifference,
+        newPumpSystemAlarmsSB,
+        pumpSystemAlarmNrSB,
+        pumpSystemAlarmsSB,
+        newPumpSystemAlarmsPS,
+        pumpSystemAlarmNrPS,
+        pumpSystemAlarmsPS,
+        newFinalArrayAlmNrPump,
+        newFianlArrayPagePump,
+        combinedArraypumpAlarm,
+        newtankSystemAlarmsSB,
+        tankSystemAlarmNrSB,
+        tankSystemAlarmsSB,
+        newtankSystemAlarmsPS,
+        tankSystemAlarmNrPS,
+        tankSystemAlarmsPS,
+        newtankSystemAlarmsSB,
+        tankSystemAlarmNrSB,
+        tankSystemAlarmsSB
+    ], {cwd: "forkFolder/"})
     console.log(`Completed`);
     console.log("Systems alarms needs to be double checked because of cant be compared correctly....")
 }
 
-
-
-//----------------------FUNCTIONs-----------------------------------
-function arrayFliperRowtoColumn(array, value) {
-    const addressObjecToArray = Object.values(array);
-    const result = Object.keys(addressObjecToArray).map((key) => [
-      addressObjecToArray[key],
-    ]);
-
-    // returns value of hardwired to an object and i convert to column
-    if (value === "1"){
-    let worksheet = 
-      result.map(function (v) {
-        return [JSON.stringify(v)];
-    });
-    return worksheet;
-    }else {
-        let worksheet = 
-        result.map(function (v) {
-          return [v];
-      });
-      return worksheet;
-    }
-}
