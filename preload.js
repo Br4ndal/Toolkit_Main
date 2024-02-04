@@ -10,16 +10,21 @@ const XLSX = require("xlsx") //const {readFile,utils} = require("xlsx")
 const {cpus, totalmem} = require("os")
 const { contextBridge, ipcRenderer,dialog } = require('electron')
 const cp = require("child_process")
+const {fork} = require("child_process")
 // const {autoUpdater, AppUpdater} = require("electron-updater")
 let csvToJson = require('convert-csv-to-json');
 const process =require("process")
+const pathNode = require('node:path'); 
 // contextBridge.exposeInMainWorld("autoS",{
 //     autoS1: autoUpdater,
 // })
-
+contextBridge.exposeInMainWorld("pathNode",{
+    node: pathNode,
+})
 contextBridge.exposeInMainWorld("process",{
     argv: process.argv,
     execPath : process.execPath,
+    resourcesPath : process.resourcesPath,
 
 })
 contextBridge.exposeInMainWorld("Conv",{
@@ -27,7 +32,7 @@ contextBridge.exposeInMainWorld("Conv",{
 })
 contextBridge.exposeInMainWorld("chi",{
     pro: cp,
-    test1 : cp.on,
+    test1 : fork,
 })
 
 
@@ -40,6 +45,8 @@ contextBridge.exposeInMainWorld('os', {
 
 contextBridge.exposeInMainWorld('path', {
     join: (...args) => path.join(...args),
+    __dirname: path,
+    delimiter: path.delimiter,
 })
 
 contextBridge.exposeInMainWorld("fs1",{

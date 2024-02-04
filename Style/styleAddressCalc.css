@@ -191,15 +191,19 @@
 
 }
 .output2 {
-  border: 2px solid;
-  position: absolute;
-  top: 200px;
-  left: 350px;
-  width: 500px;
-  height: 320px;
-  padding: 50px;
-
+  border: 1px solid;
+  
+  
   background-color: rgba(109, 103, 103, 0.75);
+  font-size: 25px;
+  margin-top:auto ;
+  display: grid;
+  height: auto;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 15px;
 
 }
 .outputAlarmLink{
@@ -255,7 +259,12 @@
 */
 .output2 .current-operand2 {
   color: white;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  position: relative;
+  text-align: left;
+  text-indent: 340px;
+  margin-left: 10px;
+
 }
 
 .current-operand{

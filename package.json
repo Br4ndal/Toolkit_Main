@@ -32,7 +32,13 @@
     },
     "directories": {
       "output": "dist"
-    }
+    },
+    "extraResources": [
+      {
+        "from": "images/",
+        "to": "assets"
+      }
+    ]
   },
   "author": "Stian Brandal",
   "license": "ISC",

@@ -2,7 +2,6 @@
 'use strict';
 const path = require("path");
 const {app, BrowserWindow, Menu, dialog,ipcMain,Tray} = require('electron')
-
 const updater= require("./updater")
 //Library's 
 
@@ -43,8 +42,9 @@ function createMainWindow(){
     webPreferences: {
       enableRemoteModule: true,
       contextIsolation: true,
+      nodeIntegrationInWorker: true, // new line for worker threads
       nodeIntegration: true,  // was true 
-      sandbox: false,
+      sandbox: false, //was false
       preload: path.join(__dirname, 'preload.js')
     }
   })

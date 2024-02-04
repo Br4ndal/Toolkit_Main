@@ -7,9 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
   <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
+  <link href="../Style/general.css" rel="stylesheet" />
   <link href="../Style/styleheader.css" rel="stylesheet" />
-
-  <title>Toolkit IAS</title>
+  <script defer src="../websitecode/index.js"></script>
+  <script src="../websitecode/fileMaker.js" defer></script>
+  <script src="../websitecode/ConvertCSVtoJSON.js" defer></script>
+  <title>Home</title>
 </head>
 
 <body>
@@ -29,25 +32,71 @@
       </ul>
     </nav>
   </header>
+
+  <h1 class="headlineText">Toolkit version 1.1.2 </h1>
+
   <section>
-    <h1 class="headlineText">Toolkit version 1.1.2</h1>
 
-    <p1 class="paragrapText">
-      <center>
-        <strong></strong>
-      </center>
-    </p1>
-    <br>
-    <br>
-    <br>
 
-    <p1 class="paragrapText">
-      <center>
-        <strong>Next update is planed to be be Auto alarm link </strong>
-      </center>
-    </p1>
+
+
+
+    <div class="standardFrame">
+      <h4> How to setup for software </h4>
+      <div class="textInsideDiv">
+        <p1>1. Click her to make the file path for the auto alarm link program, path will be made in <br>
+          C:/Work/ -Autoscript
+        </p1>
+
+      </div>
+      <br>
+      <p1> Status of file path : <span id="firstFileWork"> 0 </span></p1>
+      <p1> Status of file path : <span id="secondFileWork"> 0 </span></p1>
+      <p1> Status of file path : <span id="thridFileWork"> 0 </span></p1>
+      </br>
+
+
+
+      <div class="standardButton1">
+        <button class="btn--fileMaker">Press to make correct pathway in C:/Work </button>
+      </div>
+      </br>
+      </br>
+      <div class="textInsideDiv">
+        2. Then copy the main citect project(NB952.ctz) to C:\Work\- AutoScript\IASProject\Citect_Project, change name
+        to NB952.zip and extra project her. <br>
+        3. After that copy the files from IASconfigurator/ctrlcommon on the IAS to C:\Work\-
+        AutoScript\IASProject\IAS_CTRL_Common_Files <br>
+        4. Also take the IO List for the project and put it in her and rename it to "IO Liste".
+      </div>
+
+      </br>
+      </br>
+      </br>
+      <div class="textInsideDiv">
+        <p1>5. IASconfigurator -> ctrlcommon files in this
+          folder<strong></strong>
+          C:\Work\-AutoScript\IAS_proj\IAS_CTRL_Common_Files
+        </p1>
+
+      </div>
+      <p> Status .CSV to JSON : <span id="valueOfJSonFile"> - </span> </p>
+      <div class="standardButton1">
+
+        <button class="btn--clearOldJsonFiles">Clear old Json files</button>
+        <button class="btn--converCsvToJson">Press to make Json files</button>
+        </br>
+      </div>
+    </div>
   </section>
-  <script defer src="../websitecode/index.js"></script>
+
+
+
+  <div class="standardFrame">
+    <h4> Next update: </h4>
+    Next update is comparing citect files to IO list
+  </div>
+
 
 </body>
 
