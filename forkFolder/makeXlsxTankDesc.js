@@ -15,10 +15,6 @@ self.addEventListener("message",function(e){
   this.self.postMessage(tankdescMaking())
 })
 
-
-
-
-
 function tankdescMaking(){
   // basic arrays needed to create file
   let tankgrpName = ["GroupName",]
@@ -84,9 +80,11 @@ function tankdescMaking(){
 
   let worksheet3 = workbook3.Sheets[`IO List`];
   const dataAI3 =XLSX.utils.sheet_to_json(worksheet3);
-  console.log(typeof(dataAI3));
+
   let tankIoListPS = ["TankDescription"];
   let tankIoListSB = [];
+
+
   for (const addres1 of dataAI3){
     
       let isaTag = addres1[`ISA`];

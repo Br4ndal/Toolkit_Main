@@ -9,6 +9,7 @@
   <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
   <link href="../Style/styleheader.css" rel="stylesheet" />
   <link href="../Style/styleCalcValv.css" rel="stylesheet" />
+  <link href="../Style/general.css" rel="stylesheet" />
   <script src="../websitecode/calcWebValve.js" defer></script>
   <title>Valve Calculator</title>
 </head>
@@ -24,15 +25,16 @@
         </li>
         <li><a class="active" href="calcValv.html">Valve Calculator</a></li>
         <li><a href="wagoModules.html">Wago Modules</a></li>
-        <li><a href="AlarmLink.html">Auto Alarm Link</a></li>
+        <li><a href="AlarmLink.html">Auto Alarm Linker</a></li>
         <li><a href="tankDesc.html">Tank Description</a></li>
 
       </ul>
     </nav>
   </header>
 
-  <section>
-    <h1 class="headlineText">Valve Address Calculator<br /><br /></h1>
+
+  <h1 class="headlineText">Valve Address Calculator<br /><br /></h1>
+  <div class="">
     <p1 class="paragrapText">
       <center>
         Check valvesetup file for which valve your adding and get SFI of valve from IO
@@ -42,149 +44,149 @@
         comment.Then its just copy paste from the table below. <br /><br />
       </center>
     </p1>
-  </section>
-  <section>
-    <div class="selectdiv">
-      <p1>Choose valve program : </p1>
-      <label>
-        <select id="valveProgramNrhtml">
 
-          <option value="600" selected>600 to 604 </option>
-          <option value="500">500 to 508 </option>
-          <option value="200">200 to 201 </option>
-          <option value="100">100 to 124</option>
-        </select>
-      </label>
+    <section>
+      <div class="selectdiv">
+        <p1>Choose valve program : </p1>
+        <label>
+          <select id="valveProgramNrhtml">
+
+            <option value="600" selected>600 to 604 </option>
+            <option value="500">500 to 508 </option>
+            <option value="200">200 to 201 </option>
+            <option value="100">100 to 124</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="table3">
+      <table class="tableValves">
+        <tr>
+          <th>SFI_number</th>
+          <th>Cluster Name</th>
+          <th>Cabinet</th>
+          <th>Signal type</th>
+          <th>Address</th>
+          <th>Raw_zero</th>
+          <th>Raw_full</th>
+          <th>Eng_Zero</th>
+          <th>Eng_Full</th>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR1">SFI_Numb_BLK</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR1">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR1">DIGITAL</td>
+
+          <td class="addressColum" id="Address1R1">Addr</td>
+          <td id="rawZeroR1"></td>
+          <td id="rawFullR1"></td>
+          <td id="engZeroR1"></td>
+          <td id="engFullR1"></td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR2">SFI_Numb_CMD</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR2">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR2">INT</td>
+
+          <td class="addressColum" id="Address1R2">Addr</td>
+          <td id="rawZeroR2"></td>
+          <td id="rawFullR2"></td>
+          <td id="engZeroR2"></td>
+          <td id="engFullR2"></td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR3">SFI_Numb_FBK</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR3">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR3">INT</td>
+
+          <td class="addressColum" id="Address1R3">Addr</td>
+          <td id="rawZeroR3"></td>
+          <td id="rawFullR3"></td>
+          <td id="engZeroR3"></td>
+          <td id="engFullR3"></td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR4">SFI_Numb_PDEM</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR4">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR4">INT</td>
+
+          <td class="addressColum" id="Address1R4">Addr</td>
+          <td id="rawZeroR4">0</td>
+          <td id="rawFullR4">100</td>
+          <td id="engZeroR4">0</td>
+          <td id="engFullR4">100</td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR5">SFI_Numb_PFBK</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR5">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR5">INT</td>
+
+          <td class="addressColum" id="Address1R5">Addr</td>
+          <td id="rawZeroR5">0</td>
+          <td id="rawFullR5">100</td>
+          <td id="engZeroR5">0</td>
+          <td id="engFullR5">100</td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR6">SFI_Numb_SYS</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR6">Valve</td>
+          <td class="signalTypeColum" id="signalTypeR6">INT</td>
+
+          <td class="addressColum" id="Address1R6">Addr</td>
+          <td id="rawZeroR6"></td>
+          <td id="rawFullR6"></td>
+          <td id="engZeroR6"></td>
+          <td id="engFullR6"></td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR7">SFI_Numb_TXT</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR7">Valve</td>
+          <td class="signalTypeColum" id="signalTypeR7">STRING</td>
+
+          <td class="addressColum" id="Address1R7">Addr</td>
+          <td id="rawZeroR7"></td>
+          <td id="rawFullR7"></td>
+          <td id="engZeroR7"></td>
+          <td id="engFullR7"></td>
+        </tr>
+        <tr>
+          <td class="sfiValveColum" id="sfiValveR8">SFI_Numb_TYP</td>
+          <td></td>
+          <td class="cabNrColum" id="cabNrR8">ContrXXxxxx</td>
+          <td class="signalTypeColum" id="signalTypeR8">INT</td>
+
+          <td class="addressColum" id="Address1R8">Addr</td>
+          <td id="rawZeroR8"></td>
+          <td id="rawFullR8"></td>
+          <td id="engZeroR8"></td>
+          <td id="engFullR8"></td>
+        </tr>
+      </table>
+    </section>
+    <div>
+      <section class="table">
+        <input class="inputText1" id="valveNumberInput-0" placeholder="Enter Valve number" maxlength="20" />
+      </section>
     </div>
-  </section>
-
-  <section class="table3">
-    <table class="tableValves">
-      <tr>
-        <th>SFI_number</th>
-        <th>Cluster Name</th>
-        <th>Cabinet</th>
-        <th>Signal type</th>
-        <th>Address</th>
-        <th>Raw_zero</th>
-        <th>Raw_full</th>
-        <th>Eng_Zero</th>
-        <th>Eng_Full</th>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR1">SFI_Numb_BLK</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR1">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR1">DIGITAL</td>
-
-        <td class="addressColum" id="Address1R1">Addr</td>
-        <td id="rawZeroR1"></td>
-        <td id="rawFullR1"></td>
-        <td id="engZeroR1"></td>
-        <td id="engFullR1"></td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR2">SFI_Numb_CMD</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR2">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR2">INT</td>
-
-        <td class="addressColum" id="Address1R2">Addr</td>
-        <td id="rawZeroR2"></td>
-        <td id="rawFullR2"></td>
-        <td id="engZeroR2"></td>
-        <td id="engFullR2"></td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR3">SFI_Numb_FBK</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR3">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR3">INT</td>
-
-        <td class="addressColum" id="Address1R3">Addr</td>
-        <td id="rawZeroR3"></td>
-        <td id="rawFullR3"></td>
-        <td id="engZeroR3"></td>
-        <td id="engFullR3"></td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR4">SFI_Numb_PDEM</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR4">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR4">INT</td>
-
-        <td class="addressColum" id="Address1R4">Addr</td>
-        <td id="rawZeroR4">0</td>
-        <td id="rawFullR4">100</td>
-        <td id="engZeroR4">0</td>
-        <td id="engFullR4">100</td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR5">SFI_Numb_PFBK</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR5">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR5">INT</td>
-
-        <td class="addressColum" id="Address1R5">Addr</td>
-        <td id="rawZeroR5">0</td>
-        <td id="rawFullR5">100</td>
-        <td id="engZeroR5">0</td>
-        <td id="engFullR5">100</td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR6">SFI_Numb_SYS</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR6">Valve</td>
-        <td class="signalTypeColum" id="signalTypeR6">INT</td>
-
-        <td class="addressColum" id="Address1R6">Addr</td>
-        <td id="rawZeroR6"></td>
-        <td id="rawFullR6"></td>
-        <td id="engZeroR6"></td>
-        <td id="engFullR6"></td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR7">SFI_Numb_TXT</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR7">Valve</td>
-        <td class="signalTypeColum" id="signalTypeR7">STRING</td>
-
-        <td class="addressColum" id="Address1R7">Addr</td>
-        <td id="rawZeroR7"></td>
-        <td id="rawFullR7"></td>
-        <td id="engZeroR7"></td>
-        <td id="engFullR7"></td>
-      </tr>
-      <tr>
-        <td class="sfiValveColum" id="sfiValveR8">SFI_Numb_TYP</td>
-        <td></td>
-        <td class="cabNrColum" id="cabNrR8">ContrXXxxxx</td>
-        <td class="signalTypeColum" id="signalTypeR8">INT</td>
-
-        <td class="addressColum" id="Address1R8">Addr</td>
-        <td id="rawZeroR8"></td>
-        <td id="rawFullR8"></td>
-        <td id="engZeroR8"></td>
-        <td id="engFullR8"></td>
-      </tr>
-    </table>
-  </section>
-  <div>
-    <section class="table">
-      <input class="inputText1" id="valveNumberInput-0" placeholder="Enter Valve number" maxlength="20" />
-    </section>
+    <div>
+      <section class="table">
+        <input class="inputText1" id="sfiNumberInput-1" placeholder="Enter SFI for valve" maxlength="20" />
+      </section>
+    </div>
+    <div>
+      <section class="table">
+        <button class="btn1 btn--send">Calculate adress</button>
+      </section>
+    </div>
   </div>
-  <div>
-    <section class="table">
-      <input class="inputText1" id="sfiNumberInput-1" placeholder="Enter SFI for valve" maxlength="20" />
-    </section>
-  </div>
-  <div>
-    <section class="table">
-      <button class="btn1 btn--send">Calculate adress</button>
-    </section>
-  </div>
-
   <script></script>
 </body>
 
