@@ -6,15 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <link href="../Style/general.css" rel="stylesheet" />
     <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
     <link href="../Style/styleheader.css" rel="stylesheet" />
-    <link href="../Style/StyleAlarmLink.css" rel="stylesheet" />
-    <link href="../Style/general.css" rel="stylesheet" />
-    <script src="../websitecode/autoAlarmLink.js" defer></script>
+    <script src="../websitecode/autoFileGenerator.js" defer></script>
 
 
-
-    <title>Auto Alarm Link</title>
+    <title>Auto Generate Files</title>
 </head>
 
 <body>
@@ -28,8 +26,8 @@
                 </li>
                 <li><a href="calcValv.html">Valve Calculator</a></li>
                 <li><a href="wagoModules.html">Wago Modules</a></li>
-                <li><a class="active" href="AlarmLink.html">Auto Alarm Linker</a></li>
-                <li><a href="tankDesc.html">Tank Description</a></li>
+                <li><a class="active" href="AlarmLink.html">Auto Generate Files</a></li>
+                <!-- <li><a href="tankDesc.html">Tank Description</a></li> -->
 
 
             </ul>
@@ -37,22 +35,91 @@
     </header>
 
     <center>
-        <h1> Auto Alarm Linker </h1>
+        <h1>Alarm Linker </h1>
     </center>
 
     <div class="standardFrame">
-
-
-        <p1>Status: <span id="programstarted"> --- </span></p1>
-        <!--<p1>Variables to check <span id="variablesToBeCheck"> XXXX </span> so please wait</p1>-->
-
-        <div class="standardButton1"> <button class="btn--autoAlarmLinkFunction">Generate File for Alarm
-                Link</button></div>
+        <div class="textInsideDiv"><br>
+            Will generate a file using the citect projects
+        </div><br>
+        <div class="standardButton1"> <button class="btn--autoAlarmLinkFunction">Generate File For Alarm Links</button>
+        </div>
+        <p1>Alarm Link Status: <br>
+            <span id="programstarted"> --- </span>
+        </p1>
         <br>
 
     </div>
-    </section>
 
+    <h1 class="headlineText">Tank Description</h1>
+
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Will generate tankDesc.csv based on IO List and the tankSetupP and tankSetupS
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--tankDescMaking">Generate file tankDesc.csv </button>
+        </div>
+        TankDesc status : <br><span id="completionTankDesc"> --- </span> </p>
+    </div>
+
+    <h1 class="headlineText">Trend Generator</h1>
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Will generate a file of trends based on the alarms in ardig.dbf. Will only take Analog alarms that has
+            engineering unit
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--generateTrend">Generate Trend File </button>
+        </div>
+        Trend File Status : <br><span id="completionTrend"> --- </span> </p>
+    </div>
+
+    <h1 class="headlineText">Comparing Alarm Citect to IO List</h1>
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Comparing SFI from Citect Ardig File to IO List to see if there are any missmatches
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--generatDiffArdigIoList">Generate File </button>
+        </div>
+        Difference between Ardig and IO List Status : <br><span id="completionDiffArdigIoList"> --- </span> </p>
+    </div>
+
+    <h1 class="headlineText">Comparing IO List to Citect</h1>
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Comparing SFI from IO list to Ardig File to see if there are any missmatches
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--generatDiffIoListArdig">Generate File </button>
+        </div>
+        Difference between IO List and Ardig Status : <br><span id="completionDiffIoListArdig"> --- </span> </p>
+    </div>
+
+    <h1 class="headlineText">Comparing IO List to Variable File</h1>
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Comparing tags from IO List to Variable File in citect projects
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--generatDiffIoListVariable">Generate File </button>
+        </div>
+        Difference between IO List and Variable Files Status : <br><span id="completionDiffIoListVariable"> --- </span>
+        </p>
+    </div>
+
+    <h1 class="headlineText">Alarms Not Used In Citect Mimic</h1>
+    <div class="standardFrame">
+        <div class="textInsideDiv"><br>
+            Comparing alarms from Ardig to citect mimic.
+        </div><br>
+        <div class="standardButton1">
+            <button class="btn--generatAlmNotInMimic">Generate File </button>
+        </div>
+        Alarms not used in mimic Status : <br><span id="almNotInMimic"> --- </span>
+        </p>
+    </div>
 
 
 </body>
