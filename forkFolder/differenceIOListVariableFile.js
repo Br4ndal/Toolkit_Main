@@ -13,26 +13,24 @@ Descrption of Program:
 FIXME: Program not working need to use correct IO LIST!!
 */
 
-// self.addEventListener("message",function(e){
-//     console.log("program started: DifferenceAlarmCitectToIoList ",process.pid)
-//     let data = e.data
-//     console.log(data);
+self.addEventListener("message",function(e){
+    console.log("program started: differenceIOlistVariableFile ",process.pid)
+    let data = e.data
+    console.log(data);
     
-//     this.self.postMessage(differenceIOlistVariableFile())
-// })
+    this.self.postMessage(differenceIOlistVariableFile())
+})
 
 
 function differenceIOlistVariableFile(){
     //--------------------------------- Variables -------------------------------
-    //const testArray1 =[1,2,3,4,5,6];
-    const testArray1 = [6, 5, 4, 3, 199, 10, 1, 8, 9, 1, 99, 123, 600];
-    const testArray2 = [1, 2, 3, 4, 5, 6];
+
     let almtagsFromIOList = [];
     let tagsFromIOList = [];
     let missingTagUnique = [];
     let IOareOK = [];
     let tagInfoArray = [];
-    // const tagsInToBeChecked;
+
     let test = [];
     let clusterNameConstant = [];
     let projectNameConstant = [];
@@ -405,4 +403,5 @@ function differenceIOlistVariableFile(){
     XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Difference_between_IOList_And_VariableFile.xlsx");
 
     console.log(`Completed`);
+    return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
 }

@@ -1,9 +1,10 @@
 'use strict';
 /*
-TODO:
+TODO: Check variable tags of the trends
 Check of the dags variable on trend. 
 */
-
+const XLSX = require("xlsx")
+const fs = require(`fs`);
 
 
 self.addEventListener("message",function(e){
@@ -15,8 +16,7 @@ self.addEventListener("message",function(e){
   
 
 function trendGen(){
-    const XLSX = require("xlsx");
-    const fs = require(`fs`);
+
 
 
 
@@ -194,9 +194,10 @@ function trendGen(){
     XLSX.utils.book_append_sheet(newWB, ws, "Citet_AlarmLink");
     XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/AutoGen_Trends.xlsx");
 
-
+    
     console.log(`Completed`);
     console.log("Systems alarms needs to be double checked because of cant be compared correctly....")
+    return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
 }
 
 //----------------------FUNCTIONs-----------------------------------

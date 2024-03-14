@@ -3,12 +3,18 @@
 Descrption of Program: 
  Files needed is The alarm_PS and alarm_SB
 
- FIXME: FIND OUT WHY THIS IS SO SLOW !!!!!!!!!!!!!!!
+ FIXME: FIND OUT WHY THIS IS SO SLOW !!!!!!!!!!!!!!!!!
 
 */
 
+self.addEventListener("message",function(e){
+    console.log("program started: DifferenceAlarmCitectToIoList ",process.pid)
+    let data = e.data
+    console.log(data);
+    
+    this.self.postMessage(DifferenceAlarmCitectToIoList())
+})
 
-DifferenceAlarmCitectToIoList()
 function DifferenceAlarmCitectToIoList(){
     //--------------------------------- Variables -------------------------------
     //const testArray1 =[1,2,3,4,5,6];
@@ -253,6 +259,7 @@ console.log("program started!!!!!");
     XLSX.utils.book_append_sheet(newWB, ws, "Difference");
     XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Alarm_Difference_between_IOList_Citect.xlsx");
     console.log(`Completed`);
+    return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
     }
 
 

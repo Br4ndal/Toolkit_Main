@@ -17,7 +17,7 @@ self.addEventListener("message",function(e){
     let data = e.data
     console.log(data);
     this.self.postMessage(almNotInMimic())
-  })
+})
   
 
 function almNotInMimic(){
@@ -294,4 +294,5 @@ function almNotInMimic(){
 
 
     console.log(`Completed`);
+    return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
 }

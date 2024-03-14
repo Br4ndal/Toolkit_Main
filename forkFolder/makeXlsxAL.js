@@ -86,8 +86,8 @@ function autoAlarmLinkFunction() {
   // return console.log("completed");
 
 
-  let TagRefArrayCombined =pumpTagPS.concat(pumpTagSB);
-  let combinedArraypumpAlarm = pumpAlarmsPS.concat(pumpAlarmsSB);
+  let TagRefArrayCombined =  []//pumpTagPS.concat(pumpTagSB);
+  let combinedArraypumpAlarm = []//pumpAlarmsPS.concat(pumpAlarmsSB);
   console.log(TagRefArrayCombined)
   const workbook1 = XLSX.readFile(`C:/Work/- AutoScript/IASProject/Citect_Project/argdig.DBF`); // ${input}
   let worksheet1= workbook1.Sheets["Sheet1"];
@@ -145,6 +145,7 @@ function autoAlarmLinkFunction() {
       let checkForDeleted = stringifyDeleted.indexOf(tagForDeleted);
       //console.log(stringify792)
       if ((checkForTank >= 0 ||checkForTank1 >= 1) && checkForCommonAlarm >= 1 && checkForDeleted === -1  && categoryCitect < 4000  ){ // checkFor792 >= 0 && 
+        console.log(alarmTagCitect,nameOfAlarmCitect);
           tankSystemAlarmsPS.push(nameOfAlarmCitect);
           tankSystemAlarmNrPS.push(alarmTagCitect);
           //console.log(nameOfAlarmCitect)

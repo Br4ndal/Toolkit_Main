@@ -378,6 +378,7 @@ function DifferenceAlarmCitectToIoList(){
     XLSX.utils.book_append_sheet(newWB, ws, "Difference");
     XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Alarm_Difference_between_Citect_And_IOList.xlsx");
     console.log(`Completed`);
+    return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
 }
 
 
