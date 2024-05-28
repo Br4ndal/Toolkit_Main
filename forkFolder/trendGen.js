@@ -136,7 +136,7 @@ function trendGen(){
       const PumpNr = dataAI4[i][`PumpNr`];
       if (PumpNr !=  undefined){
         pumpNames.push(TagRef)
-        i < 9 ?  pumpTagName.push(`Pump00${i+1}_FBK`)  : pumpTagName.push(`Pump0${i+1}_FBK`) ;
+        i < 9 ?  pumpTagName.push(`Pump00${i+1}_FBK1`)  : pumpTagName.push(`Pump0${i+1}_FBK1`) ;
       }
     }
 

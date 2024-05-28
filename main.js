@@ -10,7 +10,7 @@ console.log(dialog.showOpenDialog);
 
 //process.env.NODE_ENV = "production"
 const isMac =process.platform === "darwin"
-const isDev = process.env.NODE_ENV // !== "production"  // this is to add console to the runable file
+const isDev = process.env.NODE_ENV  !== "production"  // this is to add console to the runable file
 
 console.log(process.env.NODE_ENV )
 setTimeout(() => {
@@ -76,38 +76,38 @@ app.whenReady().then(()=>{
 })
 
 
-//menu template SJÅ PÅ DETTE SEINARE!!!!
-const menu = [
-  ...(isMac ? [{
-    label: app.name,
-    submenu:[{
-      label:"About"
-    }]
-  }]:[
+// //menu template SJÅ PÅ DETTE SEINARE!!!!
+// const menu = [
+//   ...(isMac ? [{
+//     label: app.name,
+//     submenu:[{
+//       label:"About"
+//     }]
+//   }]:[
 
-  ]),
-  {
-  label: "FilesS",
-  submenu:[{
-    label: "Quit",
-    click: ()=> app.quit(),
-    accelerator: "CTRL+W"
-  },...(!isMac?[{
-    label:"Help",
-    submenu:[{
-      label:"about",
-      click: createAboutWindow,
-    }]
-  }]:[])
-]
+//   ]),
+//   {
+//   label: "FilesS",
+//   submenu:[{
+//     label: "Quit",
+//     click: ()=> app.quit(),
+//     accelerator: "CTRL+W"
+//   },...(!isMac?[{
+//     label:"Help",
+//     submenu:[{
+//       label:"about",
+//       click: createAboutWindow,
+//     }]
+//   }]:[])
+// ]
   
-}
-]
+// }
+// ]
 
-app.on("window-all-closed",()=>{
-  if(!isMac){
-    app.quit();
-  }
-})
+// app.on("window-all-closed",()=>{
+//   if(!isMac){
+//     app.quit();
+//   }
+// })
 
 /*New Update Available*/

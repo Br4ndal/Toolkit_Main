@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <link href="../Style/general.css" rel="stylesheet" />
+    <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
+    <link href="../Style/styleheader.css" rel="stylesheet" />
+    <script src="../websitecode/tankCalibration.js" defer></script>
+
+
+    <title>Tank Calibration</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home </a></li>
+                <li><a href="calcWeb.html">Address Calculator</a></li>
+                <li>
+                    <a href="CabinetCalc.html">Cabinet Calculator </a>
+                </li>
+                <li><a href="calcValv.html">Valve Calculator</a></li>
+                <li><a href="wagoModules.html">Wago Modules</a></li>
+                <li><a href="AlarmLink.html">Files Generator</a></li>
+                <li><a class="active" href="tankCali.html">Tank Calibration </a></li>
+                <!-- <li><a href="tankDesc.html">Tank Description</a></li> -->
+
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <center>
+        <h2> Sensor range 0 to XX barg(Gauge Pressure) </h2>
+    </center>
+
+    <div class="standardFrame">
+        <div class="outputAC2"> Enter the max barg of the sensor :
+            <input class="inputText3" id="textinputSensorRange" placeholder="Max value " maxlength="4" />
+
+            <br>
+            Enter the sensor value in mA :
+            <input class="inputText3" id="textinputNumberbarg" placeholder="Sensor Value" maxlength="4" />
+        </div>
+
+
+        <br>
+        <div class="eq-c">
+            Formula =
+            <div class="fraction">
+                <span class="fup">
+                    <div data-current-waterMeter class="current-operand3"> (sensor Value mA - 4 mA )* meter
+                        water</div>
+                </span>
+                <span class="bar">/</span>
+                <span class="fdn">16 mA</span>
+            </div>
+            <span data-current-5barg class="current-operand2">
+                = x.x m
+            </span>
+
+        </div>
+
+        <br>
+        <div class="outputAC2">
+            <button data-all-clearTank class="span-two2">C</button>
+            <button class="btn1 btn--send" class="grap2">Calculate</button>
+        </div>
+
+        <br>
+
+    </div>
+
+
+
+</body>
+
+</html>

@@ -24,3 +24,6 @@ lager nytt program for å kjøre exe file.
 
 to make autoupdate file for windows 32 bit 
   npm run dist --ia32 
+
+Running program from terminal
+  npx electronmon .          

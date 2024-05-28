@@ -1,7 +1,7 @@
 {
   "name": "toolkit-main",
   "productName": "IAS-Toolkit",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "Electron-Project",
   "main": "main.js",
   "scripts": {
