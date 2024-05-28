@@ -42,11 +42,11 @@
 
     <div class="standardFrame">
         <div class="outputAC2"> Enter the max barg of the sensor :
-            <input class="inputText3" id="textinputSensorRange" placeholder="Max value " maxlength="4" />
-
+            <input class="inputText2" id="textinputSensorRange" placeholder="Max value " maxlength="4" />
             <br>
-            Enter the sensor value in mA :
-            <input class="inputText3" id="textinputNumberbarg" placeholder="Sensor Value" maxlength="4" />
+
+            Enter current sensor value in mA :
+            <input class="inputText2" id="textinputNumberbarg" placeholder="Sensor Value" maxlength="4" />
         </div>
 
 
@@ -55,7 +55,7 @@
             Formula =
             <div class="fraction">
                 <span class="fup">
-                    <div data-current-waterMeter class="current-operand3"> (sensor Value mA - 4 mA )* meter
+                    <div data-current-waterMeter class="current-operand3"> (sensor Value mA - 4 mA ) * meter
                         water</div>
                 </span>
                 <span class="bar">/</span>
@@ -76,8 +76,29 @@
         <br>
 
     </div>
+    <center>
+        <h2> Tank tabel </h2>
+    </center>
+    <br>
+    <div class="standardFrame">
+        <div class="outputAC2"> Enter tank number :
+            <input class="inputText2" id="textinputTankNumber" placeholder="Tank Nr." maxlength="2" />
+            <div data-current-errorTank class="current-operand4"> </div>
+            <center>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="180px"> Height </th>
+                            <th width="180px"> Trim 0 </th>
+                        </tr>
 
-
+                    </thead>
+                    <tbody id="data-output">
+                        <!-- JSON data will be displayed here -->
+                    </tbody>
+                </table>
+            </center>
+        </div>
 
 </body>
 
