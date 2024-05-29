@@ -5,42 +5,47 @@ TODO:
 */
 function getData(tankNumber, sensorVal, sensorRangeC) {
 
+    //formulla to calculate the height of the tank, needed so i can mark the field green below
     let meterWater = sensorRangeC * 10.1972;
     let hightTank = ((sensorVal - 4) * meterWater) / 16;
     let compareHightTank = hightTank.toFixed(1)
 
-    currentOperandTextErrorText.textContent = ""
+    currentOperandTextErrorText.textContent = "" // sending  error text to empty
+
+    // manipulating the tank numbers so dont neeed to write 0 before 1
     let newTankNumber;
     if (tankNumber >= 10) {
         newTankNumber = tankNumber
     } else {
         newTankNumber = `0${tankNumber}`
     }
+    //function for getting the tank table, and putting in the DOM
     fetch(`C:/Work/- AutoScript/IASProject/Json_files/t${newTankNumber}.json`) //
         .then(response => response.json())
         .then(data => {
             let outputJson = '';
             let placeholder = document.querySelector("#data-output")
             let i = 0;
+            let tempVarHeight;
             for (let product of data) {
+                tempVarHeight = (parseFloat(product.H)).toFixed(1)
 
                 i++;
                 if (i == 1) {
                     console.log("Skipped");
-                } else if (product.H != compareHightTank) {
-                    console.log(typeof (product.H), product.H, typeof (compareHightTank), compareHightTank);
+                } else if (tempVarHeight != compareHightTank) {
+                    //console.log(typeof (product.H), product.H, typeof (compareHightTank), compareHightTank);
                     outputJson += `
                     <tr>
-                        <td> ${product.H} m</td>
+                        <td> ${tempVarHeight} m</td>
                         <td > ${product.VNET} m3 </td>
                     </tr>
                 `;
-                } else if (product.H === compareHightTank) {
-                    console.log(`found it  ${product.H} m`);
-
+                } else if (tempVarHeight === compareHightTank) {
+                    //console.log(`found it  ${product.H} m`);
                     outputJson += `
                     <tr>
-                        <td bgcolor="green"> ${product.H} m</td>
+                        <td bgcolor="green"> ${tempVarHeight} m</td>
                         <td bgcolor="green"> ${product.VNET} m3 </td>
                     </tr>
                 `;
@@ -51,7 +56,7 @@ function getData(tankNumber, sensorVal, sensorRangeC) {
             currentOperandTextErrorText.textContent = `Tank file shown : t${newTankNumber} `
         })
 
-        .catch(error => {
+        .catch(error => { // error message if it fails to OPEN or find the tank file.
             if (error) {
                 console.error("Error fetching JSON data:", error)
                 currentOperandTextErrorText.textContent = `Error message :  ${error}`;
@@ -62,14 +67,14 @@ function getData(tankNumber, sensorVal, sensorRangeC) {
 
 
 }
-
+// function to add the  meter water to the formula in the dom.
 function materWater(sensorRangeC, sensorVal) {
     let meterWater = sensorRangeC * 10.1972;
 
     return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(3)}`
 
 }
-
+// calculates the height of the sensor. 
 function tankCal5barg(sensorVal, sensorRangeC) {
     if (sensorVal > 20 || sensorVal < 4) {
         return currentOperandTextElement2.textContent = "Invalied  sensor data";
