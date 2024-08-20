@@ -193,48 +193,48 @@ function trendGen(){
     //console.log(tempStorageB);
 
     //columA1 = [almNr,mainVariable,tempStorageA]
-    let columA1=almNr.concat(tempStorageB,tankTagName,pumpTagName,bilgeAlmSfi)
+    let columA1= ["Tag Name"].concat( almNr,tempStorageB,tankTagName,pumpTagName,bilgeAlmSfi)
 
-    let columB1 = []
-    let columC1 = []
-    let columD1 = almNrVal.concat(tempStorageC,tankTagName,pumpTagName,bilgeAlmSfi)
-    let columE1 = [] // Need to make better
-    let columF1 = combiSfiName.concat(tempStorageC,tankNames,pumpNames,bilgeAlmName)
-    let columG1 = []
-    let columH1 = []
-    let columI1 = []
-    let columJ1 = []
-    let columK1 = []
-    let columL1 = [] // NEED TO FIX 
+    let columB1 = ["Cluster",]
+    let columC1 = ["Type",]
+    let columD1 = ["Expression"].concat(almNrVal,tempStorageC,tankTagName,pumpTagName,bilgeAlmSfi)
+    let columE1 = ["Sample Time",] // Need to make better
+    let columF1 = ["Comment"].concat(combiSfiName,tempStorageC,tankNames,pumpNames,bilgeAlmName)
+    let columG1 = ["",]
+    let columH1 = ["No. Files",]
+    let columI1 = ["Periode",]
+    let columJ1 = ["Time",]
+    let columL1 = ["Storage Method",]
+    let columM1 = ["Project",] // NEED TO FIX 
 
 
     for(let i =0; i < columA1.length - tankTagName.length - pumpNames.length - bilgeAlmName.length ;i++){
     columB1.push("IAS")
     columC1.push("TRN_PERIODIC")
-    columK1.push("Floating Point (8-byte samples)")
+    columL1.push("Floating Point (8-byte samples)")
     columI1.push("1st")
     columH1.push("2")
     columE1.push("00:00:01")
-    columL1.push(`NB${input.toUpperCase()}`)
+    columM1.push(`NB${input.toUpperCase()}`)
 
     }
     for(let i =0; i < tankTagName.length ;i++){
       columB1.push("IAS")
       columC1.push("TRN_PERIODIC")
-      columK1.push("Floating Point (8-byte samples)")
+      columL1.push("Floating Point (8-byte samples)")
       columI1.push("1st")
       columH1.push("2")
       columE1.push("00:00:10")
-      columL1.push(`NB${input.toUpperCase()}`)
+      columM1.push(`NB${input.toUpperCase()}`)
     }
     for(let i =0; i < pumpNames.length + bilgeAlmName.length ;i++){
       columB1.push("IAS")
       columC1.push("TRN_PERIODIC")
-      columK1.push("Scaled (2-byte samples)") // this can be changed......
+      columL1.push("Scaled (2-byte samples)") // this can be changed......
       columI1.push("1st")
       columH1.push("2")
       columE1.push("00:00:10")
-      columL1.push(`NB${input.toUpperCase()}`)
+      columM1.push(`NB${input.toUpperCase()}`)
     }
     let ws = XLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(columA1), {origin: "A1" }); // Name of tag 
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columB1), {origin: "B1" }); // IAS
@@ -246,9 +246,9 @@ function trendGen(){
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columH1), {origin: "H1" }); // How long should trends be saved 
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columI1), {origin: "I1" }); //FROM THE DATE THAT IT START LOGG 
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "J1" }); //low scale 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "K1" }); //High Scale 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columK1), {origin: "L1" }); // size og the trend
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columL1), {origin: "M1" }); // PROJECT NAME 
+    //XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "K1" }); //High Scale 
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columL1), {origin: "L1" }); // size og the trend
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columM1), {origin: "M1" }); // PROJECT NAME 
 
     
     // XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(bilgeAlmSfi), {origin: "O1" }); // PROJECT NAME 

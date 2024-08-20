@@ -97,6 +97,7 @@ function tankdescMaking(){
           
           let combinedStringPS = `${newStringPS[2] ? newStringPS[2] : ""} ${newStringPS[3]} ${newStringPS[4]} ${newStringPS[5]} ${newStringPS[6]} ${newStringPS[7]? newStringPS[7] : ""} ${newStringPS[8] ? newStringPS[8] : ""} ${newStringPS[9] ? newStringPS[9] : ""} ${newStringPS[10] ? newStringPS[10] : "" } ${newStringPS[11] ? newStringPS[11] : ""}`
           
+          
           tankIoListPS.push(combinedStringPS);
       } else if( isaTag == "LI1" && node == "Contr02Stbd" && systemName === "Sounding") { // systemName == "Sounding" &&    // systemName == "SOUND" &&
           let newStringSB =signalDesc.split(" ")

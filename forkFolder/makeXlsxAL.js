@@ -12,7 +12,7 @@ self.addEventListener("message", function (e) {
   //tankdescMaking()
   this.self.postMessage(autoAlarmLinkFunction())
 })
-// autoAlarmLinkFunction()
+//autoAlarmLinkFunction()
 function autoAlarmLinkFunction() {
   /*------------------- VARIABLES USED IN PROGRAM TO STORE------------------*/
 
@@ -40,7 +40,7 @@ function autoAlarmLinkFunction() {
   let content = fs.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/PumpSetup.json", 'utf-8');
   const data = JSON.parse(content);
 
-
+console.log(content);
   let pumpTagPS = [];
   let pumpTagSB = [];
 
@@ -84,8 +84,8 @@ function autoAlarmLinkFunction() {
 
   // chi.pro.fork("makeXlsxAL.js", [testArray], {cwd: "forkFolder/"})
   // return console.log("completed");
-  let TagRefArrayCombined = []//pumpTagPS.concat(pumpTagSB);
-  let combinedArraypumpAlarm = []//pumpAlarmsPS.concat(pumpAlarmsSB);
+  let TagRefArrayCombined = pumpTagPS.concat(pumpTagSB); //[]//
+  let combinedArraypumpAlarm = pumpAlarmsPS.concat(pumpAlarmsSB); //[]//
   console.log("PUMP SFI");
   console.log(TagRefArrayCombined)
 
