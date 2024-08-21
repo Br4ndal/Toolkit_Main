@@ -110,7 +110,7 @@ function trendGen(){
 
     let tankNames = [];
     let tankTagName = [];
-    for(let i=0; i <dataAI3.length-1 ; i++){
+    for(let i=0; i <dataAI3.length ; i++){
       const TankDescription=  dataAI3[i][`TankDescription`];
       const TankSide = dataAI3[i][`TankSide`];
       if (TankDescription !=  undefined && dataAI3.length > 100 && TankSide =="PS"){
@@ -131,12 +131,13 @@ function trendGen(){
     let pumpNames = [];
     let pumpTagName = [];
 
-    for(let i=0; i <dataAI4.length-1 ; i++){
+    for(let i=0; i <dataAI4.length ; i++){
       const TagRef=  dataAI4[i][`TagRef`];
       const PumpNr = dataAI4[i][`PumpNr`];
+      //console.log(PumpNr);
       if (PumpNr !=  undefined){
         pumpNames.push(TagRef)
-        i < 9 ?  pumpTagName.push(`Pump00${i+1}_FBK1`)  : pumpTagName.push(`Pump0${i+1}_FBK1`) ;
+        PumpNr < 9 ?  pumpTagName.push(`Pump00${PumpNr}_FBK1`)  : pumpTagName.push(`Pump0${PumpNr}_FBK1`) ;
       }
     }
 
@@ -152,7 +153,7 @@ function trendGen(){
 
     let newArrayOfFilesNot = []
 
-    for(let i = 0;i < markers.length;i++){
+    for(let i = 0;i < markers.length ;i++){
     let tempVal = (markers[i].toUpperCase()).split("/",7)
     
     let testForSubStrAlarms = tempVal[6].indexOf("ALARMS");
@@ -208,7 +209,7 @@ function trendGen(){
     let columM1 = ["Project",] // NEED TO FIX 
 
 
-    for(let i =0; i < columA1.length - tankTagName.length - pumpNames.length - bilgeAlmName.length ;i++){
+    for(let i =0; i < columA1.length - tankTagName.length - pumpNames.length - bilgeAlmName.length  ;i++){
     columB1.push("IAS")
     columC1.push("TRN_PERIODIC")
     columL1.push("Floating Point (8-byte samples)")
@@ -227,7 +228,7 @@ function trendGen(){
       columE1.push("00:00:10")
       columM1.push(`NB${input.toUpperCase()}`)
     }
-    for(let i =0; i < pumpNames.length + bilgeAlmName.length ;i++){
+    for(let i =0; i < pumpNames.length + bilgeAlmName.length -1 ;i++){
       columB1.push("IAS")
       columC1.push("TRN_PERIODIC")
       columL1.push("Scaled (2-byte samples)") // this can be changed......
@@ -243,12 +244,12 @@ function trendGen(){
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columE1), {origin: "E1" }); // TIME each of each trend 
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columF1), {origin: "F1" }); //Name of trend
     XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columG1), {origin: "G1" }); //Empty colum 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columH1), {origin: "H1" }); // How long should trends be saved 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columI1), {origin: "I1" }); //FROM THE DATE THAT IT START LOGG 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "J1" }); //low scale 
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columH1), {origin: "G1" }); // How long should trends be saved 
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columI1), {origin: "H1" }); //FROM THE DATE THAT IT START LOGG 
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "I1" }); //low scale 
     //XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columJ1), {origin: "K1" }); //High Scale 
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columL1), {origin: "L1" }); // size og the trend
-    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columM1), {origin: "M1" }); // PROJECT NAME 
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columL1), {origin: "J1" }); // size og the trend
+    XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(columM1), {origin: "K1" }); // PROJECT NAME 
 
     
     // XLSX.utils.sheet_add_aoa(ws,arrayFliperRowtoColumn(bilgeAlmSfi), {origin: "O1" }); // PROJECT NAME 

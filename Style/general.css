@@ -55,7 +55,15 @@
 }
 
 
-
+.b {
+    font-weight: bold;
+    font-weight: 900;
+  }
+  .lowertext{
+    position: relative;
+    
+    top: 7px;
+  }
 
 
 .fraction {
@@ -67,6 +75,7 @@
     &>span {
         display: block;
         padding-top: 0.15em;
+        padding-bottom: 0.25em;
     }
 
     & span {

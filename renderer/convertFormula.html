@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <link href="../Style/general.css" rel="stylesheet" />
+    <link href="../Style/styleAddressCalc.css" rel="stylesheet" />
+    <link href="../Style/styleheader.css" rel="stylesheet" />
+    <script src="../websitecode/convertFormula.js" defer></script>
+
+
+    <title>Tank Calibration</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home </a></li>
+                <li><a href="calcWeb.html">Address Calculator</a></li>
+                <li>
+                    <a href="CabinetCalc.html">Cabinet Calculator </a>
+                </li>
+                <li><a href="calcValv.html">Valve Calculator</a></li>
+                <li><a class="active" href="convertFormula.html">Scaling Calculators </a></li>
+                <li><a href="wagoModules.html">Wago Modules</a></li>
+                <li><a href="AlarmLink.html">Files Generator</a></li>
+                <li><a  href="tankCali.html">Tank Calibration </a></li>
+                
+                <!-- <li><a href="tankDesc.html">Tank Description</a></li> -->
+
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <center>
+        <h2> Converting input raw value to mA  </h2>
+    </center>
+    <center>
+    <div class="eq-c">
+        I =
+        <div class="fraction">
+            <span class="fup">
+                <div class="current-operand3"> I<b class=lowertext>high</b> - I<b class=lowertext>low</b></div>
+            </span>
+            <span class="bar">/</span>
+            <span class="fdn">P<b class=lowertext>high</b> - P<b class=lowertext>low</b></span>
+        </div>
+        *(P<b class=lowertext>raw input</b> - P<b class=lowertext>low</b>) + I<b class=lowertext>low</b>
+
+
+    </div>
+</center>
+<br>
+
+    <div class="standardFrame">
+        
+        <div class="outputAC2"> Enter raw input value :
+            <input class="inputText2" id="textinputRawValue" placeholder="Raw value " maxlength="5" />
+        </div>
+
+        <div class="eq-c">
+            I =
+            <div class="fraction">
+                <span class="fup">
+                    <div class="current-operand3"> 20 - 4</div>
+                </span>
+                <span class="bar">/</span>
+                <span class="fdn">32767 - 0</span>
+            </div>
+            *(P<b class=lowertext>raw input</b> -  0) + 4
+            <span data-valuemA class="current-operand2">
+                = x.x mA
+            </span>
+
+        </div>
+
+        <br>
+        <div class="outputAC2">
+            <button data-all-clearTank class="span-two2">C</button>
+            <button class="btn1 btn--send" class="grap2">Calculate</button>
+        </div>
+
+        
+
+    </div>
+    <center>
+        <h2> Converting mA to physical value </h2>
+    </center>
+    <center>
+
+        <div class="eq-c">
+            P =
+            <div class="fraction">
+                <span class="fup">
+                    <div class="current-operand3"> P<b class=lowertext>high</b> - P<b class=lowertext>low</b></div>
+                </span>
+                <span class="bar">/</span>
+                <span class="fdn">I<b class=lowertext>high</b> - I<b class=lowertext>low</b></span>
+            </div>
+            *(I<b class=lowertext>raw input</b> - I<b class=lowertext>low</b>) + P<b class=lowertext>low</b>
+
+        </div>
+    </center>
+    <br>
+    <div class="standardFrame">
+        <div class="outputAC2"> Enter mA value :
+            <input class="inputText2" id="textinputmA" placeholder="mA value " maxlength="4" />
+            <br>
+        </div>
+        <div class="eq-c">
+            P =
+            <div class="fraction">
+                <span class="fup">
+                    <div class="current-operand3"> 32767 - 0 </div>
+                </span>
+                <span class="bar">/</span>
+                <span class="fdn">20 - 4</span>
+            </div>
+            *(I<b class=lowertext>raw input</b> - 4 ) + 0
+            <span data-valueRaw class="current-operand2">
+                = xxxx 
+            </span>
+
+        </div>
+
+        <br>
+        <div class="outputAC2">
+            <button data-all-clearTank class="span-two2">C</button>
+            <button class="btn1 btn--send" class="grap2">Calculate</button>
+        </div>
+        <br>
+    </div>
+    <br>
+    <center>
+        <h2> Scaling Calc </h2>
+    </center>
+    <center>
+
+        <div class="eq-c">
+            P =
+            <div class="fraction">
+                <span class="fup">
+                    <div class="current-operand3"> P<b class=lowertext>high</b> - P<b class=lowertext>low</b></div>
+                </span>
+                <span class="bar">/</span>
+                <span class="fdn">I<b class=lowertext>high</b> - I<b class=lowertext>low</b></span>
+            </div>
+            *(I<b class=lowertext>raw input</b> - I<b class=lowertext>low</b>) + P<b class=lowertext>low</b>
+
+        </div>
+    </center>
+    <br>
+    <div class="standardFrame">
+        <div class="outputAC2"> input value :
+            <input class="inputText2" id="textinputValue" placeholder="Input value " maxlength="7" />
+          
+            <div class="outputAC2"> P<b class=lowertext>high</b>     :          
+                <input class="inputText2" id="textinputPhigh" placeholder="P high " maxlength="7" />
+            <div class="outputAC2"> P<b class=lowertext>low</b>      : 
+                <input class="inputText2" id="textinputPlow" placeholder="P low " maxlength="7" />
+            <div class="outputAC2"> I<b class=lowertext>high</b>     :          
+                <input class="inputText2" id="textinputIhigh" placeholder="I high " maxlength="7" />
+            <div class="outputAC2"> I<b class=lowertext>low</b>      :          
+                <input class="inputText2" id="textinputIlow" placeholder="I low " maxlength="7" />
+        </div>
+        
+        <div class="eq-c">
+            P =
+            <div class="fraction">
+                <span class="fup">
+                    <div data-Above class="current-operand3"> P<b class=lowertext>high</b> - P<b class=lowertext>low</b></div>
+                </span>
+                <span class="bar">/</span>
+                <span data-Low class="fdn">I<b class=lowertext>high</b> - I<b class=lowertext>low</b></span>
+            </div>
+            <span data-after>*(I<b class=lowertext>raw input</b> - I<b class=lowertext>low</b>) + P<b class=lowertext>low</b></span>
+
+
+            <span data-calcValue class="current-operand2">
+                = xxxx 
+            </span>
+
+        </div>
+
+        <br>
+        <div class="outputAC2">
+            <button data-all-clearTank class="span-two2">C</button>
+            <button class="btn1 btn--send" class="grap2">Calculate</button>
+        </div>
+    </div>
+<br>
+
+
+</body>
+
+</html>
