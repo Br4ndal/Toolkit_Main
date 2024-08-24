@@ -138,7 +138,7 @@
     </div>
     <br>
     <center>
-        <h2> Scaling Calc </h2>
+        <h2> Scaling Calculator </h2>
     </center>
     <center>
 
@@ -146,12 +146,12 @@
             P =
             <div class="fraction">
                 <span class="fup">
-                    <div class="current-operand3"> P<b class=lowertext>high</b> - P<b class=lowertext>low</b></div>
+                    <div  class="current-operand3"> MaxR - MinR</div>
                 </span>
                 <span class="bar">/</span>
-                <span class="fdn">I<b class=lowertext>high</b> - I<b class=lowertext>low</b></span>
+                <span  class="fdn">32767</span>
             </div>
-            *(I<b class=lowertext>raw input</b> - I<b class=lowertext>low</b>) + P<b class=lowertext>low</b>
+            <span >(InputValue - 0) * minR</span>
 
         </div>
     </center>
@@ -159,27 +159,23 @@
     <div class="standardFrame">
         <div class="outputAC2"> input value :
             <input class="inputText2" id="textinputValue" placeholder="Input value " maxlength="7" />
-          
             <div class="outputAC2"> P<b class=lowertext>high</b>     :          
-                <input class="inputText2" id="textinputPhigh" placeholder="P high " maxlength="7" />
+                <input class="inputText2" id="textinputMaxR" placeholder="Max R " maxlength="7" />
             <div class="outputAC2"> P<b class=lowertext>low</b>      : 
-                <input class="inputText2" id="textinputPlow" placeholder="P low " maxlength="7" />
-            <div class="outputAC2"> I<b class=lowertext>high</b>     :          
-                <input class="inputText2" id="textinputIhigh" placeholder="I high " maxlength="7" />
-            <div class="outputAC2"> I<b class=lowertext>low</b>      :          
-                <input class="inputText2" id="textinputIlow" placeholder="I low " maxlength="7" />
+                <input class="inputText2" id="textinputMinR" placeholder="Min R " maxlength="7" />
+           
         </div>
         
         <div class="eq-c">
             P =
             <div class="fraction">
                 <span class="fup">
-                    <div data-Above class="current-operand3"> P<b class=lowertext>high</b> - P<b class=lowertext>low</b></div>
+                    <div data-Above class="current-operand3"> MaxR - MinR</div>
                 </span>
                 <span class="bar">/</span>
-                <span data-Low class="fdn">I<b class=lowertext>high</b> - I<b class=lowertext>low</b></span>
+                <span data-Low class="fdn">32767</span>
             </div>
-            <span data-after>*(I<b class=lowertext>raw input</b> - I<b class=lowertext>low</b>) + P<b class=lowertext>low</b></span>
+            <span data-after>(InputValue - 0) * minR</span>
 
 
             <span data-calcValue class="current-operand2">

@@ -25,16 +25,16 @@ function mAToRaw(inputmA){
 
 }
 //freeCalc(textinputValue.value,textinputPhigh.value,textinputPlow.value,textinputIhigh.value,textinputIlow.value )
-function freeCalc(inputValue,Phigh,Plow,Ihigh,ilow){
-    parseInt(inputValue),parseInt(Phigh),parseInt(Plow),parseInt(Ihigh),parseInt(ilow)
+function freeCalc(inputValue,MaxR,MinR){
+    parseInt(inputValue),parseInt(MaxR),parseInt(MinR)
 
-    let value;
-    value = ((parseInt(Phigh)-parseInt(Plow))/(parseInt(Ihigh)-parseInt(ilow))) * ((parseInt(inputValue)-parseInt(ilow)) + parseInt(Plow))
+    let value; 
+    value = ((parseInt(MaxR) - parseInt(MinR))/ 32767)* (parseInt(inputValue)-0) +parseInt(MinR)
    
     
-    dataAbove.textContent = `${Phigh} - ${Plow} `
-    dataLow.textContent = `${Ihigh} - ${ilow} `
-    dataAfter.textContent =`* ${inputValue} - ${ilow} +${Plow} `
+    dataAbove.textContent = `${MaxR} - ${MinR} `
+    dataLow.textContent = `32767 `
+    dataAfter.textContent =`${inputValue} - ${0} + MinR`
     dataCalcValue.textContent = `= ${value}`   
 }
 
@@ -57,10 +57,9 @@ const dataValueRaw = document.querySelector(
 
 //variables for the freecalc function 
 const textinputValue = document.getElementById("textinputValue")
-const textinputPhigh = document.getElementById("textinputPhigh")
-const textinputPlow = document.getElementById("textinputPlow")
-const textinputIhigh = document.getElementById("textinputIhigh")
-const textinputIlow = document.getElementById("textinputIlow")
+const textinputMaxR = document.getElementById("textinputMaxR")
+const textinputMinR = document.getElementById("textinputMinR")
+
 
 const dataAbove= document.querySelector(
     "[data-Above]"
@@ -79,25 +78,21 @@ const dataCalcValue= document.querySelector(
 
 
 
-
-
-
-
 btnSend.addEventListener("click", function () {
 
     let inputRawValueC = inputRawValue.value
     let inputmAC = inputmA.value
-    // let textinputValueC = 16//textinputValue.value
-    // let textinputPhighC =32767 //textinputPhigh.value
-    // let textinputPlowC =0 //textinputPlow.value
-    // let textinputIhighC =20 //textinputIhigh.value
-    // let textinputIlowC =4 //textinputIlow.value
+
+    let textinputValueC =  textinputValue.value
+    let textinputMaxRC =textinputMaxR.value
+    let textinputMinRC = textinputMinR.value
+
 
 
     //console.log(textinputValue.value,textinputPhigh.value,textinputPlow.value,textinputIhigh.value,textinputIlow.value);
     rawTomA(inputRawValueC)
     mAToRaw(inputmAC)
-    freeCalc(textinputValueC,textinputPhighC,textinputPlowC,textinputIhighC,textinputIlowC )
+    freeCalc(textinputValueC,textinputMaxRC,textinputMinRC )
 
 
 });
@@ -106,20 +101,15 @@ document.addEventListener(`keydown`, function (e) {
     if (e.key === "Enter") {
         let inputRawValueC = inputRawValue.value
         let inputmAC = inputmA.value
-        let textinputValueC = textinputValue.value
-        let textinputPhighC = textinputPhigh.value
-        let textinputPlowC = textinputPlow.value
-        let textinputIhighC = textinputIhigh.value
-        let textinputIlowC = textinputIlow.value
-        // let textinputValueC = 20//textinputValue.value
-        // let textinputPhighC =32767 //textinputPhigh.value
-        // let textinputPlowC =0 //textinputPlow.value
-        // let textinputIhighC =20 //textinputIhigh.value
-        // let textinputIlowC =4 //textinputIlow.value
+
+
+        let textinputValueC =  textinputValue.value
+        let textinputMaxRC = textinputMaxR.value
+        let textinputMinRC = textinputMinR.value
         rawTomA(inputRawValueC)
         mAToRaw(inputmAC)
-        
-        freeCalc(textinputValueC,textinputPhighC,textinputPlowC,textinputIhighC,textinputIlowC )
+        freeCalc(textinputValueC,textinputMaxRC,textinputMinRC )
+      
     }
 });
 
@@ -128,10 +118,9 @@ allClearButton2.addEventListener("click", (button) => {
     inputRawValue.value = "";
     inputmA.value = "";
     textinputValue.value = "";
-    textinputPhigh.value = "";
-    textinputPlow.value = "";
-    textinputIhigh.value = "";
-    textinputIlow.value = "";
+    textinputMaxR.value = "";
+    textinputMinR.value = "";
+
 
 
 });
@@ -141,10 +130,9 @@ document.addEventListener(`keydown`, function (e) {
         inputRawValue.value = "";
         inputmA.value = "";
         textinputValue.value = "";
-        textinputPhigh.value = "";
-        textinputPlow.value = "";
-        textinputIhigh.value = "";
-        textinputIlow.value = "";
+        textinputMaxR.value = "";
+        textinputMinR.value = "";
+
     }
 
 

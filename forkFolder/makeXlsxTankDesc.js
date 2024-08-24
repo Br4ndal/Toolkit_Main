@@ -43,21 +43,27 @@ function tankdescMaking(){
   let content= readingFile("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json")
   let data = JSON.parse(content);
   let shipTankNrArraySB = [];
-
+  let TagRefSB = [];
   for (const addres1 of data){
       let shipTankNr = addres1["ShipTankNr"];
       let tagRef = addres1["TagRef"];
-      if (tagRef !== undefined && shipTankNr < 1000) shipTankNrArraySB.push(shipTankNr);
+      if (tagRef !== undefined && shipTankNr < 1000){
+          shipTankNrArraySB.push(shipTankNr);
+          TagRefSB.push(`${tagRef}_LI1`)
+        } 
   }
 
   let content2 = readingFile("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupP.json")
   const data2 = JSON.parse(content2);
   let shipTankNrArrayPS = ["ShipTankNr",];
-
+  let TagRefPS = []
   for (const addres1 of data2 ){
       let shipTankNr = addres1["ShipTankNr"];
       let tagRef = addres1["TagRef"];
-      if (tagRef !== undefined && shipTankNr < 1000 && shipTankNr !== 0 ) shipTankNrArrayPS.push(shipTankNr);
+      if (tagRef !== undefined && shipTankNr < 1000 && shipTankNr !== 0 ){
+        shipTankNrArrayPS.push(shipTankNr);
+        TagRefPS.push(`${tagRef}_LI1`)
+      } 
   }
 
   for (let i = shipTankNrArrayPS.length;i <=100;i++ ){
@@ -91,21 +97,29 @@ function tankdescMaking(){
       let systemName = addres1[`System Name`];
       let signalDesc = addres1[`Signal Description`];
       let node = addres1[`Node`];
-      
-      if(isaTag === "LI1" && node === "Contr01Port" && systemName === "Sounding") { 
+      let tagName = addres1[`Tag Name`]
+      //console.log(tagName);
+      for (let i =0; i <= TagRefPS.length ;i++){
+        if(node === "Contr01Port" && systemName === "Sounding" && TagRefPS[i] ===tagName) { //isaTag === "LI1" &&
+          
           let newStringPS =signalDesc.split(" ")
           
-          let combinedStringPS = `${newStringPS[2] ? newStringPS[2] : ""} ${newStringPS[3]} ${newStringPS[4]} ${newStringPS[5]} ${newStringPS[6]} ${newStringPS[7]? newStringPS[7] : ""} ${newStringPS[8] ? newStringPS[8] : ""} ${newStringPS[9] ? newStringPS[9] : ""} ${newStringPS[10] ? newStringPS[10] : "" } ${newStringPS[11] ? newStringPS[11] : ""}`
-          
-          
+          let combinedStringPS = `${newStringPS[2] ? newStringPS[2] : ""} ${newStringPS[3]? newStringPS[3] : ""} ${newStringPS[4]? newStringPS[4] : ""} ${newStringPS[5]? newStringPS[5] : ""} ${newStringPS[6]? newStringPS[6] : ""} ${newStringPS[7]? newStringPS[7] : ""} ${newStringPS[8] ? newStringPS[8] : ""} ${newStringPS[9] ? newStringPS[9] : ""} ${newStringPS[10] ? newStringPS[10] : "" } ${newStringPS[11] ? newStringPS[11] : ""}`
+            
+          // console.log(combinedStringPS);
           tankIoListPS.push(combinedStringPS);
-      } else if( isaTag == "LI1" && node == "Contr02Stbd" && systemName === "Sounding") { // systemName == "Sounding" &&    // systemName == "SOUND" &&
+        }
+      }
+      for (let j =0; j<= TagRefSB.length;j++){
+        if(node == "Contr02Stbd" && systemName === "Sounding"&& TagRefSB[j] === tagName) { //  isaTag == "LI1" && systemName == "Sounding" &&    // systemName == "SOUND" &&
           let newStringSB =signalDesc.split(" ")
           
-          let combinedStringSB = `${newStringSB[2]} ${newStringSB[3]} ${newStringSB[4]} ${newStringSB[5]} ${newStringSB[6]} ${newStringSB[7] ? newStringSB[7] : ""} ${newStringSB[8] ? newStringSB[8] : ""} ${newStringSB[9] ? newStringSB[9] : ""} ${newStringSB[10] ? newStringSB[10] : "" } ${newStringSB[11] ? newStringSB[11] : ""}`
+          let combinedStringSB = `${newStringSB[2] ? newStringSB[2] : ""} ${newStringSB[3]? newStringSB[3] : ""} ${newStringSB[4]? newStringSB[4] : ""} ${newStringSB[5]? newStringSB[5] : ""} ${newStringSB[6]? newStringSB[6] : ""} ${newStringSB[7] ? newStringSB[7] : ""} ${newStringSB[8] ? newStringSB[8] : ""} ${newStringSB[9] ? newStringSB[9] : ""} ${newStringSB[10] ? newStringSB[10] : "" } ${newStringSB[11] ? newStringSB[11] : ""}`
           //console.log(combinedStringSB);
           tankIoListSB.push(combinedStringSB);
+        }
       }
+
   }
 
     // chi.pro.fork("makeXlsxTankDesc.js", [tankSidePS,tankSideSB,tankGrp,tankNrPS,tankNrSB,tankGrpnr,shipTankNrArrayPS,shipTankNrArraySB,tankIoListPS,tankIoListSB,tankgrpName,tankGrpSystems], {cwd: "forkFolder/"})
