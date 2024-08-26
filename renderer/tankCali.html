@@ -38,15 +38,20 @@
 
 
     <center>
-        <h2> Sensor range 0 to XX bar(Gauge Pressure) </h2>
-        <p>To convert from mmWG(millimetres water gauge) to bar formula is  <b class="b" > bar = mmWG/10197</b>   </p>
+        <h2> Calculating height of tank </h2>
+        <!--<p>To convert from mmWG(millimetres water gauge) to bar formula is  <b class="b" > bar = mmWG/10197</b>   </p> -->
         
     </center>
     
     <div class="standardFrame">
-        
-        <div class="outputAC2"> Enter the max bar of the sensor :
-            <input class="inputText2" id="textinputSensorRange" placeholder="Max value " maxlength="4" />
+        <form>
+            <label>
+              <input type="checkbox" id="checkboxSensorType" >
+              <span data-inputSensorType class="generalText1"> mmWG</span>
+            </label>
+          </form>
+        <div class="outputAC2"> Enter the max range of the sensor in <span data-inputSensorType2 > mmWG</span>  :
+            <input class="inputText2" id="textinputSensorRange" placeholder="Max value " maxlength="6" />
             <br>
 
             Enter current sensor value in mA :

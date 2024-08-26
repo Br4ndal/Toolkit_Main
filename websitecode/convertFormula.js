@@ -25,16 +25,16 @@ function mAToRaw(inputmA){
 
 }
 //freeCalc(textinputValue.value,textinputPhigh.value,textinputPlow.value,textinputIhigh.value,textinputIlow.value )
-function freeCalc(inputValue,MaxR,MinR){
+function freeCalc(inputValue,MaxR,MinR,MaxL,MinL){
     parseInt(inputValue),parseInt(MaxR),parseInt(MinR)
 
     let value; 
-    value = ((parseInt(MaxR) - parseInt(MinR))/ 32767)* (parseInt(inputValue)-0) +parseInt(MinR)
-   
+    //value = ((parseInt(MaxR) - parseInt(MinR))/ 32767-0)* (parseInt(inputValue)-0) +parseInt(MinR)
+    value = ( (parseInt(MaxR) - parseInt(MinR)) / parseInt(MaxL)-parseInt(MinL) )* (parseInt(inputValue)-parseInt(MinL)) + parseInt(MinR)
     
     dataAbove.textContent = `${MaxR} - ${MinR} `
     dataLow.textContent = `32767 `
-    dataAfter.textContent =`${inputValue} - ${0} + MinR`
+    dataAfter.textContent =`(${inputValue} - ${0}) * ${MinR}`
     dataCalcValue.textContent = `= ${value}`   
 }
 
@@ -59,7 +59,8 @@ const dataValueRaw = document.querySelector(
 const textinputValue = document.getElementById("textinputValue")
 const textinputMaxR = document.getElementById("textinputMaxR")
 const textinputMinR = document.getElementById("textinputMinR")
-
+const textinputMaxL = document.getElementById("textinputMaxL")
+const textinputMinL = document.getElementById("textinputMinL")
 
 const dataAbove= document.querySelector(
     "[data-Above]"
@@ -86,13 +87,14 @@ btnSend.addEventListener("click", function () {
     let textinputValueC =  textinputValue.value
     let textinputMaxRC =textinputMaxR.value
     let textinputMinRC = textinputMinR.value
-
+    let textinputMaxLC =textinputMaxL.value
+    let textinputMinLC = textinputMinL.value
 
 
     //console.log(textinputValue.value,textinputPhigh.value,textinputPlow.value,textinputIhigh.value,textinputIlow.value);
     rawTomA(inputRawValueC)
     mAToRaw(inputmAC)
-    freeCalc(textinputValueC,textinputMaxRC,textinputMinRC )
+    freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
 
 
 });
@@ -106,9 +108,14 @@ document.addEventListener(`keydown`, function (e) {
         let textinputValueC =  textinputValue.value
         let textinputMaxRC = textinputMaxR.value
         let textinputMinRC = textinputMinR.value
+        let textinputMaxLC =textinputMaxL.value
+        let textinputMinLC = textinputMinL.value
+    
+    
+        
         rawTomA(inputRawValueC)
         mAToRaw(inputmAC)
-        freeCalc(textinputValueC,textinputMaxRC,textinputMinRC )
+        freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
       
     }
 });

@@ -3,10 +3,13 @@
 TODO: 
 
 */
-function getData(tankNumber, sensorVal, sensorRangeC) {
+function getData(tankNumber, sensorVal, sensorRangeC,formula) {
 
     //formulla to calculate the height of the tank, needed so i can mark the field green below
-    let meterWater = sensorRangeC * 10.1972;
+    let meterWater
+    if(!formula) {meterWater = sensorRangeC/ 10000 * 10.1972} else {meterWater = sensorRangeC * 10.1972} //* 10.1972;
+    
+    
     let hightTank = ((sensorVal - 4) * meterWater) / 16;
     let compareHightTank = hightTank.toFixed(1)
 
@@ -68,35 +71,75 @@ function getData(tankNumber, sensorVal, sensorRangeC) {
 
 }
 // function to add the  meter water to the formula in the dom.
-function materWater(sensorRangeC, sensorVal) {
-    let meterWater = sensorRangeC * 10.1972;
+function materWater(sensorRangeC, sensorVal,formula) {
 
-    return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(3)}`
-
-}
-// calculates the height of the sensor. 
-function tankCal5barg(sensorVal, sensorRangeC) {
-    if (sensorVal > 20 || sensorVal < 4) {
-        return currentOperandTextElement2.textContent = "Invalied  sensor data";
+    let meterWater
+    if (!formula){
+        console.log("in mmWC",parseFloat(sensorRangeC)* 10.1972);
+        meterWater = parseFloat(sensorRangeC)/ 10000 * 10.1972 // * 10.1972;
+        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)}`//
+    } else {
+        console.log("in bar",parseFloat(sensorRangeC)* 10.1972);
+        meterWater = parseFloat(sensorRangeC) * 10.1972;
+        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)}`//
     }
 
 
-    let meterWater = sensorRangeC * 10.1972;
-    let hightTank = ((sensorVal - 4) * meterWater) / 16;
+}
+// calculates the height of the sensor. 
+function tankCal5barg(sensorVal, sensorRangeC,formula) {
+    if (sensorVal > 20 || sensorVal < 4) {
+        return currentOperandTextElement2.textContent = "Invalied  sensor data";
+    }
+    let meterWater
+    let hightTank
 
-    return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(2)} m`;
+    if (!formula){
+        meterWater= (parseFloat(sensorRangeC) / 10000 * 10.1972)   /// 10197) * 10.1972///10197 //);
+        
+        hightTank = ((parseFloat(sensorVal) - 4) * meterWater) / 16;
+    
+        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(2)} m`;
+    } else{
+        meterWater = parseFloat(sensorRangeC) * 10.1972///10197 //);
+        
+        hightTank = ((parseFloat(sensorVal) - 4) * meterWater) / 16;
+    
+        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(2)} m`;
+
+    }
+
 
 
 }
 
-
+let valueCheckBox =1;
+document.getElementById("checkboxSensorType").addEventListener("click", function(){ 
+    if (this.checked) {
+        console.log(document.getElementById("checkboxSensorType").checked);
+        textElementInputSensorType.textContent = "bar"
+        textElementInputSensorType2.textContent = "bar"
+    } else {
+        console.log(document.getElementById("checkboxSensorType").checked);
+        textElementInputSensorType.textContent = "mmWG"
+        textElementInputSensorType2.textContent = "mmWG"
+    }
+    
+ });
+ const textElementInputSensorType = document.querySelector(
+    "[data-inputSensorType]"
+);
+const textElementInputSensorType2 = document.querySelector(
+    "[data-inputSensorType2]"
+);
 
 const btnSend = document.querySelector(".btn--send");
 const textinputNumberInt = document.getElementById("textinputNumberbarg");
 const sensorRange = document.getElementById("textinputSensorRange");
 const tankNumber = document.getElementById("textinputTankNumber");
 const allClearButton2 = document.querySelector("[data-all-clearTank]");
-
+const inputSensorType = document.getElementById("inputSensorType");
+const checkboxSensorType1=  document.getElementById("checkboxSensorType");
 
 const currentOperandTextElement2 = document.querySelector(
     "[data-current-5barg]"
@@ -113,9 +156,12 @@ btnSend.addEventListener("click", function () {
     let textinputNumberIntC = textinputNumberInt.value;
     let sensorRangeC = sensorRange.value
     let tankNumberC = tankNumber.value
-    tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC);
-    materWater(sensorRangeC, textinputNumberIntC)
-    getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC)
+    let checkBoxValue = checkboxSensorType1.checked
+
+    console.log("value of box",checkBoxValue   );
+    tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC, checkBoxValue);
+    materWater(sensorRangeC, textinputNumberIntC,checkBoxValue);
+    getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue)
     // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
     //console.log(tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC));
 
@@ -126,10 +172,11 @@ document.addEventListener(`keydown`, function (e) {
         let textinputNumberIntC = textinputNumberInt.value;
         let sensorRangeC = sensorRange.value
         let tankNumberC = tankNumber.value
-        materWater(sensorRangeC, textinputNumberIntC)
-        getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC)
-        tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC); // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
-        console.log(parseFloat(textinputNumberIntC), sensorRangeC);
+        let checkBoxValue = checkboxSensorType1.checked
+        materWater(sensorRangeC, textinputNumberIntC,checkBoxValue)
+        getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue)
+        tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue); // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
+        //console.log(parseFloat(textinputNumberIntC), sensorRangeC);
 
     }
 });
