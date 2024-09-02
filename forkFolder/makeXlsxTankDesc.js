@@ -98,8 +98,8 @@ function tankdescMaking(){
       let signalDesc = addres1[`Signal Description`];
       let node = addres1[`Node`];
       let tagName = addres1[`Tag Name`]
-      //console.log(tagName);
-      for (let i =0; i <= TagRefPS.length ;i++){
+
+      for (let i =0; i <= TagRefPS.length ;i++){        
         if(node === "Contr01Port" && systemName === "Sounding" && TagRefPS[i] ===tagName) { //isaTag === "LI1" &&
           
           let newStringPS =signalDesc.split(" ")
