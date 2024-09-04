@@ -47,15 +47,19 @@
         <form>
             <label>
               <input type="checkbox" id="checkboxSensorType" >
-              <span data-inputSensorType class="generalText1"> mmWG</span>
+              <span data-inputSensorType class="generalText1"> mmWC, 1 bar = 10m</span>
             </label>
           </form>
-        <div class="outputAC2"> Enter the max range of the sensor in <span data-inputSensorType2 > mmWG</span>  :
-            <input class="inputText2" id="textinputSensorRange" placeholder="Max value " maxlength="6" />
+        <div class="outputAC2"> Enter the max range of the sensor in <span data-inputSensorType2 > mmWC</span>  :
+            <input class="inputText2" id="textinputSensorRange" placeholder="Sensor Range " maxlength="6" />
             <br>
 
             Enter current sensor value in mA :
             <input class="inputText2" id="textinputNumberbarg" placeholder="Sensor Value" maxlength="4" />
+
+            <br>
+            Enter current sensor height mm :
+            <input class="inputText2" id="textinputSensorMM" placeholder="Sensor Height" maxlength="4" />
         </div>
 
 
@@ -64,8 +68,8 @@
             Formula =
             <div class="fraction">
                 <span class="fup">
-                    <div data-current-waterMeter class="current-operand3"> (sensor Value mA - 4 mA ) * meter
-                        water</div>
+                    <div data-current-waterMeter class="current-operand3">( (sensor Value mA - 4 mA ) * meter
+                        water ) + sensor height</div>
                 </span>
                 <span class="bar">/</span>
                 <span class="fdn">16 mA</span>

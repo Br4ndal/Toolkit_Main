@@ -19,14 +19,17 @@ const btnDiffIoListVariable = document.querySelector(".btn--generatDiffIoListVar
 const btnAlmNotInMimic = document.querySelector(".btn--generatAlmNotInMimic");
 
 const btnAlarmLinker = document.querySelector(".btn--autoAlarmLinkFunction");
+const btnVarLinker = document.querySelector(".btn--autoVarLinkFunction");
 
 const completionTankDesc1 = document.getElementById("completionTankDesc");
+
 const completionDiffArdigIoList1 = document.getElementById("completionDiffArdigIoList");
 const completionTrend1 = document.getElementById("completionTrend");
 const completionDiffIoListArdig1 = document.getElementById("completionDiffIoListArdig");
 const completionDiffIoListVariable1 = document.getElementById("completionDiffIoListVariable");
 const programStart1 =document.getElementById("programstarted");
 
+const programStart2 =document.getElementById("programstarted2");
 const almNotInMimic1 =document.getElementById("almNotInMimic");
 
 
@@ -37,6 +40,8 @@ startingNewWorker(btnTankDesc,"Place wait, making tankdesc.csv .",completionTank
 
 //this is a function for the Alarm Linker
 startingNewWorker(btnAlarmLinker,"Please wait, making Alarm Link File.",programStart1,"makeXlsxAL.js");
+
+startingNewWorker(btnVarLinker,"Please wait, making Variable Link File.",programStart2,"makeXlsxVLink.js");
 
 //this is a function for checking the ardig file to the IO List
 startingNewWorker(btnDiffArdigIoList,"Place wait, Comparing Ardig file and IO List.",completionDiffArdigIoList1,"DifferenceAlarmCitectToIoList.js");

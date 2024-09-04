@@ -1,18 +1,15 @@
-
 "use strict";
-
 const XLSX = require("xlsx")
 const fs = require("fs")
 
-
-// self.addEventListener("message", function (e) {
-//   console.log("program started1 ", process.pid)
-//   let data = e.data
-//   console.log(data);
-//   //tankdescMaking()
-//   this.self.postMessage(autoVariableLinkFunction())
-// })
-autoVariableLinkFunction()
+self.addEventListener("message", function (e) {
+  console.log("program started1 ", process.pid)
+  let data = e.data
+  console.log(data);
+  //tankdescMaking()
+  this.self.postMessage(autoVariableLinkFunction())
+})
+//autoVariableLinkFunction()
 function autoVariableLinkFunction() {
   /*------------------- VARIABLES USED IN PROGRAM TO STORE------------------*/
 
@@ -41,27 +38,12 @@ function autoVariableLinkFunction() {
   for(let i=0; i< pumpConst1.length;i++){
     pumpFile.push(`${pumpConst1[i].TagRef}`)
   }
-  console.log(pumpFile);
-
-  //---------------------------- Getting tank sfi ----------------------------------
-  let tankContPS = fs.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupP.json", 'utf-8');
-  const tankContPS1 = JSON.parse(tankContPS);
-  let tankFilePS1 = []
-  for(let i = 0; i < tankContPS1.length; i++){
-    tankFilePS1.push(`${tankContPS1[i].TagRef}`)
-  }
-  let tankContSB = fs.readFileSync("C:/Work/- AutoScript/IASProject/Json_files/Tank300SetupS.json", 'utf-8');
-  const tankContSB1 = JSON.parse(tankContSB);
-  let tankFileSB1 = []
-  for(let i = 0; i < tankContSB1.length; i++){
-    tankFileSB1.push(`${tankContSB1[i].TagRef}`)
-  }
 
 
-  let TagRefArrayCombined = []//= pumpTagPS.concat(pumpTagSB,tankFilePS1); //[]//
-  let combinedArraypumpAlarm = []// = pumpAlarmsPS.concat(pumpAlarmsSB); //[]//,tankFileS1
-  // console.log("PUMP SFI");
-  // console.log(TagRefArrayCombined)
+  let tankSFI = [];
+  let TagRefArrayCombined = []
+  let combinedArraypumpAlarm = []
+
 
   // getting info from IO-list
   const workbook3 = XLSX.readFile(`C:/Work/- AutoScript/IASProject/IAS_CTRL_Common_Files/IO Liste.xlsx`); // ${input}
@@ -88,7 +70,7 @@ function autoVariableLinkFunction() {
     (tagName !== undefined) ? checkForcheckTagForV = stringifycheckTagForV.indexOf(TagForV): null ;
     
 
-    if (tagName !== undefined && SystemName !== undefined && alarmInfoUpper != "YES" && (tagXI !== "OPN" && tagXI !== "SRT")) { 
+    if (tagName !=="Tag Name" &&tagName !== undefined && SystemName !== undefined && alarmInfoUpper != "YES" && (tagXI !== "OPN" && tagXI !== "SRT"&& tagXI !== "LI1" )) { //
       allAlarms = allAlarms.concat(tagName)
     }
     
@@ -104,20 +86,21 @@ function autoVariableLinkFunction() {
       let resSRT = tagName.replace("_SRT","")
       tagSfi = tagSfi.concat(resSRT);
       allAlarms = allAlarms.concat(resSRT)
-    } else if (tagXI === "LI1"){
+    } 
+    else if (tagXI === "LI1"){
       let resLI1 = tagName.replace("_LI1","")
       tagSfi = tagSfi.concat(resLI1);
+      tankSFI = tankSFI.concat(resLI1)
       allAlarms = allAlarms.concat(resLI1)
       console.log(typeof(resLI1),tagName);
     }
-     else if (tagName !== undefined && SystemName !== undefined && alarmInfoUpper != "YES"  && tagXI !== "OPN" && tagXI !== "SRT") {
+     else if (tagName !=="Tag Name" && tagName !== undefined && SystemName !== undefined && alarmInfoUpper != "YES"  && tagXI !== "OPN" && tagXI !== "SRT") {
       tagSfi = tagSfi.concat(tagName);
     }
     
   }
 
-  arrayOfAlarmTagCitect = tagSfi.concat(tankFilePS1)//,tankFileS1
-
+  arrayOfAlarmTagCitect = tagSfi
 
   //her is the link for the main project.
   let pdgFile1 = pgdynobjFile1("C:/Work/- AutoScript/IASProject/Citect_Project/pgdynobj.dbf",)
@@ -298,19 +281,37 @@ function autoVariableLinkFunction() {
   for (let i = 0; i <= valveFile.length - 1; i++) {
     valveObj.push({ ID: valveFile[i], citectPage: dummyArray1[i] })
   }
-  //checking the arrayObj1 tp find if i have any valve matches and replace it with sfi +_CMD
+  let pumpObj = [];
+  //making an object  with the valveFile array
+  for (let i = 0; i <= pumpFile.length - 1; i++) {
+    pumpObj.push({ ID: pumpFile[i], citectPage: dummyArray1[i] })
+  }
+  let tankObj = [];
+  //making an object  with the valveFile array
+  for (let i = 0; i <= tankSFI.length - 1; i++) {
+    tankObj.push({ ID: tankSFI[i], citectPage: dummyArray1[i] })
+  }
+  //checking the arrayObj1 to find if i have any values that matches and replace it with sfi + _XXX
   arrayObj1.forEach(e => {
     let idx1 = valveObj.findIndex(u => u.ID == e.ID);
     if (idx1 >= 0) {
       e.ID = `${valveObj[idx1].ID}_CMD`;
     }
+    let idx2 = pumpObj.findIndex(u => u.ID == e.ID);
+    if (idx2 >= 0){
+      e.ID = `${pumpObj[idx2].ID}_STR`;
+    }
+    let idx3 = tankObj.findIndex(u => u.ID == e.ID);
+    if (idx3 >= 0){
+      e.ID = `${tankObj[idx3].ID}_LI1`;
+    }
   });
 
-  let newFinalArrayAlmNr = [];
-  let newFianlArrayPage = [];
+  let newFinalArrayAlmNr = ["SFINAME"];
+  let newFianlArrayPage = ["PAGENAME"];
 
   for (let i = 0; i <= arrayObj1.length; i++) {
-    if (arrayObj1[i] != undefined) {
+    if (arrayObj1[i] != undefined && arrayObj1[i].citectPage != ""  ) {
       newFinalArrayAlmNr = newFinalArrayAlmNr.concat(arrayObj1[i].ID);
       newFianlArrayPage = newFianlArrayPage.concat(arrayObj1[i].citectPage);
     }
@@ -326,15 +327,15 @@ function autoVariableLinkFunction() {
   }
 
 
+
   let ws = XLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(newFinalArrayAlmNr), { origin: "A1" });
   XLSX.utils.sheet_add_aoa(ws, arrayFliperRowtoColumn(newFianlArrayPage), { origin: "B1" });
-  XLSX.utils.sheet_add_aoa(ws, arrayFliperRowtoColumn(alarmSeveralPages), { origin: "D1" });
-  XLSX.utils.sheet_add_aoa(ws, arrayFliperRowtoColumn(pageDifference), { origin: "C1" });
+ 
 
   const newWB = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(newWB, ws, "Citet_VariableLink");
+  XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/varLink.dbf"); // make CSV instead
 
-  XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/Citect_Variable_Link.xlsx");
   return "File completed find file her : C:/Work/- AutoScript/- Files AutoGen"
 
 }

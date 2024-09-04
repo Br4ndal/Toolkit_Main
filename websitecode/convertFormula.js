@@ -84,17 +84,17 @@ btnSend.addEventListener("click", function () {
     let inputRawValueC = inputRawValue.value
     let inputmAC = inputmA.value
 
-    let textinputValueC =  textinputValue.value
-    let textinputMaxRC =textinputMaxR.value
-    let textinputMinRC = textinputMinR.value
-    let textinputMaxLC =textinputMaxL.value
-    let textinputMinLC = textinputMinL.value
+    // let textinputValueC =  textinputValue.value
+    // let textinputMaxRC =textinputMaxR.value
+    // let textinputMinRC = textinputMinR.value
+    // let textinputMaxLC =textinputMaxL.value
+    // let textinputMinLC = textinputMinL.value
 
 
     //console.log(textinputValue.value,textinputPhigh.value,textinputPlow.value,textinputIhigh.value,textinputIlow.value);
     rawTomA(inputRawValueC)
     mAToRaw(inputmAC)
-    freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
+    //freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
 
 
 });
@@ -105,17 +105,17 @@ document.addEventListener(`keydown`, function (e) {
         let inputmAC = inputmA.value
 
 
-        let textinputValueC =  textinputValue.value
-        let textinputMaxRC = textinputMaxR.value
-        let textinputMinRC = textinputMinR.value
-        let textinputMaxLC =textinputMaxL.value
-        let textinputMinLC = textinputMinL.value
+        // let textinputValueC =  textinputValue.value
+        // let textinputMaxRC = textinputMaxR.value
+        // let textinputMinRC = textinputMinR.value
+        // let textinputMaxLC =textinputMaxL.value
+        // let textinputMinLC = textinputMinL.value
     
     
         
         rawTomA(inputRawValueC)
         mAToRaw(inputmAC)
-        freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
+        //freeCalc(textinputValueC,textinputMaxRC,textinputMinRC,textinputMaxLC,textinputMinLC )
       
     }
 });

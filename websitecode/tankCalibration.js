@@ -3,14 +3,14 @@
 TODO: 
 
 */
-function getData(tankNumber, sensorVal, sensorRangeC,formula) {
+function getData(tankNumber, sensorVal, sensorRangeC,formula,inputSensorMM) {
 
     //formulla to calculate the height of the tank, needed so i can mark the field green below
     let meterWater
-    if(!formula) {meterWater = sensorRangeC/ 10000 * 10.1972} else {meterWater = sensorRangeC * 10.1972} //* 10.1972;
+    if(!formula) {meterWater = sensorRangeC/ 1000} else {meterWater = sensorRangeC * 10.1972} //* 10.1972;
     
     
-    let hightTank = ((sensorVal - 4) * meterWater) / 16;
+    let hightTank = (((sensorVal - 4) * meterWater) / 16) + parseInt(inputSensorMM)/1000;
     let compareHightTank = hightTank.toFixed(1)
 
     currentOperandTextErrorText.textContent = "" // sending  error text to empty
@@ -71,41 +71,42 @@ function getData(tankNumber, sensorVal, sensorRangeC,formula) {
 
 }
 // function to add the  meter water to the formula in the dom.
-function materWater(sensorRangeC, sensorVal,formula) {
+function materWater(sensorRangeC, sensorVal,formula,inputSensorMM) {
 
     let meterWater
     if (!formula){
-        console.log("in mmWC",parseFloat(sensorRangeC)* 10.1972);
-        meterWater = parseFloat(sensorRangeC)/ 10000 * 10.1972 // * 10.1972;
-        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)}`//
+        console.log("in mmWC",parseFloat(sensorRangeC)/ 1000);
+        meterWater = parseFloat(sensorRangeC)/ 10000 // * 10.1972;
+        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)} + ${inputSensorMM}`//
     } else {
+
         console.log("in bar",parseFloat(sensorRangeC)* 10.1972);
-        meterWater = parseFloat(sensorRangeC) * 10.1972;
-        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)}`//
+        meterWater = parseFloat(sensorRangeC)*10.197//meterWater = parseFloat(sensorRangeC) * 10.1972;
+        return currentOperandTextWaterMeter.textContent = `(${sensorVal} mA - 4 mA ) * ${meterWater.toFixed(2)} + ${inputSensorMM}`//
     }
 
 
 }
 // calculates the height of the sensor. 
-function tankCal5barg(sensorVal, sensorRangeC,formula) {
+function tankCal5barg(sensorVal, sensorRangeC,formula,inputSensorMM) {
     if (sensorVal > 20 || sensorVal < 4) {
         return currentOperandTextElement2.textContent = "Invalied  sensor data";
     }
     let meterWater
     let hightTank
 
-    if (!formula){
-        meterWater= (parseFloat(sensorRangeC) / 10000 * 10.1972)   /// 10197) * 10.1972///10197 //);
+    if (!formula){ //using mmWC
+        meterWater= (parseInt(sensorRangeC)) / 1000   /// 10197) * 10.1972///10197 //);
         
-        hightTank = ((parseFloat(sensorVal) - 4) * meterWater) / 16;
+        hightTank = ((( parseFloat(sensorVal) - 4) * meterWater) / 16) + (parseInt(inputSensorMM)/1000) ;
     
-        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(2)} m`;
-    } else{
-        meterWater = parseFloat(sensorRangeC) * 10.1972///10197 //);
+        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(3)} m`;
+    } else{ // not using mmWC
+        meterWater = parseFloat(sensorRangeC)*10.197 //* 10.1972///10197 //);
         
-        hightTank = ((parseFloat(sensorVal) - 4) * meterWater) / 16;
+        hightTank = (((parseFloat(sensorVal) - 4) * meterWater) / 16) + (parseInt(inputSensorMM)/1000);
     
-        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(2)} m`;
+        return currentOperandTextElement2.textContent = `=  ${hightTank.toFixed(3)} m`;
 
     }
 
@@ -117,12 +118,12 @@ let valueCheckBox =1;
 document.getElementById("checkboxSensorType").addEventListener("click", function(){ 
     if (this.checked) {
         console.log(document.getElementById("checkboxSensorType").checked);
-        textElementInputSensorType.textContent = "bar"
+        textElementInputSensorType.textContent = "bar, 1 bar = 10.197m"
         textElementInputSensorType2.textContent = "bar"
     } else {
         console.log(document.getElementById("checkboxSensorType").checked);
-        textElementInputSensorType.textContent = "mmWG"
-        textElementInputSensorType2.textContent = "mmWG"
+        textElementInputSensorType.textContent = "mmWC, 1 bar = 10m"
+        textElementInputSensorType2.textContent = "mmWC"
     }
     
  });
@@ -141,6 +142,8 @@ const allClearButton2 = document.querySelector("[data-all-clearTank]");
 const inputSensorType = document.getElementById("inputSensorType");
 const checkboxSensorType1=  document.getElementById("checkboxSensorType");
 
+const textinputSensorMM1 =  document.getElementById("textinputSensorMM");
+
 const currentOperandTextElement2 = document.querySelector(
     "[data-current-5barg]"
 );
@@ -157,13 +160,12 @@ btnSend.addEventListener("click", function () {
     let sensorRangeC = sensorRange.value
     let tankNumberC = tankNumber.value
     let checkBoxValue = checkboxSensorType1.checked
-
+    let inputSensorMM1 = textinputSensorMM1.value
     console.log("value of box",checkBoxValue   );
-    tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC, checkBoxValue);
-    materWater(sensorRangeC, textinputNumberIntC,checkBoxValue);
-    getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue)
-    // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
-    //console.log(tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC));
+    tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC, checkBoxValue,inputSensorMM1);
+    materWater(sensorRangeC, textinputNumberIntC,checkBoxValue,inputSensorMM1);
+    getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue,inputSensorMM1)
+
 
 });
 
@@ -173,10 +175,11 @@ document.addEventListener(`keydown`, function (e) {
         let sensorRangeC = sensorRange.value
         let tankNumberC = tankNumber.value
         let checkBoxValue = checkboxSensorType1.checked
-        materWater(sensorRangeC, textinputNumberIntC,checkBoxValue)
-        getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue)
-        tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue); // parseInt() converts from STRING to int. We are reading in values from DOM as string. needs to be int for
-        //console.log(parseFloat(textinputNumberIntC), sensorRangeC);
+        let inputSensorMM1 = textinputSensorMM1.value
+
+        materWater(sensorRangeC, textinputNumberIntC,checkBoxValue,inputSensorMM1)
+        getData(tankNumberC, parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue,inputSensorMM1)
+        tankCal5barg(parseFloat(`${textinputNumberIntC}`), sensorRangeC,checkBoxValue,inputSensorMM1); // parseInt() converts from STRING 
 
     }
 });
