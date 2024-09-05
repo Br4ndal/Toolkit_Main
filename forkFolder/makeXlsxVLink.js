@@ -1,4 +1,9 @@
 "use strict";
+
+/*
+
+TODO: check the pgdynobjFile1 fucntion and compare to main !!!
+*/
 const XLSX = require("xlsx")
 const fs = require("fs")
 
