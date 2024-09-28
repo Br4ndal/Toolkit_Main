@@ -2,6 +2,7 @@
 const XLSX = require("xlsx")
 const fs = require("fs");
 const { unsubscribe } = require("diagnostics_channel");
+const { config } = require("process");
 
 
 checkPageAlarms ()
@@ -68,23 +69,51 @@ function checkPageAlarms (){
 
 
     let newPageOneArray1 = [...new Set(newPageOneArray)];
+    let newPageOneArray2 = [...new Set(newPageOneArray)];
     console.log(newPageOneArray.length);
     console.log(newPageOneArray1.length);
     console.log("finsied");
 
-    let newTest = [];
+    let newTest = newPageOneArray2;
 
-    newPageOneArray1.forEach(e => {
-        console.log(e);
-        let idx1 = allAlarms.findIndex(u => u.alarmNr == e);
-        console.log(e,idx1);
-        if (idx1 >= 0) {
-          e.ID = allAlarms[idx1].nameOfAlarmCitect;
+    newPageOneArray1.forEach((e,index) => {
+      let newVar = e;
+      let newIndexE = index
+
+      if (newVar == undefined){
+        null
+      }else {
+        let stringifyArray = JSON.stringify(e.toUpperCase())
+        let testForOR = "OR"
+        let testForSubStrOR = stringifyArray.indexOf(testForOR)
+      }
+
+
+
+      allAlarms.forEach((u,index1) =>{
+        let newIndexU = index1
+    
+
+        let strinifyAlarmTagCitext = JSON.stringify(newVar.toUpperCase());
+        let testThisForAlm = u.alarmNr
+        let testThisForAlmUpper = testThisForAlm.toUpperCase()
+        let testForSubStrAlm = strinifyAlarmTagCitext.indexOf(testThisForAlmUpper);
+
+        if (testForSubStrAlm >= 0) {
+          newPageOneArray1[newIndexE] = `${u.alarmSfi} ${u.alarmName} ${e}`;// u.alarmName//
+          return
         }
-      });
+        
+      })
+   
+    });
+
+
+    let newPageOneArray1test = [...new Set(newPageOneArray1)]
 
     let ws = XLSX.utils.aoa_to_sheet(arrayFliperRowtoColumn(newPageOneArray), { origin: "A1" });
     XLSX.utils.sheet_add_aoa(ws, arrayFliperRowtoColumn(newPageOneArray1), { origin: "B1" });
+    XLSX.utils.sheet_add_aoa(ws, arrayFliperRowtoColumn(newTest), { origin: "C1" });
     const newWB = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(newWB, ws, "pageCheckAlarms");
     XLSX.writeFile(newWB, "C:/Work/- AutoScript/- Files AutoGen/pageCheckAlarms.xlsx");
