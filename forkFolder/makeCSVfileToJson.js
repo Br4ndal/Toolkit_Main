@@ -2,6 +2,7 @@
 
 const fs = require(`fs`);
 const csvToJson = require('csvtojson');
+const { clear } = require('console');
 
 self.addEventListener("message",function(e){
     console.log("program started csvtoJSON",process.pid)
@@ -31,7 +32,7 @@ function csvtoJSONs (){
             localCSVtoJSON(pathForCSVFile[i])
         }
     }
-
+    localCSVtoJSON(`C:/Work/- AutoScript/IASProject/Citect_Project/PageConfig.csv`) // added just to make PageConfig to json
     return "Files Converted to JSON"
 }
 //function that turns CSV files to JSON file so i can easier get the information i need from them. And puting them all in a JSON folder where i can read them later.
